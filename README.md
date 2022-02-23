@@ -1,72 +1,84 @@
+# Trident Chemwidgets
 
-# trident-chemwidgets
-
-[![Build Status](https://travis-ci.org/tridentbio/trident-chemwidgets.svg?branch=master)](https://travis-ci.org/tridentbio/trident_chemwidgets)
-[![codecov](https://codecov.io/gh/tridentbio/trident-chemwidgets/branch/master/graph/badge.svg)](https://codecov.io/gh/tridentbio/trident-chemwidgets)
-
-
-Chemical widget set to work in jupyter notebook and lab.
+The Trident Chemwidgets (TCW) package provides a set of Jupyter widgets to improve data visibility in cheminformatics and molecular machine learning. You can read more about the importance of data visibility for these applications in our blog post [here](example.com).
 
 ## Installation
 
-You can install using `pip`:
+You can install Trident Chemwidgets using `pip`:
 
 ```bash
-pip install trident_chemwidgets
+pip install trident-chemwidgets
 ```
 
 If you are using Jupyter Notebook 5.2 or earlier, you may also need to enable
 the nbextension:
 ```bash
-jupyter nbextension enable --py [--sys-prefix|--user|--system] trident_chemwidgets
+jupyter nbextension enable --py [--sys-prefix|--user|--system] jsme_widget
 ```
 
-## Development Installation
+## [Documentation](example.com)
 
-Create a dev environment:
-```bash
-conda create -n trident_chemwidgets-dev -c conda-forge nodejs yarn python jupyterlab
-conda activate trident_chemwidgets-dev
+Full documentation can be found on [Read the Docs](example.com).
+
+## Usage
+
+We suggest importing Trident Chemwidgets using the convention `tcw`, as shown below. 
+
+```python
+import trident_chemwidgets as tcw
 ```
 
-Install the python. This will also build the TS package.
-```bash
-pip install -e ".[test, examples]"
+### Input functions
+
+#### JSME
+
+To facilitate molecular input, TCW provides an interface to the [JSME Molecule Editor](https://jsme-editor.github.io/) with added functionality.
+
+```python
+editor = tcw.JSME()
+editor
 ```
 
-When developing your extensions, you need to manually enable your extensions with the
-notebook / lab frontend. For lab, this is done by the command:
+### Plotting functions
 
-```
-jupyter labextension develop --overwrite .
-yarn run build
-```
+Understanding the distribution of your data is critical to many cheminformatic tasks. To this end, we supply a number of interactive plotting functions that allow you to display both the data and underlying molecular structures. You can even subset and save the data based on the property values for use in downstream analysis.
 
-For classic notebook, you need to run:
+#### Histogram
 
-```
-jupyter nbextension install --sys-prefix --symlink --overwrite --py trident_chemwidgets
-jupyter nbextension enable --sys-prefix --py trident_chemwidgets
+For 1-dimensional datasets, TCW provides a histogram plot function:
+
+```python
+histogram = tcw.Histogram(data=data, smiles='smiles', x='mwt', x_label='Molecular Weight')
+histogram
 ```
 
-Note that the `--symlink` flag doesn't work on Windows, so you will here have to run
-the `install` command every time that you rebuild your extension. For certain installations
-you might also need another flag instead of `--sys-prefix`, but we won't cover the meaning
-of those flags here.
+#### Scatter plot
 
-### How to see your changes
-#### Typescript:
-If you use JupyterLab to develop then you can watch the source directory and run JupyterLab at the same time in different
-terminals to watch for changes in the extension's source and automatically rebuild the widget.
+For 2-dimensional datasets, TCW provides a scatter plot function:
 
-```bash
-# Watch the source directory in one terminal, automatically rebuilding when needed
-yarn run watch
-# Run JupyterLab in another terminal
-jupyter lab
+```python
+scatter = tcw.Histogram(data=data, smiles='smiles', x='mwt', y='logp', x_label='Molecular Weight', y_label='Log P')
 ```
 
-After a change wait for the build to finish and then refresh your browser and the changes should take effect.
+### Output functions
 
-#### Python:
-If you make a change to the python code then you will need to restart the notebook kernel to have it take effect.
+#### Interactive molecule
+
+To examine features at the atom level, TCW provides a function to plot a molecule and allow users to explore the atom-specific features:
+
+```python
+atoms_data = [
+    {'Formal Charge': 0, 'Hybridization': 'SP3', 'Implicit Valence': 3},
+    {'Formal Charge': 0, 'Hybridization': 'SP3', 'Implicit Valence': 2},
+    {'Formal Charge': 0, 'Hybridization': 'SP3', 'Implicit Valence': 2},
+    {'Formal Charge': 0, 'Hybridization': 'SP3', 'Implicit Valence': 2},
+    {'Formal Charge': 0, 'Hybridization': 'SP3', 'Implicit Valence': 3}
+]
+
+mol = tcw.InteractiveMolecule('CCCCC', atoms_data=atoms_data)
+mol
+```
+
+## About
+
+Trident Chemwidgets is a product of Trident Bioscience. Trident Bioscience builds machine learning applications for the biotech and pharmaceutical industries. If you're interested in learning more, you can visit us at [trident.bio](https://www.trident.bio) or email us at [info@trident.bio](mailto:info@trident.bio).
