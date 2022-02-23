@@ -5,6 +5,7 @@
 # Distributed under the terms of the Modified BSD License.
 
 from .widgets.interactive_molecule import InteractiveMolecule
+from .widgets.histogram import Histogram
 from ._version import __version__, version_info
 
 def _jupyter_labextension_paths():
