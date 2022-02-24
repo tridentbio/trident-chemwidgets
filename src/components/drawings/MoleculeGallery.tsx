@@ -6,7 +6,7 @@ import MoleculeDrawing from "./MoleculeDrawing";
 const dividePages = (elementsNumber: number, pageSize: number) => {
     let numPages = Math.ceil(elementsNumber / pageSize);
     if (isNaN(numPages)) {
-        numPages = 0; 
+        numPages = 0;
     }
     return numPages;
 }
@@ -17,23 +17,21 @@ interface MoleculeGridProps {
 }
 
 const MoleculeGrid = (props: MoleculeGridProps) => {
-    
+
     if (!props.height) {
         props.height = '100%';
     }
 
     return (props.data.length > 0) ? (
-        <Grid container spacing={2} alignItems='center'
-              justifyContent='center' sx={{height:props.height}}>
+        <Grid container spacing={2} alignItems='center' justifyContent='space-evenly' sx={{ height: props.height, width: '100%'}}>
             {props.data.map((element: any) => (
-                <Grid item xs={12} sm={6}
-                      md={4} key={`mol${element.index}_grid`}>`
-                    <MoleculeDrawing smiles={element.smiles} 
-                        width={150} height={100}/>
+                <Grid item xs={12} sm={6} md={4} key={`mol${element.index}_grid`} >
+                    <MoleculeDrawing smiles={element.smiles}
+                        width={150} height={100} />
                 </Grid>
             ))}
         </Grid>
-    ) : (<Grid sx={{ height: props.height }}/>);
+    ) : (<Grid sx={{ height: props.height }} />);
 };
 
 interface MoleculeGalleryProps {
@@ -75,13 +73,12 @@ const MoleculeGallery = (props: MoleculeGalleryProps): JSX.Element => {
         });
     }
 
-    useEffect(() => console.log('a'), [])
-
-    useEffect(()=>{
-        const p = state.page;
-        console.log(state.displayData);
+    useEffect(() => {
+        // const p = state.page;
+        const p = 1;
         setState({
             ...state,
+            page: p,
             displayData: getDataWithIndex(
                 props.selected,
                 (p - 1) * 9,
@@ -92,14 +89,14 @@ const MoleculeGallery = (props: MoleculeGalleryProps): JSX.Element => {
     }, [props.selected]);
 
     return (
-        <Grid container spacing={2} direction='column'
-              alignItems='center' justifyContent='center'>
+        <Grid container spacing={2} direction='column' alignItems='center' justifyContent='space-evenly'>
             <Grid item xs={12}>
-                <MoleculeGrid data={state.displayData} height='90%'/>
+                <MoleculeGrid data={state.displayData} height='90%' />
             </Grid>
             <Grid item xs={12}>
                 <Pagination
                     count={state.pageCount}
+                    page={state.page}
                     onChange={handleChange}
                     hideNextButton={state.pageCount == 0}
                     hidePrevButton={state.pageCount == 0}
