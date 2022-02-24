@@ -10,3 +10,9 @@ export {
     HistogramModel,
     HistogramView
 } from './histogramPlot';
+
+export {
+    ScatterModelState,
+    ScatterModel,
+    ScatterView
+} from './scatterPlot'; 
