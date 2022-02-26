@@ -15,4 +15,10 @@ export {
     ScatterModelState,
     ScatterModel,
     ScatterView
-} from './scatterPlot'; 
+} from './scatterPlot';
+
+export {
+    JsmeModelState,
+    JsmeModel,
+    JsmeView
+} from './jsmeInput'; 

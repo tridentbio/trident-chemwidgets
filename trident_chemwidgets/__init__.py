@@ -7,6 +7,7 @@
 from .widgets.interactive_molecule import InteractiveMolecule
 from .widgets.histogram import Histogram
 from .widgets.scatter import Scatter
+from .widgets.jsme import JSME
 from ._version import __version__, version_info
 
 def _jupyter_labextension_paths():

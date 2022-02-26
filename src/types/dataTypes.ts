@@ -1,3 +1,7 @@
+export interface Point0D {
+    smiles: string,
+    index?: number
+}
 
 export interface Point1D {
     smiles: string,
