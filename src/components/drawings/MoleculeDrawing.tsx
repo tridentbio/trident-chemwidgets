@@ -18,7 +18,7 @@ const MoleculeDrawing = (props: MoleculeDrawingProps): JSX.Element => {
     const {smiles, width, height} = props;
 
     const drawMolecule = () => {
-        const molecule = (window as any).RDKit.get_mol(smiles);
+        const molecule = (window as any).RDKit.get_mol(smiles, JSON.stringify({ sanitize: false }));
         const svg = molecule.get_svg(width, height);
         setMoleculeDraw(svg);
 
