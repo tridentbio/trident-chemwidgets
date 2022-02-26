@@ -4,7 +4,21 @@ The Trident Chemwidgets (TCW) package provides a set of Jupyter widgets to impro
 
 ## Installation
 
-You can install Trident Chemwidgets using `pip`:
+### :warning: PRE-RELEASE NOTICE :warning:
+
+This package is currently pre-release. For the time being, please use the command to install locally. Once the package is released publicly on PyPI, these installation instructions will be removed.
+
+```bash
+pip install git+https://github.com/tridentbio/trident-chemwidgets.git
+```
+
+If you are using Jupyter Notebook 5.2 or earlier, you may also need to enable
+the nbextension:
+```bash
+jupyter nbextension enable --py [--sys-prefix|--user|--system] trident-chemwidgets
+```
+
+<!-- You can install Trident Chemwidgets using `pip`:
 
 ```bash
 pip install trident-chemwidgets
@@ -13,8 +27,8 @@ pip install trident-chemwidgets
 If you are using Jupyter Notebook 5.2 or earlier, you may also need to enable
 the nbextension:
 ```bash
-jupyter nbextension enable --py [--sys-prefix|--user|--system] jsme_widget
-```
+jupyter nbextension enable --py [--sys-prefix|--user|--system] trident-chemwidgets
+``` -->
 
 ## [Documentation](example.com)
 
