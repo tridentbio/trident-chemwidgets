@@ -10,7 +10,7 @@ const HistogramWidget = (props: WidgetProps): JSX.Element => {
     
     return <Histogram
                 data={ props.model.get('data') }
-                xLabel={props.model.get('x_label')}
+                xLabel={ props.model.get('x_label') }
                 onChange={setSavedSelected}/>;
 }
 
