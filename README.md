@@ -57,7 +57,7 @@ histogram
 For 2-dimensional datasets, TCW provides a scatter plot function:
 
 ```python
-scatter = tcw.Histogram(data=data, smiles='smiles', x='mwt', y='logp', x_label='Molecular Weight', y_label='Log P')
+scatter = tcw.Scatter(data=data, smiles='smiles', x='mwt', y='logp', x_label='Molecular Weight', y_label='Log P')
 ```
 
 ### Output functions
