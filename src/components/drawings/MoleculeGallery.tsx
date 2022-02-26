@@ -1,6 +1,6 @@
 import { Grid, Pagination } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { Point1D, Point2D } from "../../types/dataTypes";
+import { Point0D, Point1D, Point2D } from "../../types/dataTypes";
 import MoleculeDrawing from "./MoleculeDrawing";
 
 const dividePages = (elementsNumber: number, pageSize: number) => {
@@ -35,16 +35,16 @@ const MoleculeGrid = (props: MoleculeGridProps) => {
 };
 
 interface MoleculeGalleryProps {
-    selected: (Point1D[] | Point2D[]),
+    selected: (Point0D[] | Point1D[] | Point2D[]),
 }
 
 interface MoleculeGalleryState {
-    displayData: (Point1D[] | Point2D[]),
+    displayData: (Point0D[] | Point1D[] | Point2D[]),
     page: number,
     pageCount: number
 }
 
-const getDataWithIndex = (data: (Point1D[] | Point2D[]), start: number, stop: number) => {
+const getDataWithIndex = (data: (Point0D[] | Point1D[] | Point2D[]), start: number, stop: number) => {
     const displayData = data.slice(start, stop);
     for (let i = start; i < stop; i++) {
         displayData[i - start].index = i;
