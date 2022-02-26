@@ -27,8 +27,10 @@ interface JSMEProps {
     height: string;
     smiles?: string;
     src?: string;
+    reset?: boolean;
     options?: string;
     altOptions?: altOptionTypes;
+    onReset?: (reset: boolean) => void;
     onChange?: (smiles: string) => void;
 }
 
@@ -39,13 +41,14 @@ const JSME = (props: JSMEProps): JSX.Element => {
     const [jsmeAppletState, setJsmeAppletState] = useState()
 
     const handleChange = (jsmeEvent: any) => {
+        let newSmiles = jsmeEvent.src.smiles()
         if (props.onChange) {
-            props.onChange(jsmeEvent.src.smiles())
+            props.onChange(newSmiles)
         }
+        
     }
 
     const handleJsmeLoad = () => {
-
         const optionObject = {
             options: props.options ? props.options : '',
             ...props.altOptions
@@ -64,10 +67,13 @@ const JSME = (props: JSMEProps): JSX.Element => {
     let jsmeCallbacks: callbacks = {id: handleJsmeLoad};
 
     const setup = (src: string) => {
-        const script = document.createElement('script');
-        script.src = src;
-        document.head.appendChild(script);
-
+        // @ts-ignore
+        if (!window.jsmeOnLoad){
+            const script = document.createElement('script');
+            script.src = src;
+            document.head.appendChild(script);
+        }
+        
         // @ts-ignore
         window.jsmeOnLoad = () => {
             Object.values(jsmeCallbacks)
@@ -75,15 +81,15 @@ const JSME = (props: JSMEProps): JSX.Element => {
         }
     }
 
-    // Handle reset to original smiles
-    
-
     // Handle mount and unmount
     useEffect(() => {
         // @ts-ignore
         if (!window.jsmeOnLoad) {
             setup("https://jsme-editor.github.io/dist/jsme/jsme.nocache.js");
             setJsmeLoadedState(true);
+        } else {
+            setJsmeLoadedState(true)
+            handleJsmeLoad()
         }
     }, []);
 
@@ -94,14 +100,6 @@ const JSME = (props: JSMEProps): JSX.Element => {
             jsmeAppletState.setSize(props.width, props.height)
         }
     }, [props.height, props.width]);
-
-    // Handle change of SMILES string
-    useEffect(() => {
-        if (jsmeLoadedState && jsmeAppletState) {
-            // @ts-ignore
-            jsmeAppletState.readGenericMolecularInput(props.smiles)
-        }
-    }, [props.smiles]);
 
     // Handle change in options or altOptions
     useEffect(() => {
@@ -114,6 +112,16 @@ const JSME = (props: JSMEProps): JSX.Element => {
             jsmeAppletState.options(optionObject)
         }
     }, [props.options, props.altOptions]);
+
+    useEffect(() => {
+        if (jsmeLoadedState && jsmeAppletState && props.reset && props.onReset) {
+            // @ts-ignore
+            jsmeAppletState.clear()
+            // @ts-ignore
+            jsmeAppletState.readGenericMolecularInput(props.smiles)
+            props.onReset(false)
+        }
+    }, [props.reset]);
 
     return <div id={jsmeIdState}></div>
 }

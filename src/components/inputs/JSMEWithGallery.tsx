@@ -15,6 +15,12 @@ interface JSMEProps {
 const JSMEWithGallery = (props: JSMEProps): JSX.Element =>  {
     const [currentSmiles, setCurrentSmiles] = useState<string>('')
     const [smiles, setSmiles] = useState<string[]>([])
+    const [indexedSmiles, setIndexedSmiles] = useState<Point0D[]>([])
+    const [resetState, setResetState] = useState(false)
+    // @ts-ignore
+    const [rdKitLoaded, setRdKitLoaded] = useState(false);
+    // @ts-ignore
+    const [rdKitError, setRdKitError] = useState(false);
 
     useEffect(() => {
         if (!(window as any).RDKit) {
@@ -25,8 +31,17 @@ const JSMEWithGallery = (props: JSMEProps): JSX.Element =>  {
     const handleAddSmilesToList = () => {
         if (currentSmiles !== '') {
             let newSmiles = [...smiles, currentSmiles]
+            let newIndexedSmiles = [...indexedSmiles]
+
+            if (indexedSmiles.length == 0) {
+                newIndexedSmiles.push({smiles: currentSmiles, index: 0})
+            } else {
+                newIndexedSmiles.push({smiles: currentSmiles, index: indexedSmiles.length})
+            }
 
             setSmiles(newSmiles)
+            setIndexedSmiles(newIndexedSmiles)
+
             if (props.onChange) {
                 props.onChange(newSmiles)
             }
@@ -34,7 +49,7 @@ const JSMEWithGallery = (props: JSMEProps): JSX.Element =>  {
     }
 
     const handleResetToBaseSmiles = () => {
-
+        setResetState(true)
     }
 
     const indexSmiles = (smiles: string[]):Point0D[] => {
@@ -42,10 +57,20 @@ const JSMEWithGallery = (props: JSMEProps): JSX.Element =>  {
 
         for (let i = 0; i < smiles.length; i++) {
             indexedSmiles.push({'smiles': smiles[i], 'index': i})
-        }
+        } 
 
         return indexedSmiles
     }
+
+    useEffect(() => {
+        initRDKit()
+            .then(() => {
+                setRdKitLoaded(true);
+            })
+            .catch(() => {
+                setRdKitError(true);
+            })
+    }, []);
 
     return (
         <ThemeProvider theme={theme}>
@@ -57,7 +82,7 @@ const JSMEWithGallery = (props: JSMEProps): JSX.Element =>  {
                           alignItems='center'>
                         <Grid item xs={6} alignItems='center'
                               justifyContent='center'>
-                            <JSME width='400px' height='350px' smiles={props.baseSmiles} altOptions={{guicolor: '#f5f8ff'}} onChange={setCurrentSmiles} />
+                            <JSME width='400px' height='350px' smiles={props.baseSmiles} reset={resetState} altOptions={{guicolor: '#f5f8ff'}} onReset={setResetState} onChange={setCurrentSmiles} />
                         </Grid>
                         <Grid sm={12} sx={{marginTop: '15px'}}>
                             <Button onClick={handleAddSmilesToList}>
