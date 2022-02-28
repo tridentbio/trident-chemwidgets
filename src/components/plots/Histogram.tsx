@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Vega, VisualizationSpec } from 'react-vega';
 import { DataObject1D, Point1D } from '../../types/dataTypes';
 import histogramSpec from '../specs/histogram_specs';
@@ -83,20 +84,16 @@ const Histogram = (props: HistogramProps): JSX.Element => {
 
     return (
         <ThemeProvider theme={theme}>
-            <Grid container sx={{marginTop: '10px'}} spacing={2}
-                  direction='row' alignItems='center'>
-                <Grid item sm={12} md={6} alignItems='center'
-                      justifyContent='center'>
-                    <Grid container spacing={2} direction='column'
-                          alignItems='center'>
-                        <Grid item xs={6} alignItems='center'
-                              justifyContent='center'>
+            <Grid container spacing={2}>
+                <Grid item md={6} justifyContent='center'>
+                    <Grid container rowSpacing={2}>
+                        <Grid item md={12} display='flex' justifyContent='center'>
                             <Vega spec={state.spec}
                                   data={(state.data as any)}
                                   signalListeners={{brush: handleSelect}}
                                   actions={false}/>
                         </Grid>
-                        <Grid sm={12}>
+                        <Grid item md={12} display='flex' justifyContent='center'>
                             <Button onClick={handleFilterClick}>
                                 Show Structures
                             </Button>
@@ -104,18 +101,17 @@ const Histogram = (props: HistogramProps): JSX.Element => {
                                 Save Selection
                             </Button>
                         </Grid>
-                        <Grid container alignItems='center'
-                              justifyContent='center' mt={2}>
-                            <div style={{ width: '200px' }}>
-                                <a href='https://www.trident.bio/' target='_blank'>
-                                    <div dangerouslySetInnerHTML={{ __html: Logo() }} />
-                                </a>
-                            </div>
-                        </Grid>
                     </Grid>
                 </Grid>
-                <Grid item sm={12} md={6} alignItems='center' justifyContent='center'>
-                    <MoleculeGallery selected={state.selected} />
+                <Grid item md={6} display='flex' alignItems='center'>
+                    <MoleculeGallery selected={state.selected}/>
+                </Grid>
+                <Grid item md={6} display='flex' justifyContent='center'>
+                    <div style={{ width: '200px' }}>
+                        <a href='https://www.trident.bio/' target='_blank'>
+                            <div dangerouslySetInnerHTML={{ __html: Logo() }} />
+                        </a>
+                    </div>
                 </Grid>
             </Grid>
         </ThemeProvider>
