@@ -23,9 +23,9 @@ const MoleculeGrid = (props: MoleculeGridProps) => {
     }
 
     return (props.data.length > 0) ? (
-        <Grid container spacing={2} alignItems='center' justifyContent='space-evenly' sx={{ height: props.height, width: '100%'}}>
+        <Grid container display='flex' alignItems='center' justifyContent='space-around' sx={{ height: props.height, width: '100%'}}>
             {props.data.map((element: any) => (
-                <Grid item xs={12} sm={6} md={4} key={`mol${element.index}_grid`} >
+                <Grid item xs={12} sm={6} display='flex' justifyContent='center' md={4} key={`mol${element.index}_grid`} >
                     <MoleculeDrawing smiles={element.smiles}
                         width={150} height={100} />
                 </Grid>
@@ -89,11 +89,11 @@ const MoleculeGallery = (props: MoleculeGalleryProps): JSX.Element => {
     }, [props.selected]);
 
     return (
-        <Grid container spacing={2} direction='column' alignItems='center' justifyContent='space-evenly'>
+        <Grid container rowSpacing={2} alignItems='center' justifyContent='center'>
             <Grid item xs={12}>
-                <MoleculeGrid data={state.displayData} height='90%' />
+                <MoleculeGrid data={state.displayData} height='90%'/>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} display='flex' justifyContent='center'>
                 <Pagination
                     count={state.pageCount}
                     page={state.page}
