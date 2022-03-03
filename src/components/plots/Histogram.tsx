@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { Vega, VisualizationSpec } from 'react-vega';
 import { DataObject1D, Point1D } from '../../types/dataTypes';
 import histogramSpec from '../specs/histogram_specs';
