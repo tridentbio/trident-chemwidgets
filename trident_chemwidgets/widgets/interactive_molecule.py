@@ -1,4 +1,5 @@
-from typing import Any, Dict, List
+import pandas as pd
+from typing import Any, Dict, List, Union
 from ipywidgets import DOMWidget
 from traitlets import Unicode, List as tList
 from .._frontend import module_name, module_version
@@ -20,15 +21,29 @@ class InteractiveMolecule(DOMWidget):
 
     # Widget extra attributes
     smiles = Unicode('').tag(sync=True)
-    atoms_data = tList().tag(sync=True)
+    data = tList().tag(sync=True)
 
-    def __init__(self, smiles: str, atoms_data: List[Dict[str, Any]] = [], **kwargs):
+    def __init__(
+        self,
+        smiles: str,
+        data: Union[List[Dict[str, Any]], pd.DataFrame] = [],
+        **kwargs
+    ):
         """
         Args:
             smiles (str): SMILES string of the molecule that will be drawn.
-            atoms_data (List[Dict[str, Any]]): list of atom features sorted
+            data (List[Dict[str, Any]]): list of atom features sorted
                 by rdkit default atom order.
         """
         super().__init__(**kwargs)
         self.smiles = smiles
-        self.atoms_data = atoms_data
+
+        if isinstance(data, list):
+            self.data = data
+        else:
+            self.data = self.prepare_data(data)
+        
+
+    def prepare_data(self, data: pd.DataFrame) -> List:
+        data_list = data.to_dict(orient='records')
+        return data_list

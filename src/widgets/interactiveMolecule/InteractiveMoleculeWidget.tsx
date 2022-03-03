@@ -8,7 +8,7 @@ const InteractiveMolecule = (props: WidgetProps): JSX.Element => {
     // @ts-ignore
     const [smiles, setSmiles] = useModelState('smiles');
     // @ts-ignore
-    const [atomsData, setAtomsData] = useModelState('atoms_data');
+    const [atomsData, setAtomsData] = useModelState('data');
  
     return (
         <>
