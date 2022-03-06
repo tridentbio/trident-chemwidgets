@@ -4,7 +4,7 @@
     <img width="300px" src="./logo.svg"/>
 </div>
 
-<br/>
+<br/>   
 
 <!-- <h1 align="center">Trident Chemwidgets</h1> -->
 
@@ -45,6 +45,8 @@ Trident Chemwidgets is a product of Trident Bioscience. Trident Bioscience build
 
 This package is currently pre-release. For the time being, please use the command to install locally. Once the package is released publicly on PyPI, these installation instructions will be  modified.
 
+---
+
 ### Requirements
 
 - NodeJS
@@ -58,7 +60,7 @@ Here is an example environment created using Conda to cover all the prerequisite
 $ conda create -n trident_chemwidgets-dev -c conda-forge nodejs yarn python jupyterlab
 $ conda activate trident_chemwidgets-dev
 ```
-And then run the following statement to install the python package:
+Then run the following statement to install the python package:
 ```bash
 pip install git+https://github.com/tridentbio/trident-chemwidgets.git
 ```
