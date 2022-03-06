@@ -87,10 +87,10 @@ jupyter nbextension enable --py [--sys-prefix|--user|--system] trident-chemwidge
 
 While this package is pre-release, please use the following notebooks for documentation. Upon release, we will be moving primary documentation to Read the Docs.
 
-- [JSME widget]()
-- [Histogram widget]()
-- [Scatter widget]()
-- [InteractiveMolecule widget]()
+- [JSME widget](/examples/JSME_widget.ipynb)
+- [Histogram widget](/examples/Histogram_widget.ipynb)
+- [Scatter widget](/examples/Scatter_widget.ipynb)
+- [InteractiveMolecule widget](/examples/InteractiveMolecule_widget.ipynb)
 
 <!-- Full documentation can be found on [Read the Docs](example.com). -->
 
