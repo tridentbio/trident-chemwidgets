@@ -43,7 +43,7 @@ Trident Chemwidgets is a product of Trident Bioscience. Trident Bioscience build
 ---
 ### ⚠️ PRE-RELEASE NOTICE ⚠️
 
-This package is currently pre-release. For the time being, please use the command to install locally. Once the package is released publicly on PyPI, these installation instructions will be  modified.
+This package is currently pre-release. For the time being, please use the guide below to install locally. Once the package is released publicly on PyPI, these installation instructions will be  modified.
 
 ---
 
@@ -118,6 +118,8 @@ We suggest importing Trident Chemwidgets using the convention `tcw`, as shown be
 import trident_chemwidgets as tcw
 ```
 
+---
+
 ### Input functions
 
 #### JSME
@@ -134,6 +136,8 @@ editor
 </div>
 
 You can play with JSME widget in this [notebook](/examples/JSME_widget.ipynb).
+
+---
 
 ### Plotting functions
 
@@ -169,6 +173,8 @@ scatter = tcw.Scatter(data=data, smiles='smiles', x='mwt', y='logp', x_label='Mo
 
 
 You can play with Scatter widget in this [notebook](/examples/Scatter_widget.ipynb).
+
+---
 
 ### Output functions
 
