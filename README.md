@@ -57,16 +57,32 @@ This package is currently pre-release. For the time being, please use the comman
 Here is an example environment created using Conda to cover all the prerequisites. Please note that this is not the only way to prepare an environment. You could install the software globally on your local machine, but it is advisable to create an isolated environment.
 
 ```bash
-$ conda create -n trident_chemwidgets-dev -c conda-forge nodejs yarn python jupyterlab
-$ conda activate trident_chemwidgets-dev
+$ conda create -n trident_chemwidgets -c conda-forge nodejs yarn python=3.9 jupyterlab
+$ conda activate trident_chemwidgets
 ```
-Then run the following statement to install the python package:
+
+For some examples, you may also need RDKit installed to manipulate or extract molecular data you can install RDKit using the command below:
+
+```bash
+$ conda install -c conda-forge rdkit
+```
+
+Then run the following statement to install the Trident Chemwidgets python package from this repository:
+
 ```bash
 pip install git+https://github.com/tridentbio/trident-chemwidgets.git
 ```
 
-If you are using Jupyter Notebook 5.2 or earlier, you may also need to enable
-the nbextension:
+#### Jupyter setup
+
+If you are using Jupyter Lab (recommended), you may need to run the following command before initializing your Jupyter Lab instance:
+
+```bash
+jupyter labextension install @jupyter-widgets/jupyterlab-manager
+```
+
+If you are instead using Jupyter Notebook 5.2 or earlier, you may need to enable the nbextension:
+
 ```bash
 jupyter nbextension enable --py [--sys-prefix|--user|--system] trident-chemwidgets
 ```
@@ -113,6 +129,10 @@ editor = tcw.JSME()
 editor
 ```
 
+<div align="center">
+    <img width="500px" src="./examples/jsme_demo_small.gif"/>
+</div>
+
 You can play with JSME widget in this [notebook](/examples/JSME_widget.ipynb).
 
 ### Plotting functions
@@ -128,6 +148,11 @@ histogram = tcw.Histogram(data=data, smiles='smiles', x='mwt', x_label='Molecula
 histogram
 ```
 
+<div align="center">
+    <img width="500px" src="./examples/histogram_demo_small.gif"/>
+</div>
+
+
 You can play with Hostogram widget in this [notebook](/examples/Histogram_widget.ipynb).
 
 #### Scatter plot
@@ -137,6 +162,11 @@ For 2-dimensional datasets, TCW provides a scatter plot function:
 ```python
 scatter = tcw.Scatter(data=data, smiles='smiles', x='mwt', y='logp', x_label='Molecular Weight', y_label='Log P')
 ```
+
+<div align="center">
+    <img width="500px" src="./examples/scatter_demo_small.gif"/>
+</div>
+
 
 You can play with Scatter widget in this [notebook](/examples/Scatter_widget.ipynb).
 
@@ -150,5 +180,10 @@ To examine features at the atom level, TCW provides a function to plot a molecul
 mol = tcw.InteractiveMolecule('CCCCC', data=data)
 mol
 ```
+
+<div align="center">
+    <img width="500px" src="./examples/interactive_molecule_demo_small.gif"/>
+</div>
+
 
 You can play with InteractiveMolecule widget in this [notebook](/examples/InteractiveMolecule_widget.ipynb).
