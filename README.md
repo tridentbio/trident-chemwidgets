@@ -148,7 +148,7 @@ Understanding the distribution of your data is critical to many cheminformatic t
 For 1-dimensional datasets, TCW provides a histogram plot function:
 
 ```python
-histogram = tcw.Histogram(data=data, smiles='smiles', x='mwt', x_label='Molecular Weight')
+histogram = tcw.Histogram(data=data, smiles='smiles', x='tpsa', x_label='TPSA')
 histogram
 ```
 
@@ -157,14 +157,15 @@ histogram
 </div>
 
 
-You can play with Hostogram widget in this [notebook](/examples/Histogram_widget.ipynb).
+You can play with Histogram widget in this [notebook](/examples/Histogram_widget.ipynb).
 
 #### Scatter plot
 
 For 2-dimensional datasets, TCW provides a scatter plot function:
 
 ```python
-scatter = tcw.Scatter(data=data, smiles='smiles', x='mwt', y='logp', x_label='Molecular Weight', y_label='Log P')
+scatter = tcw.Scatter(data=data, smiles='smiles', x='mwt', y='logp',
+                      x_label='Molecular Weight', y_label='logP')
 ```
 
 <div align="center">
@@ -183,7 +184,7 @@ You can play with Scatter widget in this [notebook](/examples/Scatter_widget.ipy
 To examine features at the atom level, TCW provides a function to plot a molecule and allow users to explore the atom-specific features:
 
 ```python
-mol = tcw.InteractiveMolecule('CCCCC', data=data)
+mol = tcw.InteractiveMolecule('CC(C)CC1=CC=C(C=C1)C(C)C(=O)O', data=data)
 mol
 ```
 
