@@ -184,7 +184,7 @@ You can play with Scatter widget in this [notebook](/examples/Scatter_widget.ipy
 To examine features at the atom level, TCW provides a function to plot a molecule and allow users to explore the atom-specific features:
 
 ```python
-mol = tcw.InteractiveMolecule('CC(C)CC1=CC=C(C=C1)C(C)C(=O)O', data=data)
+mol = tcw.InteractiveMolecule('CC(C)CC1=CC=C(C=C1)C(C)C(=O)O', data=atom_data)
 mol
 ```
 
