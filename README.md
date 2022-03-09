@@ -132,7 +132,7 @@ editor
 ```
 
 <div align="center">
-    <img width="500px" src="./examples/gifs/jsme_demo_small.gif"/>
+    <img width="600px" src="./examples/gifs/jsme_demo_small.gif"/>
 </div>
 
 You can play with JSME widget in this [notebook](/examples/JSME_widget.ipynb).
@@ -153,7 +153,7 @@ histogram
 ```
 
 <div align="center">
-    <img width="500px" src="./examples/gifs/histogram_demo_small.gif"/>
+    <img width="600px" src="./examples/gifs/histogram_demo_small.gif"/>
 </div>
 
 
@@ -169,7 +169,7 @@ scatter = tcw.Scatter(data=data, smiles='smiles', x='mwt', y='logp',
 ```
 
 <div align="center">
-    <img width="500px" src="./examples/gifs/scatter_demo_small.gif"/>
+    <img width="600px" src="./examples/gifs/scatter_demo_small.gif"/>
 </div>
 
 
@@ -189,7 +189,7 @@ mol
 ```
 
 <div align="center">
-    <img width="500px" src="./examples/gifs/interactive_molecule_demo_small.gif"/>
+    <img width="600px" src="./examples/gifs/interactive_molecule_demo_small.gif"/>
 </div>
 
 
