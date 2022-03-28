@@ -85,7 +85,7 @@ const JSME = (props: JSMEProps): JSX.Element => {
     useEffect(() => {
         // @ts-ignore
         if (!window.jsmeOnLoad) {
-            setup("https://jsme-editor.github.io/dist/jsme/jsme.nocache.js");
+            setup("/static/jsme/jsme.nocache.js");
             setJsmeLoadedState(true);
         } else {
             setJsmeLoadedState(true)
