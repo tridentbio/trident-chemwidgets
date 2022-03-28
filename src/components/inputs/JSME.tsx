@@ -37,7 +37,7 @@ interface JSMEProps {
 const JSME = (props: JSMEProps): JSX.Element => {
     const [jsmeIdState, _setJsmeIdState] = useState("jsme" + getRandomInt(1, 100000))
     const [jsmeLoadedState, setJsmeLoadedState] = useState(false)
-    const [jsmeAppletState, setJsmeAppletState] = useState()
+    const [jsmeAppletState, setJsmeAppletState] = useState<any>()
 
     const handleChange = (jsmeEvent: any) => {
         let newSmiles = jsmeEvent.src.smiles()
@@ -53,10 +53,10 @@ const JSME = (props: JSMEProps): JSX.Element => {
             ...props.altOptions
         }
 
-        let jsmeApplet: any;
+        let jsmeApplet: any = new (window as any)
+            .JSApplet
+            .JSME(jsmeIdState, props.width, props.height, optionObject);
 
-        // @ts-ignore
-        jsmeApplet = new window.JSApplet.JSME(jsmeIdState, props.width, props.height, optionObject);
         jsmeApplet.setCallBack("AfterStructureModified", handleChange);
         jsmeApplet.readGenericMolecularInput(props.smiles)
 
@@ -66,15 +66,13 @@ const JSME = (props: JSMEProps): JSX.Element => {
     let jsmeCallbacks: callbacks = {id: handleJsmeLoad};
 
     const setup = (src: string) => {
-        // @ts-ignore
-        if (!window.jsmeOnLoad){
+        if (!(window as any).jsmeOnLoad){
             const script = document.createElement('script');
             script.src = src;
             document.head.appendChild(script);
         }
         
-        // @ts-ignore
-        window.jsmeOnLoad = () => {
+        (window as any).jsmeOnLoad = () => {
             Object.values(jsmeCallbacks)
                 .forEach((f: any) => f());
         }
@@ -82,8 +80,7 @@ const JSME = (props: JSMEProps): JSX.Element => {
 
     // Handle mount and unmount
     useEffect(() => {
-        // @ts-ignore
-        if (!window.jsmeOnLoad) {
+        if (!(window as any).jsmeOnLoad) {
             setup("/static/jsme/jsme.nocache.js");
             setJsmeLoadedState(true);
         } else {
@@ -95,7 +92,6 @@ const JSME = (props: JSMEProps): JSX.Element => {
     // Handle change of size
     useEffect(() => {
         if (jsmeLoadedState && jsmeAppletState) {
-            // @ts-ignore
             jsmeAppletState.setSize(props.width, props.height)
         }
     }, [props.height, props.width]);
@@ -107,16 +103,13 @@ const JSME = (props: JSMEProps): JSX.Element => {
                 options: props.options,
                 ...props.altOptions
             }
-            // @ts-ignore
             jsmeAppletState.options(optionObject)
         }
     }, [props.options, props.altOptions]);
 
     useEffect(() => {
         if (jsmeLoadedState && jsmeAppletState && props.reset && props.onReset) {
-            // @ts-ignore
             jsmeAppletState.clear()
-            // @ts-ignore
             jsmeAppletState.readGenericMolecularInput(props.smiles)
             props.onReset(false)
         }
