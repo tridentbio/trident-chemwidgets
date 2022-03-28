@@ -35,8 +35,7 @@ interface JSMEProps {
 }
 
 const JSME = (props: JSMEProps): JSX.Element => {
-    // @ts-ignore
-    const [jsmeIdState, setJsmeIdState] = useState("jsme" + getRandomInt(1, 100000))
+    const [jsmeIdState, _setJsmeIdState] = useState("jsme" + getRandomInt(1, 100000))
     const [jsmeLoadedState, setJsmeLoadedState] = useState(false)
     const [jsmeAppletState, setJsmeAppletState] = useState()
 
