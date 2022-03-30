@@ -1,0 +1,10 @@
+# Widgets
+
+This section contains several examples generated from Jupyter notebooks.
+The widgets have been embedded into the page for demonstrative purposes.
+
+```{toctree}
+:glob: true
+
+*
+```

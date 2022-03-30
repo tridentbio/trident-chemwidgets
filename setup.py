@@ -111,7 +111,9 @@ setup_args = dict(
             'pypandoc',
             'recommonmark',
             'sphinx>=1.5',
+            'sphinx-autobuild',
             'sphinx_rtd_theme',
+            'furo',
         ],
     },
     entry_points = {

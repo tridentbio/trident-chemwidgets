@@ -28,6 +28,7 @@ extensions = [
     'sphinx.ext.intersphinx',
     'sphinx.ext.napoleon',
     'sphinx.ext.todo',
+    'sphinx.ext.autosectionlabel',
     'nbsphinx',
     'jupyter_sphinx',
     'nbsphinx_link',
@@ -110,7 +111,19 @@ todo_include_todos = False
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-# html_theme_options = {}
+html_theme_options = {
+    'sidebar_hide_name': True,
+    'light_css_variables': {
+        'color-brand-primary': '#384E77',
+        'color-brand-content': '#384E77',
+    },
+    'dark_css_variables': {
+        'color-brand-primary': '#8BBEB2',
+        'color-brand-content': '#8BBEB2',
+    },
+}
+html_logo = '_static/logo.svg'
+html_title = f'Trident Chemwidgets - Docs v{version}'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -190,11 +203,12 @@ intersphinx_mapping = {'https://docs.python.org/': None}
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
 if not on_rtd:  # only import and set the theme if we're building docs locally
-    import sphinx_rtd_theme
-    html_theme = 'sphinx_rtd_theme'
-    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+    # import sphinx_rtd_theme
+    html_theme = 'furo'
+    # html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # otherwise, readthedocs.org uses their theme by default, so no need to specify it
+
 
 
 # Uncomment this line if you have know exceptions in your included notebooks

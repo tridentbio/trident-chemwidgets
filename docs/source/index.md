@@ -1,6 +1,6 @@
-# trident_chemwidgets
+# Trident Chemwidgets
 
-Version: {{ release }}
+Version: {release}
 
 Chemical widget set to work in jupyter notebook and lab.
 
@@ -18,10 +18,12 @@ or with conda:
 conda install trident_chemwidgets
 ```
 
+If the widgets still are not usable after simple installation, checkout {ref}`Installation`.
+
 ## Contents
 
 ```{toctree}
-:caption: Installation and usage
+:caption: Installation
 :maxdepth: 2
 
 installing
@@ -29,8 +31,10 @@ introduction
 ```
 
 ```{toctree}
-:maxdepth: 1
+:caption: Usage
+:maxdepth: 2
 
+widgets/index
 examples/index
 ```
 
