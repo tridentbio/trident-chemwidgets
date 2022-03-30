@@ -35,9 +35,11 @@ extensions = [
     'sphinx.ext.intersphinx',
     'sphinx.ext.napoleon',
     'sphinx.ext.todo',
+    'sphinx.ext.autosectionlabel',
     'nbsphinx',
     'jupyter_sphinx',
     'nbsphinx_link',
+    'myst_parser',
 ]
 
 # Set the nbsphinx JS path to empty to avoid showing twice of the widgets
@@ -50,8 +52,8 @@ templates_path = ['_templates']
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 #
-# source_suffix = ['.rst', '.md']
-source_suffix = '.rst'
+source_suffix = ['.rst', '.md']
+# source_suffix = '.rst'
 
 # The master toctree document.
 master_doc = 'index'
@@ -99,6 +101,28 @@ pygments_style = 'sphinx'
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = False
+
+
+# -- Options for HTML output ----------------------------------------------
+
+
+# Theme options are theme-specific and customize the look and feel of a theme
+# further.  For a list of options available for each theme, see the
+# documentation.
+#
+html_theme_options = {
+    'sidebar_hide_name': True,
+    'light_css_variables': {
+        'color-brand-primary': '#384E77',
+        'color-brand-content': '#384E77',
+    },
+    'dark_css_variables': {
+        'color-brand-primary': '#8BBEB2',
+        'color-brand-content': '#8BBEB2',
+    },
+}
+html_logo = '_static/logo.svg'
+html_title = f'Trident Chemwidgets - Docs v{version}'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -172,14 +196,12 @@ texinfo_documents = [
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'https://docs.python.org/': None}
 
-
+# import sphinx_rtd_theme
 html_theme = 'furo'
-html_logo = os.path.join('..', '..', 'logo.svg')
-html_theme_options = {
-    'sidebar_hide_name': True,
-}
+# html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 html_theme_path = []
+
 
 
 # Uncomment this line if you have know exceptions in your included notebooks
