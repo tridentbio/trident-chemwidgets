@@ -45,6 +45,13 @@ examples/index
 develop-install
 ```
 
+```{toctree}
+:caption: API
+:maxdepth: 2
+
+modules
+```
+
 % links
 
 [jupyter widgets]: https://jupyter.org/widgets.html
