@@ -4,6 +4,14 @@ from .._frontend import module_name, module_version
 
 
 class Histogram(DOMWidget):
+    """Plot an interactive histogram based on the distribution of the given
+    data and the selected variable.
+
+    Args:
+        data (pd.DataFrame): data used to generate the histogram.
+        smiles (str): Name of the column that contains the SMILES string of each molecule.
+        x (str): Name of the column used to generate the x-axis of the histogram.
+    """
 
     _model_name = Unicode('HistogramModel').tag(sync=True)
     _model_module = Unicode(module_name).tag(sync=True)
@@ -35,6 +43,12 @@ class Histogram(DOMWidget):
         self.x_label = kwargs['x_label'] if 'x_label' in kwargs else x
 
     def prep_data_for_plot(self):
+        """Transforms and correctly selects the data that will be transformed
+        into dict and will be used by React to generate the histogram.
+
+        Returns:
+            dict: data in dictionary format. 
+        """
         data_list = (self._data[[self._smiles_col, self._x_col]]
                      .rename(columns={self._smiles_col: 'smiles', self._x_col: 'x'})
                      .to_dict(orient='records'))

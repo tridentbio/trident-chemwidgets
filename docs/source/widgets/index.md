@@ -1,7 +1,6 @@
 # Widgets
 
-This section contains several examples generated from Jupyter notebooks.
-The widgets have been embedded into the page for demonstrative purposes.
+This section contains detailed information about the API of each Widget provided by the library.
 
 ```{toctree}
 :glob: true
