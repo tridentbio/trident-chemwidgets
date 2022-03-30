@@ -55,7 +55,7 @@ create_local_assets_provider()
 # The name of the project
 name = 'trident_chemwidgets'
 # Get the version
-version = get_version(pjoin(name, '_version.py'))
+version = get_version(pjoin(HERE, name, '_version.py'))
 
 # Representative files that should exist after a successful build
 jstargets = [

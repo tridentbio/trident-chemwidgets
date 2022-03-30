@@ -1,5 +1,5 @@
 
-trident_chemwidgets
+Trident Chemwidgets
 =====================================
 
 Version: |release|
@@ -30,9 +30,7 @@ Contents
    introduction
 
 .. toctree::
-   :maxdepth: 1
-
-   examples/index
+   modules.rst
 
 
 .. toctree::
