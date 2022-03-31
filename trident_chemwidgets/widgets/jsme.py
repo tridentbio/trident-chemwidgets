@@ -7,6 +7,10 @@ from .._frontend import module_name, module_version
 class JSME(DOMWidget):
     """Widget responsible for displaying JSME editor and
     syncing drawn molecule SMILES string to Python.
+
+    Args:
+        base_smiles(str): Base smiles used to generate an initial
+            molecule in the jsme plot.
     """
 
     # Widget default attributes
