@@ -6,9 +6,13 @@ from .._frontend import module_name, module_version
 
 
 class InteractiveMolecule(DOMWidget):
-    """Widget responsible for plotting an interactive
-    svg of the molecule where it is possible to check
-    data for each atom by hovering the mouse over them.
+    """Plot an interactive molecule where the user can select the atoms
+    they want to view their details separately on a card.
+
+    Args:
+        smiles(str): Smiles string used to generate the atom view.
+        data(Union[List[Dict[str, Any]], pd.DataFrame]): List of dicts or dataframe
+            containing the data for each atom.
     """
 
     # Widget default attributes
@@ -42,7 +46,6 @@ class InteractiveMolecule(DOMWidget):
             self.data = data
         else:
             self.data = self.prepare_data(data)
-        
 
     def prepare_data(self, data: pd.DataFrame) -> List:
         data_list = data.to_dict(orient='records')
