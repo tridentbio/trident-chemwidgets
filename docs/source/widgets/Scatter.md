@@ -1,5 +1,7 @@
 # Scatter
 
 ```{eval-rst}
-.. autofunction:: trident_chemwidgets.Scatter
+.. autoclass:: trident_chemwidgets.Scatter
+   :members:
+   :show-inheritance:
 ```

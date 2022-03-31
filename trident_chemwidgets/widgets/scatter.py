@@ -15,6 +15,21 @@ class Scatter(DOMWidget):
             of the scatter plot.
         y(str): Name of the column used to generate the y-axis
             of the scatter plot.
+
+    Attributes:
+        x_label (str): Name of the x-axis in the plot.
+        y_label (str): Name of the y-axis in the plot.
+        data (dict): Dict containing the data used by react 
+            to plot the widget.
+        savedSelected (List): List of saved smiles string that
+            have been selected.
+
+    Examples:
+        >>> import trident_chemwidgets as tcw
+        >>> import pandas as pd
+        >>> dataset = pd.read_csv(PATH)
+        >>> scatter = tcw.Scatter(data=dataset, smiles='smiles', x='mwt', y='logp')
+        >>> scatter
     """
 
     _model_name = Unicode('ScatterModel').tag(sync=True)
@@ -52,6 +67,11 @@ class Scatter(DOMWidget):
         self.y_label = kwargs['y_label'] if 'y_label' in kwargs else x
 
     def prep_data_for_plot(self):
+        """Transforms and selects the data correctly for use by the plot.
+
+        Returns:
+            dict: Data in dict format to be used in plot.
+        """
         data_list = (self._data[[self._smiles_col, self._x_col, self._y_col]]
                      .rename(columns={self._smiles_col: 'smiles', self._x_col: 'x', self._y_col: 'y'})
                      .to_dict(orient='records'))
@@ -65,4 +85,6 @@ class Scatter(DOMWidget):
 
     @property
     def selection(self):
+        """Current selection of molecules made by the user.
+        """
         return self._data.iloc[self.savedSelected]
