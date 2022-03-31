@@ -1,5 +1,7 @@
 # Histogram
 
 ```{eval-rst}
-.. autofunction:: trident_chemwidgets.Histogram
+.. autoclass:: trident_chemwidgets.Histogram
+   :members:
+   :show-inheritance:
 ```
