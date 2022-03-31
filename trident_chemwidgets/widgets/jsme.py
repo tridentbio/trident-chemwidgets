@@ -9,8 +9,26 @@ class JSME(DOMWidget):
     syncing drawn molecule SMILES string to Python.
 
     Args:
-        base_smiles(str): Base smiles used to generate an initial
+        base_smiles (str): Base smiles used to generate an initial
             molecule in the jsme plot.
+
+    Attributes:
+        base_smiles (str): Base smiles that represents the molecule
+            generated in jsme.
+        smiles (List[str]): List of smiles strings saved by users
+            after their creation.
+
+    Examples:
+        >>> import trident_chemwidgets as tcw
+        >>> jsme = tcw.JSME()
+        >>> jsme
+
+        A depiction of the structure, and all others that have been
+        added to the saved internal molecule list will be displayed
+        in the gallery to the right. You can access the list of input
+        smiles using the `smiles` property of the widget.
+
+        >>> jsme.smiles
     """
 
     # Widget default attributes

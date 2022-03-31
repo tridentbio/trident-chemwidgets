@@ -1,5 +1,7 @@
 # JSME
 
 ```{eval-rst}
-.. autofunction:: trident_chemwidgets.JSME
+.. autoclass:: trident_chemwidgets.JSME
+   :members:
+   :show-inheritance:
 ```
