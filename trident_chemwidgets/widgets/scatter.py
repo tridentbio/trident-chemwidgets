@@ -4,6 +4,18 @@ from .._frontend import module_name, module_version
 
 
 class Scatter(DOMWidget):
+    """Plot an interactive scatter plot based on the given data and
+        the selected variables to generate the axis.
+
+    Args:
+        data(pd.DataFrame): Data used to generate the scatter plot.
+        smiles(str): Name of the column that contains the SMILES
+            string of each molecule.
+        x(str): Name of the column used to generate the x-axis
+            of the scatter plot.
+        y(str): Name of the column used to generate the y-axis
+            of the scatter plot.
+    """
 
     _model_name = Unicode('ScatterModel').tag(sync=True)
     _model_module = Unicode(module_name).tag(sync=True)
