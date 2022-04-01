@@ -1,8 +1,15 @@
 # Trident Chemwidgets
 
-Version: {release}
+The Trident Chemwidgets package contains Jupyter-based interactive [widgets] that provide an interface to chemical datasets.
+This package includes widgets for chemical input, data distribution analysis and splitting, and atom-level visualizations.
+The video below gives an overview of the included functionality.
 
-Chemical widget set to work in jupyter notebook and lab.
+<div style='text-align: center;'>
+    <video width="350" height="350" controls loop autoplay playsinline>
+        <source src="_static/video/chemwidgets_demo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
 
 ## Quickstart
 
@@ -54,5 +61,5 @@ modules
 
 % links
 
-[jupyter widgets]: https://jupyter.org/widgets.html
+[widgets]: https://jupyter.org/widgets.html
 [notebook]: https://jupyter-notebook.readthedocs.io/en/latest/

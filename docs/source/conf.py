@@ -9,7 +9,7 @@ sys.path.insert(0, abspath('../..'))
 
 # General Configuration
 
-# Extensios that are used for this docs
+# Extensions that are used for these docs
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',
@@ -21,6 +21,11 @@ extensions = [
     'jupyter_sphinx',
     'nbsphinx_link',
     'myst_parser',
+]
+
+# Enable extensions for MyST
+myst_enable_extensions = [
+    'substitution'
 ]
 
 # Set the nbsphinx JS path to empty to avoid showing twice of the widgets
@@ -71,6 +76,11 @@ pygments_style = 'sphinx'
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = False
 
+# Handle substitutions for MyST
+myst_substitutions = {
+  'version': release
+}
+
 
 # -- Options for HTML output ----------------------------------------------
 
@@ -91,6 +101,7 @@ html_theme_options = {
     },
 }
 html_logo = '_static/logo.svg'
+html_favicon = '_static/favicon.ico'
 html_title = f'Trident Chemwidgets - Docs v{version}'
 
 # Add any paths that contain custom static files (such as style sheets) here,
