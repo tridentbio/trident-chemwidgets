@@ -11,6 +11,19 @@ class Histogram(DOMWidget):
         data (pd.DataFrame): data used to generate the histogram.
         smiles (str): Name of the column that contains the SMILES string of each molecule.
         x (str): Name of the column used to generate the x-axis of the histogram.
+
+    Attributes:
+        x_label (str): Name of the x-axis in the plot.
+        data (dict): Dict containing the data used by react to plot
+            the widget.
+        saved_selected (list): List of saved smiles strings that have been selected.
+
+    Examples:
+        >>> import trident_chemwidgets as tcw
+        >>> import pandas as pd
+        >>> dataset = pd.read_csv(PATH)
+        >>> histogram = tcw.Histogram(data=dataset, smiles='smiles', x='tpsa')
+        >>> histogram
     """
 
     _model_name = Unicode('HistogramModel').tag(sync=True)
@@ -62,4 +75,6 @@ class Histogram(DOMWidget):
 
     @property
     def selection(self):
+        """Current selection of molecules made by the user.
+        """
         return self._data.iloc[self.savedSelected]

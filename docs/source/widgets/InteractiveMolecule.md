@@ -1,5 +1,7 @@
 # InteractiveMolecule
 
 ```{eval-rst}
-.. autofunction:: trident_chemwidgets.InteractiveMolecule
+.. autoclass:: trident_chemwidgets.InteractiveMolecule
+   :members:
+   :show-inheritance:
 ```
