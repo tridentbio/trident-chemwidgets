@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from sphinx.util import logging
 import sys
 import os
 from os.path import abspath
 
-sys.path.insert(0, abspath('../..'))
+sys.path.insert(0, abspath('..'))
 
 # General Configuration
 
@@ -47,7 +48,7 @@ author = 'Trident Bioscience, Inc.'
 
 # get version from python package:
 here = os.path.dirname(__file__)
-repo = os.path.join(here, '..', '..')
+repo = os.path.join(here, '..')
 _version_py = os.path.join(repo, 'trident_chemwidgets', '_version.py')
 version_ns = {}
 with open(_version_py) as f:
@@ -78,7 +79,7 @@ todo_include_todos = False
 
 # Handle substitutions for MyST
 myst_substitutions = {
-  'version': release
+    'version': release
 }
 
 
@@ -151,8 +152,8 @@ htmlhelp_basename = 'trident_chemwidgetsdoc'
 # (source start file, name, description, authors, manual section).
 man_pages = [
     (master_doc,
-    'trident_chemwidgets',
-    'trident_chemwidgets Documentation',
+     'trident_chemwidgets',
+     'trident_chemwidgets Documentation',
      [author], 1)
 ]
 
@@ -183,14 +184,13 @@ html_theme = 'furo'
 html_theme_path = []
 
 
-
 # Uncomment this line if you have know exceptions in your included notebooks
 # that nbsphinx complains about:
 #
-nbsphinx_allow_errors = True # exception ipstruct.py ipython_genutils
+nbsphinx_allow_errors = True  # exception ipstruct.py ipython_genutils
 
-from sphinx.util import logging
 logger = logging.getLogger(__name__)
+
 
 def setup(app):
     def add_scripts(app):

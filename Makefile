@@ -5,8 +5,8 @@
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 SPHINXPROJ    = trident_chemwidgets
-SOURCEDIR     = source
-BUILDDIR      = build
+SOURCEDIR     = docsrc
+BUILDDIR      = docs
 
 # Put it first so that "make" without argument is like "make help".
 help:
