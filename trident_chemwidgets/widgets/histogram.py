@@ -4,6 +4,24 @@ from .._frontend import module_name, module_version
 
 
 class Histogram(DOMWidget):
+    """Plot an interactive histogram based on the distribution of the given
+    data and the selected variable.
+
+    Args:
+        data (pd.DataFrame): DataFrame used to generate the histogram.
+        smiles (str): Name of the column that contains the SMILES string
+            of each molecule.
+        x (str): Name of the column used to generate the x-axis of the histogram.
+        x_label (str): Label for the x-axis of the histogram, defaults to the
+            value of `x` if not provided.
+
+    Examples:
+        >>> import trident_chemwidgets as tcw
+        >>> import pandas as pd
+        >>> dataset = pd.read_csv(PATH)
+        >>> histogram = tcw.Histogram(data=dataset, smiles='smiles', x='tpsa')
+        >>> histogram
+    """
 
     _model_name = Unicode('HistogramModel').tag(sync=True)
     _model_module = Unicode(module_name).tag(sync=True)
@@ -24,17 +42,23 @@ class Histogram(DOMWidget):
 
     savedSelected = List(trait=Integer()).tag(sync=True)
 
-    def __init__(self, data, smiles, x, **kwargs):
-        super().__init__(**kwargs)
+    def __init__(self, data, smiles, x, x_label=None, **kwargs):
+        super().__init__()
 
         self._smiles_col = smiles
         self._x_col = x
         self._data = data
 
         self.data = self.prep_data_for_plot()
-        self.x_label = kwargs['x_label'] if 'x_label' in kwargs else x
+        self.x_label = x_label if x_label else x
 
     def prep_data_for_plot(self):
+        """Transforms and correctly selects the data that will be transformed
+        into dict and will be used by React to generate the histogram.
+
+        Returns:
+            dict: data in dictionary format. 
+        """
         data_list = (self._data[[self._smiles_col, self._x_col]]
                      .rename(columns={self._smiles_col: 'smiles', self._x_col: 'x'})
                      .to_dict(orient='records'))
@@ -48,4 +72,6 @@ class Histogram(DOMWidget):
 
     @property
     def selection(self):
+        """Current selection of molecules made by the user.
+        """
         return self._data.iloc[self.savedSelected]

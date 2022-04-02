@@ -6,9 +6,19 @@ from .._frontend import module_name, module_version
 
 
 class InteractiveMolecule(DOMWidget):
-    """Widget responsible for plotting an interactive
-    svg of the molecule where it is possible to check
-    data for each atom by hovering the mouse over them.
+    """Plot an interactive molecule where the user can select the atoms
+    they want to view their details separately on a card.
+
+    Args:
+        smiles (str): Smiles string used to generate the atom view.
+        data (Union[List[Dict[str, Any]], pd.DataFrame]): List of dicts or dataframe
+            containing the data for each atom.
+
+    Examples:
+        >>> import trident_chemwidgets as tcw
+        >>> atom_data = ... # Atom data in a list of dicts or pd.DataFrame
+        >>> imol = tcw.InteractiveMolecule('CCCCC', data=atom_data)
+        >>> imol # Plot the actual widget on the notebook/lab
     """
 
     # Widget default attributes
@@ -29,12 +39,6 @@ class InteractiveMolecule(DOMWidget):
         data: Union[List[Dict[str, Any]], pd.DataFrame] = [],
         **kwargs
     ):
-        """
-        Args:
-            smiles (str): SMILES string of the molecule that will be drawn.
-            data (List[Dict[str, Any]]): list of atom features sorted
-                by rdkit default atom order.
-        """
         super().__init__(**kwargs)
         self.smiles = smiles
 
@@ -42,8 +46,16 @@ class InteractiveMolecule(DOMWidget):
             self.data = data
         else:
             self.data = self.prepare_data(data)
-        
 
     def prepare_data(self, data: pd.DataFrame) -> List:
+        """Transforms a dataset from the dataframe format to a list
+        of dictionaries that will be interpreted by React.
+
+        Args:
+            data (pd.DataFrame): Dataframe that will be transformed.
+
+        Returns:
+            List: List of data transformed to the correct format.
+        """
         data_list = data.to_dict(orient='records')
         return data_list

@@ -7,6 +7,30 @@ from .._frontend import module_name, module_version
 class JSME(DOMWidget):
     """Widget responsible for displaying JSME editor and
     syncing drawn molecule SMILES string to Python.
+
+    Args:
+        base_smiles (str): Base smiles used to generate an initial
+            molecule in the JSME input window.
+
+    Examples:
+        >>> import trident_chemwidgets as tcw
+        >>> jsme = tcw.JSME()
+        >>> jsme
+
+        A depiction of the structure, and all others that have been
+        added to the saved internal molecule list will be displayed
+        in the gallery to the right. You can access the list of input
+        smiles using the `smiles` property of the widget.
+
+        >>> jsme.smiles
+
+        You can specify a `base_smiles` that will allow you to quickly
+        generate derivatives. At any point, you can reset the input
+        window to this predefined base smiles value by clicking the
+        `RESET TO BASE SMILES` button beneath the input window.
+
+        >>> jsme = tcw.JSME(base_smiles='CC(C)Cc1ccc(cc1)[C@@H](C)C(=O)O')
+        >>> jsme
     """
 
     # Widget default attributes

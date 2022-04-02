@@ -8,7 +8,7 @@
 */
 const initRDKit = (() => {
     const script = document.createElement('script');
-    script.src = 'https://unpkg.com/@rdkit/rdkit/Code/MinimalLib/dist/RDKit_minimal.js';
+    script.src = '/static/RDKit_minimal.js';
     document.head.appendChild(script);
 
     // One the promise return an object from the C++ compiled library

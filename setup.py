@@ -7,10 +7,8 @@
 from __future__ import print_function
 from glob import glob
 import os
-from os.path import join as pjoin
+from os.path import join as pjoin, expanduser
 from setuptools import setup, find_packages
-
-
 from jupyter_packaging import (
     create_cmdclass,
     install_npm,
@@ -19,18 +17,45 @@ from jupyter_packaging import (
     get_version,
     skip_if_exists
 )
+from jupyter_core.paths import jupyter_config_dir
+import shutil
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 
+def create_local_assets_provider():
+    """Method that create the assets folder for the external scripts
+    and add the path for this folder in extra_static_paths in the config
+    files for notebooks and jupyter lab. 
+    """
+    CONFIG_DIR = jupyter_config_dir()
+    ASSETS_DIR = os.path.join(expanduser('~'), '.trident_chemwidgets/')
 
+    # Copy assets to the user .trident-chemwidgets
+    shutil.copytree(
+        os.path.join(HERE, 'js/'),
+        ASSETS_DIR,
+        dirs_exist_ok=True
+    )
+
+    # Convert the path for unix path convertion since
+    # the windows use the backslashes 
+    static_path = ASSETS_DIR.replace('\\', '/')
+
+    # Create a jupyter lab config file
+    with open(os.path.join(CONFIG_DIR, 'jupyter_lab_config.py'), 'w') as file:
+        file.write(f"c.ServerApp.extra_static_paths = ['{static_path}']")
+
+    # Create a jupyter notebook config file
+    with open(os.path.join(CONFIG_DIR, 'jupyter_notebook_config.py'), 'w') as file:
+        file.write(f"c.NotebookApp.extra_static_paths = ['{static_path}']")
+
+create_local_assets_provider()
 
 # The name of the project
 name = 'trident_chemwidgets'
-
 # Get the version
-version = get_version(pjoin(name, '_version.py'))
-
+version = get_version(pjoin(HERE, name, '_version.py'))
 
 # Representative files that should exist after a successful build
 jstargets = [
@@ -38,14 +63,12 @@ jstargets = [
     pjoin(HERE, name, 'labextension', 'package.json'),
 ]
 
-
 package_data_spec = {
     name: [
         'nbextension/**js*',
         'labextension/**'
     ]
 }
-
 
 data_files_spec = [
     ('share/jupyter/nbextensions/trident_chemwidgets', 'trident_chemwidgets/nbextension', '**'),
@@ -62,7 +85,6 @@ npm_install = combine_commands(
     ensure_targets(jstargets),
 )
 cmdclass['jsdeps'] = skip_if_exists(jstargets, npm_install)
-
 
 setup_args = dict(
     name            = name,

@@ -4,6 +4,29 @@ from .._frontend import module_name, module_version
 
 
 class Scatter(DOMWidget):
+    """Plot an interactive scatter plot based on the given data and
+        the selected variables to generate the axis.
+
+    Args:
+        data (pd.DataFrame): Data used to generate the scatter plot.
+        smiles (str): Name of the column that contains the SMILES
+            string of each molecule.
+        x (str): Name of the column used to generate the x-axis
+            of the scatter plot.
+        y (str): Name of the column used to generate the y-axis
+            of the scatter plot.
+        x_label (str): Label for the x-axis of the histogram, defaults to the
+            value of `x` if not provided.
+        y_label (str): Label for the y-axis of the histogram, defaults to the
+            value of `y` if not provided.
+
+    Examples:
+        >>> import trident_chemwidgets as tcw
+        >>> import pandas as pd
+        >>> dataset = pd.read_csv(PATH)
+        >>> scatter = tcw.Scatter(data=dataset, smiles='smiles', x='mwt', y='logp')
+        >>> scatter
+    """
 
     _model_name = Unicode('ScatterModel').tag(sync=True)
     _model_module = Unicode(module_name).tag(sync=True)
@@ -26,7 +49,7 @@ class Scatter(DOMWidget):
 
     savedSelected = List(trait=Integer()).tag(sync=True)
 
-    def __init__(self, data, smiles, x, y, **kwargs):
+    def __init__(self, data, smiles, x, y, x_label, y_label, **kwargs):
         super().__init__(**kwargs)
 
         self._smiles_col = smiles
@@ -36,10 +59,15 @@ class Scatter(DOMWidget):
         self._data = data
 
         self.data = self.prep_data_for_plot()
-        self.x_label = kwargs['x_label'] if 'x_label' in kwargs else x
-        self.y_label = kwargs['y_label'] if 'y_label' in kwargs else x
+        self.x_label = x_label if x_label else x
+        self.y_label = y_label if y_label else y
 
     def prep_data_for_plot(self):
+        """Transforms and selects the data correctly for use by the plot.
+
+        Returns:
+            dict: Data in dict format to be used in plot.
+        """
         data_list = (self._data[[self._smiles_col, self._x_col, self._y_col]]
                      .rename(columns={self._smiles_col: 'smiles', self._x_col: 'x', self._y_col: 'y'})
                      .to_dict(orient='records'))
@@ -53,4 +81,6 @@ class Scatter(DOMWidget):
 
     @property
     def selection(self):
+        """Current selection of molecules made by the user.
+        """
         return self._data.iloc[self.savedSelected]
