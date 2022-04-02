@@ -8,15 +8,12 @@ class Histogram(DOMWidget):
     data and the selected variable.
 
     Args:
-        data (pd.DataFrame): data used to generate the histogram.
-        smiles (str): Name of the column that contains the SMILES string of each molecule.
+        data (pd.DataFrame): DataFrame used to generate the histogram.
+        smiles (str): Name of the column that contains the SMILES string
+            of each molecule.
         x (str): Name of the column used to generate the x-axis of the histogram.
-
-    Attributes:
-        x_label (str): Name of the x-axis in the plot.
-        data (dict): Dict containing the data used by react to plot
-            the widget.
-        saved_selected (list): List of saved smiles strings that have been selected.
+        x_label (str): Label for the x-axis of the histogram, defaults to the
+            value of `x` if not provided.
 
     Examples:
         >>> import trident_chemwidgets as tcw
@@ -45,15 +42,15 @@ class Histogram(DOMWidget):
 
     savedSelected = List(trait=Integer()).tag(sync=True)
 
-    def __init__(self, data, smiles, x, **kwargs):
-        super().__init__(**kwargs)
+    def __init__(self, data, smiles, x, x_label=None, **kwargs):
+        super().__init__()
 
         self._smiles_col = smiles
         self._x_col = x
         self._data = data
 
         self.data = self.prep_data_for_plot()
-        self.x_label = kwargs['x_label'] if 'x_label' in kwargs else x
+        self.x_label = x_label if x_label else x
 
     def prep_data_for_plot(self):
         """Transforms and correctly selects the data that will be transformed

@@ -14,11 +14,6 @@ class InteractiveMolecule(DOMWidget):
         data (Union[List[Dict[str, Any]], pd.DataFrame]): List of dicts or dataframe
             containing the data for each atom.
 
-    Attributes:
-        smiles (str): SMILES string of the molecule that will be drawn.
-        data (Union[List[Dict[str, Any]], pd.DataFrame]): List of
-            atom features.
-
     Examples:
         >>> import trident_chemwidgets as tcw
         >>> atom_data = ... # Atom data in a list of dicts or pd.DataFrame

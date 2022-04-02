@@ -10,13 +10,7 @@ class JSME(DOMWidget):
 
     Args:
         base_smiles (str): Base smiles used to generate an initial
-            molecule in the jsme plot.
-
-    Attributes:
-        base_smiles (str): Base smiles that represents the molecule
-            generated in jsme.
-        smiles (List[str]): List of smiles strings saved by users
-            after their creation.
+            molecule in the JSME input window.
 
     Examples:
         >>> import trident_chemwidgets as tcw
@@ -29,6 +23,14 @@ class JSME(DOMWidget):
         smiles using the `smiles` property of the widget.
 
         >>> jsme.smiles
+
+        You can specify a `base_smiles` that will allow you to quickly
+        generate derivatives. At any point, you can reset the input
+        window to this predefined base smiles value by clicking the
+        `RESET TO BASE SMILES` button beneath the input window.
+
+        >>> jsme = tcw.JSME(base_smiles='CC(C)Cc1ccc(cc1)[C@@H](C)C(=O)O')
+        >>> jsme
     """
 
     # Widget default attributes

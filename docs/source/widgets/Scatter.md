@@ -2,6 +2,6 @@
 
 ```{eval-rst}
 .. autoclass:: trident_chemwidgets.Scatter
-   :members:
+   :members: selection
    :show-inheritance:
 ```

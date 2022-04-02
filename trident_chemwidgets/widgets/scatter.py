@@ -8,21 +8,17 @@ class Scatter(DOMWidget):
         the selected variables to generate the axis.
 
     Args:
-        data(pd.DataFrame): Data used to generate the scatter plot.
-        smiles(str): Name of the column that contains the SMILES
+        data (pd.DataFrame): Data used to generate the scatter plot.
+        smiles (str): Name of the column that contains the SMILES
             string of each molecule.
-        x(str): Name of the column used to generate the x-axis
+        x (str): Name of the column used to generate the x-axis
             of the scatter plot.
-        y(str): Name of the column used to generate the y-axis
+        y (str): Name of the column used to generate the y-axis
             of the scatter plot.
-
-    Attributes:
-        x_label (str): Name of the x-axis in the plot.
-        y_label (str): Name of the y-axis in the plot.
-        data (dict): Dict containing the data used by react 
-            to plot the widget.
-        savedSelected (List): List of saved smiles string that
-            have been selected.
+        x_label (str): Label for the x-axis of the histogram, defaults to the
+            value of `x` if not provided.
+        y_label (str): Label for the y-axis of the histogram, defaults to the
+            value of `y` if not provided.
 
     Examples:
         >>> import trident_chemwidgets as tcw
@@ -53,7 +49,7 @@ class Scatter(DOMWidget):
 
     savedSelected = List(trait=Integer()).tag(sync=True)
 
-    def __init__(self, data, smiles, x, y, **kwargs):
+    def __init__(self, data, smiles, x, y, x_label, y_label, **kwargs):
         super().__init__(**kwargs)
 
         self._smiles_col = smiles
@@ -63,8 +59,8 @@ class Scatter(DOMWidget):
         self._data = data
 
         self.data = self.prep_data_for_plot()
-        self.x_label = kwargs['x_label'] if 'x_label' in kwargs else x
-        self.y_label = kwargs['y_label'] if 'y_label' in kwargs else x
+        self.x_label = x_label if x_label else x
+        self.y_label = y_label if y_label else y
 
     def prep_data_for_plot(self):
         """Transforms and selects the data correctly for use by the plot.

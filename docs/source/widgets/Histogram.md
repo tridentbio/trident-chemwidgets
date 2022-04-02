@@ -2,6 +2,6 @@
 
 ```{eval-rst}
 .. autoclass:: trident_chemwidgets.Histogram
-   :members:
+   :members: selection
    :show-inheritance:
 ```
