@@ -8,6 +8,8 @@
 
 ## Interaction features
 
+![Histogram interface](../_static/img/Histogram.png)
+
 ### Selecting data
 Once the widget renders, click and drag within the plot area to select a subset of the data.
 The selected data points will change color to teal.
@@ -23,4 +25,4 @@ Note that if you clicked `SAVE SELECTION`, the reference to those data points wi
 
 ## Example
  
-See {ref}`Using the Histogram widget`.
+See [Using the Histogram widget](../examples/Histogram_widget.ipynb).

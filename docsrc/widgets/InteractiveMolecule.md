@@ -15,8 +15,12 @@ We cannot guarantee ordering for all featurizers/applications, so it is always a
 
 ## Interaction features
 
+![InteractiveMolecule interface](../_static/img/InteractiveMolecule.png)
+
+### Atom information
+
 Click within the circle surrounding each atom in the structure to display the data associated with that atom.
 
 ## Example
  
-See {ref}`Using the InteractiveMolecule widget`.
+See [Using the InteractiveMolecule widget](../examples/InteractiveMolecule_widget.ipynb).

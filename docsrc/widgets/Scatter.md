@@ -8,6 +8,8 @@
 
 ## Interaction features
 
+![Scatter interface](../_static/img/Scatter.png)
+
 ### Selecting data
 Once the widget renders, click and drag within the plot area to select a subset of the data.
 The selected data points will change color to teal and have a dark blue outline.
@@ -23,4 +25,4 @@ Note that if you clicked `SAVE SELECTION`, the reference to those data points wi
 
 ## Example
  
-See {ref}`Using the Scatter widget`.
+See [Using the Scatter widget](../examples/Scatter_widget.ipynb).
