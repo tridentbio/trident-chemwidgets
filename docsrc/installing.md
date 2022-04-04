@@ -35,7 +35,7 @@ you need to run them the commands should be the same (just make sure you choose 
 
 ## Installation issues
 
-If you run into any issue installing Chemwidgets, please raise an issue on [GitHub](https://github.com/tridentbio/trident-chemwidgets/issues). We'll be happy to help or fix any bugs that arise.
+If you run into any problems installing or using Chemwidgets, please raise an issue on [GitHub](https://github.com/tridentbio/trident-chemwidgets/issues). We'll be happy to help or fix any bugs that arise.
 
 % links
 

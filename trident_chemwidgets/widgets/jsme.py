@@ -5,8 +5,12 @@ from .._frontend import module_name, module_version
 
 
 class JSME(DOMWidget):
-    """Widget responsible for displaying JSME editor and
-    syncing drawn molecule SMILES string to Python.
+    """Display the JSME editor and sync drawn molecule SMILES strings to
+    Python.
+
+    The JSME interface will be displayed to the left of the cell output, with a
+    molecule gallery displayed to the right. The molecule gallery can show
+    the structures designed and input by the user.
 
     Args:
         base_smiles (str): Base smiles used to generate an initial

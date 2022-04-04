@@ -8,13 +8,13 @@ git clone https://github.com/tridentbio/trident-chemwidgets
 cd trident-chemwidgets
 ```
 
-Next, install it with a develop install using pip:
+Next, install it with a development (ediatbel) installation using pip:
 
 ```
 pip install -e .
 ```
 
-If you are planning on working on the JS/frontend code, you should also do
+If you are planning on working on the JS/frontend code, you should also perform
 a link installation of the extension:
 
 ```

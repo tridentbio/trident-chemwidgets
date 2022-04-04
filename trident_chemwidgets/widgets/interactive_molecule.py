@@ -6,8 +6,13 @@ from .._frontend import module_name, module_version
 
 
 class InteractiveMolecule(DOMWidget):
-    """Plot an interactive molecule where the user can select the atoms
-    they want to view their details separately on a card.
+    """Plot an interactive molecule where the user can view properties associated
+    with each constituent atom.
+
+    A drawing of the target molecule will be displayed to the left of the cell
+    output, with a card displayed on the right. The user can click any atom in
+    the structure and the details associated with that atom will be displayed
+    in the card to the right.
 
     Args:
         smiles (str): Smiles string used to generate the atom view.

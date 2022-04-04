@@ -25,16 +25,16 @@ or with conda:
 conda install trident_chemwidgets
 ```
 
-If the widgets still are not usable after simple installation, checkout {ref}`Installation`.
+If the widgets still are not usable after simple installation, check out [Installation](./installing.md).
 
 ## Contents
 
 ```{toctree}
-:caption: Installation
+:caption: Getting started
 :maxdepth: 2
 
-installing
 introduction
+installing
 ```
 
 ```{toctree}
