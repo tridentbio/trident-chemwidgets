@@ -7,6 +7,10 @@ class Histogram(DOMWidget):
     """Plot an interactive histogram based on the distribution of the given
     data and the selected variable.
 
+    The histogram will be displayed to the left of the cell output, with a
+    molecule gallery displayed to the right. The molecule gallery can show
+    the structures present in the currently-selected subset of the data.
+
     Args:
         data (pd.DataFrame): DataFrame used to generate the histogram.
         smiles (str): Name of the column that contains the SMILES string

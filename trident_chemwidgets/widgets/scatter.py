@@ -5,7 +5,11 @@ from .._frontend import module_name, module_version
 
 class Scatter(DOMWidget):
     """Plot an interactive scatter plot based on the given data and
-        the selected variables to generate the axis.
+    the selected variables to generate the axis.
+
+    The scatter plot will be displayed to the left of the cell output, with a
+    molecule gallery displayed to the right. The molecule gallery can show
+    the structures present in the currently-selected subset of the data.
 
     Args:
         data (pd.DataFrame): Data used to generate the scatter plot.
