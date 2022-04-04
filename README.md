@@ -9,20 +9,8 @@
 <!-- <h1 align="center">Trident Chemwidgets</h1> -->
 
 ![License](https://img.shields.io/badge/license-BSD--3-lightgrey?style=for-the-badge)
-![Version](https://img.shields.io/badge/version-0.1.0-blue?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-2022.04.1-blue?style=for-the-badge)
 ![PRs](https://img.shields.io/badge/PRs-welcome-green?style=for-the-badge)
-
-<h4 align="center">
-🚧 Under Development 🚧
-</h4>
-
-<p align="center">
-
-The Trident Chemwidgets (TCW) package provides a set of Jupyter widgets to improve data visibility in cheminformatics and molecular machine learning. 
-
-<!-- You can read more about the importance of data visibility for these applications in our blog post [here](example.com). -->
-
-</p>
 
 ## Summary
 
@@ -36,79 +24,34 @@ The Trident Chemwidgets (TCW) package provides a set of Jupyter widgets to impro
 
 ## About
 
+The Trident Chemwidgets (TCW) package provides a set of Jupyter widgets to improve data visibility in cheminformatics and molecular machine learning. 
+
 Trident Chemwidgets is a product of Trident Bioscience. Trident Bioscience builds machine learning applications for the biotech and pharmaceutical industries. If you're interested in learning more, you can visit us at [trident.bio](https://www.trident.bio) or email us at [info@trident.bio](mailto:info@trident.bio).
 
 ## Installation
 
----
-### ⚠️ PRE-RELEASE NOTICE ⚠️
+Trident Chemwidgets is available from pip and conda:
 
-This package is currently pre-release. For the time being, please use the guide below to install locally. Once the package is released publicly on PyPI, these installation instructions will be  modified.
-
----
-
-### Requirements
-
-- NodeJS
-- Yarn
-
-### Example environment
-
-Here is an example environment created using Conda to cover all the prerequisites. Please note that this is not the only way to prepare an environment. You could install the software globally on your local machine, but it is advisable to create an isolated environment.
-
-```bash
-$ conda create -n trident_chemwidgets -c conda-forge nodejs yarn python=3.9 jupyterlab
-$ conda activate trident_chemwidgets
-```
-
-For some examples, you may also need RDKit installed to manipulate or extract molecular data you can install RDKit using the command below:
-
-```bash
-$ conda install -c conda-forge rdkit
-```
-
-Then run the following statement to install the Trident Chemwidgets python package from this repository:
-
-```bash
-pip install git+https://github.com/tridentbio/trident-chemwidgets.git
-```
-
-#### Jupyter setup
-
-If you are using Jupyter Lab (recommended), you may need to run the following command before initializing your Jupyter Lab instance:
-
-```bash
-jupyter labextension install @jupyter-widgets/jupyterlab-manager
-```
-
-If you are instead using Jupyter Notebook 5.2 or earlier, you may need to enable the nbextension:
-
-```bash
-jupyter nbextension enable --py [--sys-prefix|--user|--system] trident-chemwidgets
-```
-
-<!-- You can install Trident Chemwidgets using `pip`:
-
+pip:
 ```bash
 pip install trident-chemwidgets
 ```
 
-If you are using Jupyter Notebook 5.2 or earlier, you may also need to enable
-the nbextension:
-```bash
-jupyter nbextension enable --py [--sys-prefix|--user|--system] trident-chemwidgets
-``` -->
+conda:
+```
+conda install -c conda-forge trident-chemwidgets
+```
 
-## Documentation
+[Full instructions here.](https://www.trident.bio/trident-chemwidgets/html/installing.html)
 
-While this package is pre-release, please use the following notebooks for documentation. Upon release, we will be moving primary documentation to Read the Docs.
+## [Documentation](https://www.trident.bio/trident-chemwidgets)
+
+Click the link above to access the [documentation](https://www.trident.bio/trident-chemwidgets). If you're looking for example notebooks, check out the links below (clone this repository to use them directly).
 
 - [JSME widget](/examples/JSME_widget.ipynb)
 - [Histogram widget](/examples/Histogram_widget.ipynb)
 - [Scatter widget](/examples/Scatter_widget.ipynb)
 - [InteractiveMolecule widget](/examples/InteractiveMolecule_widget.ipynb)
-
-<!-- Full documentation can be found on [Read the Docs](example.com). -->
 
 ## Usage
 
