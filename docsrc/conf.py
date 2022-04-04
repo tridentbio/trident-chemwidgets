@@ -17,7 +17,6 @@ extensions = [
     'sphinx.ext.intersphinx',
     'sphinx.ext.napoleon',
     'sphinx.ext.todo',
-    'sphinx.ext.autosectionlabel',
     'nbsphinx',
     'jupyter_sphinx',
     'nbsphinx_link',
