@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Histogram" href="Histogram.html" /><link rel="prev" title="Introduction" href="../introduction.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Histogram" href="Histogram.html" /><link rel="prev" title="Installation" href="../installing.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><meta name="generator" content="sphinx-4.5.0, furo 2022.03.04"/>
         <title>Widgets - Trident Chemwidgets - Docs v0.1</title>
@@ -162,10 +162,10 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+  <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../installing.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installing.html">Installation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
 <ul class="current">
@@ -236,10 +236,46 @@
 <p>This section contains detailed information about the API of each Widget provided by the library.</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Histogram.html">Histogram</a></li>
-<li class="toctree-l1"><a class="reference internal" href="InteractiveMolecule.html">InteractiveMolecule</a></li>
-<li class="toctree-l1"><a class="reference internal" href="JSME.html">JSME</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Scatter.html">Scatter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Histogram.html">Histogram</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Histogram.html#interaction-features">Interaction features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Histogram.html#selecting-data">Selecting data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Histogram.html#displaying-selected-structures">Displaying selected structures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Histogram.html#saving-selected-subset-to-selection-property">Saving selected subset to <code class="docutils literal notranslate"><span class="pre">selection</span></code> property</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Histogram.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="InteractiveMolecule.html">InteractiveMolecule</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="InteractiveMolecule.html#input-data-structure">Input data structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="InteractiveMolecule.html#interaction-features">Interaction features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="InteractiveMolecule.html#atom-information">Atom information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="InteractiveMolecule.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="JSME.html">JSME</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="JSME.html#input">Input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="JSME.html#interaction-features">Interaction features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="JSME.html#creating-a-list-of-smiles-strings">Creating a list of SMILES strings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="JSME.html#retrieving-the-list-of-smiles-strings">Retrieving the list of SMILES strings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="JSME.html#using-a-base-smiles-to-quickly-generate-derivatives">Using a <code class="docutils literal notranslate"><span class="pre">base_smiles</span></code> to quickly generate derivatives</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="JSME.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Scatter.html">Scatter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Scatter.html#interaction-features">Interaction features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Scatter.html#selecting-data">Selecting data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Scatter.html#displaying-selected-structures">Displaying selected structures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Scatter.html#saving-selected-subset-to-selection-property">Saving selected subset to <code class="docutils literal notranslate"><span class="pre">selection</span></code> property</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Scatter.html#example">Example</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
@@ -258,14 +294,14 @@
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../introduction.html">
+          <a class="prev-page" href="../installing.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Introduction</div>
+                <div class="title">Installation</div>
                 
               </div>
             </a>
