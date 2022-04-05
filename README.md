@@ -9,7 +9,7 @@
 <!-- <h1 align="center">Trident Chemwidgets</h1> -->
 
 ![License](https://img.shields.io/badge/license-BSD--3-lightgrey?style=for-the-badge)
-![Version](https://img.shields.io/badge/version-2022.04.1-blue?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-0.1.0-blue?style=for-the-badge)
 ![PRs](https://img.shields.io/badge/PRs-welcome-green?style=for-the-badge)
 
 ## Summary
@@ -40,6 +40,12 @@ pip install trident-chemwidgets
 conda:
 ```
 conda install -c conda-forge trident-chemwidgets
+```
+
+Then, for Jupyter Lab, run:
+
+```
+jupyter labextension install trident-chemwidgets
 ```
 
 [Full instructions here.](https://www.trident.bio/trident-chemwidgets/html/installing.html)

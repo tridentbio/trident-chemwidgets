@@ -77,7 +77,6 @@ data_files_spec = [
     ('etc/jupyter/nbconfig/notebook.d', '.', 'trident_chemwidgets.json'),
 ]
 
-
 cmdclass = create_cmdclass('jsdeps', package_data_spec=package_data_spec,
     data_files_spec=data_files_spec)
 npm_install = combine_commands(
@@ -88,7 +87,7 @@ cmdclass['jsdeps'] = skip_if_exists(jstargets, npm_install)
 
 setup_args = dict(
     name            = name,
-    description     = 'Chemical widget set to work in jupyter notebook and lab.',
+    description     = 'Jupyter widgets for working with chemical datasets.',
     version         = version,
     scripts         = glob(pjoin('scripts', '*')),
     cmdclass        = cmdclass,
@@ -115,6 +114,7 @@ setup_args = dict(
     python_requires=">=3.6",
     install_requires = [
         'ipywidgets>=7.0.0',
+        'pandas>=1.0.0'
     ],
     extras_require = {
         'test': [
@@ -123,7 +123,7 @@ setup_args = dict(
             'nbval',
         ],
         'examples': [
-            # Any requirements for the examples to run
+            'pandas'
         ],
         'docs': [
             'jupyter_sphinx',
