@@ -140,7 +140,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -162,10 +162,10 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+  <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../installing.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installing.html">Installation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
 <ul class="current">
@@ -225,7 +225,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -237,8 +237,11 @@
 <dt class="sig sig-object py" id="trident_chemwidgets.JSME">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">trident_chemwidgets.</span></span><span class="sig-name descname"><span class="pre">JSME</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trident_chemwidgets/widgets/jsme.html#JSME"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#trident_chemwidgets.JSME" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ipywidgets.widgets.domwidget.DOMWidget</span></code></p>
-<p>Widget responsible for displaying JSME editor and
-syncing drawn molecule SMILES string to Python.</p>
+<p>Display the JSME editor and sync drawn molecule SMILES strings to
+Python.</p>
+<p>The JSME interface will be displayed to the left of the cell output, with a
+molecule gallery displayed to the right. The molecule gallery can show
+the structures designed and input by the user.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>base_smiles</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Base smiles used to generate an initial
@@ -267,6 +270,45 @@ window to this predefined base smiles value by clicking the
 </pre></div>
 </div>
 </dd></dl>
+<section id="input">
+<h2>Input<a class="headerlink" href="#input" title="Permalink to this headline">#</a></h2>
+<p>The JSME widget uses the JSME editor to provide an interface for molecular input by drawing. For an explanation of the JSME interface, please see the <a class="reference external" href="https://jsme-editor.github.io/help.html">JSME Help Page</a>.</p>
+</section>
+<section id="interaction-features">
+<h2>Interaction features<a class="headerlink" href="#interaction-features" title="Permalink to this headline">#</a></h2>
+<p><img alt="JSME interface" src="../_images/JSME.png"/></p>
+<section id="creating-a-list-of-smiles-strings">
+<h3>Creating a list of SMILES strings<a class="headerlink" href="#creating-a-list-of-smiles-strings" title="Permalink to this headline">#</a></h3>
+<p>Once you draw a structure in the JSME interface, you can add it to the internal list of SMILES strings by clicking the <code class="docutils literal notranslate"><span class="pre">ADD</span> <span class="pre">TO</span> <span class="pre">SMILES</span> <span class="pre">LIST</span></code> button.</p>
+</section>
+<section id="retrieving-the-list-of-smiles-strings">
+<h3>Retrieving the list of SMILES strings<a class="headerlink" href="#retrieving-the-list-of-smiles-strings" title="Permalink to this headline">#</a></h3>
+<p>To retrieve these stored smiles strings, you can use the <code class="docutils literal notranslate"><span class="pre">smiles</span></code> attribute of the widget, as shown below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">trident_chemwidgets</span> <span class="k">as</span> <span class="nn">tcw</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">jsme</span> <span class="o">=</span> <span class="n">tcw</span><span class="o">.</span><span class="n">JSME</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">jsme</span>
+
+<span class="go"># Edit within the window and save using the ADD TO SMILES LIST button</span>
+<span class="go"># Then retrieve the SMILES list by using</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">jsme</span><span class="o">.</span><span class="n">smiles</span>
+</pre></div>
+</div>
+</section>
+<section id="using-a-base-smiles-to-quickly-generate-derivatives">
+<h3>Using a <code class="docutils literal notranslate"><span class="pre">base_smiles</span></code> to quickly generate derivatives<a class="headerlink" href="#using-a-base-smiles-to-quickly-generate-derivatives" title="Permalink to this headline">#</a></h3>
+<p>If you want to generate a list of derivatives from a single molecule starting point, you can use the <code class="docutils literal notranslate"><span class="pre">base_smiles</span></code> argument to the JSME widget.
+This keyword will automatically generate the molecule with that SMILES string in the input window.
+From that base molecule, you can add atoms to create a derivative and add that derivative to the SMILES list.</p>
+<p>If you want to reset your input window to the base SMILES value, click the <code class="docutils literal notranslate"><span class="pre">RESET</span> <span class="pre">TO</span> <span class="pre">BASE</span> <span class="pre">SMILES</span></code> button and continue generating derivatives.
+Note that the window does not automatically reset to the base SMILES when a new SMILES is added to the list.
+Additionally, if no <code class="docutils literal notranslate"><span class="pre">base_smiles</span></code> argument is provided, you can use the <code class="docutils literal notranslate"><span class="pre">RESET</span> <span class="pre">TO</span> <span class="pre">BASE</span> <span class="pre">SMILES</span></code> button to clear the input window.</p>
+</section>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h2>
+<p>See <a class="reference internal" href="../examples/JSME_widget.html"><span class="doc std std-doc">Using the JSME widget</span></a>.</p>
+</section>
 </section>
 
         </article>
@@ -314,8 +356,34 @@ window to this predefined base smiles value by clicking the
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">JSME</a><ul>
+<li><a class="reference internal" href="#input">Input</a></li>
+<li><a class="reference internal" href="#interaction-features">Interaction features</a><ul>
+<li><a class="reference internal" href="#creating-a-list-of-smiles-strings">Creating a list of SMILES strings</a></li>
+<li><a class="reference internal" href="#retrieving-the-list-of-smiles-strings">Retrieving the list of SMILES strings</a></li>
+<li><a class="reference internal" href="#using-a-base-smiles-to-quickly-generate-derivatives">Using a <code class="docutils literal notranslate"><span class="pre">base_smiles</span></code> to quickly generate derivatives</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

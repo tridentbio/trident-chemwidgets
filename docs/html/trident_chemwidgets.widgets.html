@@ -162,10 +162,10 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+  <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="installing.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installing.html">Installation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
 <ul>
@@ -244,6 +244,9 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ipywidgets.widgets.domwidget.DOMWidget</span></code></p>
 <p>Plot an interactive histogram based on the distribution of the given
 data and the selected variable.</p>
+<p>The histogram will be displayed to the left of the cell output, with a
+molecule gallery displayed to the right. The molecule gallery can show
+the structures present in the currently-selected subset of the data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -316,8 +319,12 @@ into dict and will be used by React to generate the histogram.</p>
 <dt class="sig sig-object py" id="trident_chemwidgets.widgets.interactive_molecule.InteractiveMolecule">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">trident_chemwidgets.widgets.interactive_molecule.</span></span><span class="sig-name descname"><span class="pre">InteractiveMolecule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/trident_chemwidgets/widgets/interactive_molecule.html#InteractiveMolecule"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#trident_chemwidgets.widgets.interactive_molecule.InteractiveMolecule" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ipywidgets.widgets.domwidget.DOMWidget</span></code></p>
-<p>Plot an interactive molecule where the user can select the atoms
-they want to view their details separately on a card.</p>
+<p>Plot an interactive molecule where the user can view properties associated
+with each constituent atom.</p>
+<p>A drawing of the target molecule will be displayed to the left of the cell
+output, with a card displayed on the right. The user can click any atom in
+the structure and the details associated with that atom will be displayed
+in the card to the right.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -369,8 +376,11 @@ of dictionaries that will be interpreted by React.</p>
 <dt class="sig sig-object py" id="trident_chemwidgets.widgets.jsme.JSME">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">trident_chemwidgets.widgets.jsme.</span></span><span class="sig-name descname"><span class="pre">JSME</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/trident_chemwidgets/widgets/jsme.html#JSME"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#trident_chemwidgets.widgets.jsme.JSME" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ipywidgets.widgets.domwidget.DOMWidget</span></code></p>
-<p>Widget responsible for displaying JSME editor and
-syncing drawn molecule SMILES string to Python.</p>
+<p>Display the JSME editor and sync drawn molecule SMILES strings to
+Python.</p>
+<p>The JSME interface will be displayed to the left of the cell output, with a
+molecule gallery displayed to the right. The molecule gallery can show
+the structures designed and input by the user.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>base_smiles</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Base smiles used to generate an initial
@@ -416,10 +426,11 @@ window to this predefined base smiles value by clicking the
 <dt class="sig sig-object py" id="trident_chemwidgets.widgets.scatter.Scatter">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">trident_chemwidgets.widgets.scatter.</span></span><span class="sig-name descname"><span class="pre">Scatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/trident_chemwidgets/widgets/scatter.html#Scatter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#trident_chemwidgets.widgets.scatter.Scatter" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ipywidgets.widgets.domwidget.DOMWidget</span></code></p>
-<dl class="simple">
-<dt>Plot an interactive scatter plot based on the given data and</dt><dd><p>the selected variables to generate the axis.</p>
-</dd>
-</dl>
+<p>Plot an interactive scatter plot based on the given data and
+the selected variables to generate the axis.</p>
+<p>The scatter plot will be displayed to the left of the cell output, with a
+molecule gallery displayed to the right. The molecule gallery can show
+the structures present in the currently-selected subset of the data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">

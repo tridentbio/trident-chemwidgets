@@ -140,7 +140,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -162,10 +162,10 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+  <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../installing.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installing.html">Installation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
 <ul class="current">
@@ -225,7 +225,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -237,8 +237,12 @@
 <dt class="sig sig-object py" id="trident_chemwidgets.InteractiveMolecule">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">trident_chemwidgets.</span></span><span class="sig-name descname"><span class="pre">InteractiveMolecule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trident_chemwidgets/widgets/interactive_molecule.html#InteractiveMolecule"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#trident_chemwidgets.InteractiveMolecule" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ipywidgets.widgets.domwidget.DOMWidget</span></code></p>
-<p>Plot an interactive molecule where the user can select the atoms
-they want to view their details separately on a card.</p>
+<p>Plot an interactive molecule where the user can view properties associated
+with each constituent atom.</p>
+<p>A drawing of the target molecule will be displayed to the left of the cell
+output, with a card displayed on the right. The user can click any atom in
+the structure and the details associated with that atom will be displayed
+in the card to the right.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -256,6 +260,25 @@ containing the data for each atom.</p></li>
 </pre></div>
 </div>
 </dd></dl>
+<section id="input-data-structure">
+<h2>Input data structure<a class="headerlink" href="#input-data-structure" title="Permalink to this headline">#</a></h2>
+<p>The input for this widget can either be a list of dictionaries, with each dictionary containing the features of the atoms, or it can be a Pandas DataFrame.
+In either case, <em>the ordering of the dictionaries in the list or the rows in the dataframe must match the standard ordering used by RDKit</em>.</p>
+<p>If you are using a standard RDKit-based featurizer, as is common in many ML for chemistry packages (e.g. <a class="reference external" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#molgraphconvfeaturizer">DeepChem</a>), this ordering should be the default.
+We cannot guarantee ordering for all featurizers/applications, so it is always a good idea to double check your atom ordering against that generated with the <code class="docutils literal notranslate"><span class="pre">GetAtoms</span></code> function in RDKit.</p>
+</section>
+<section id="interaction-features">
+<h2>Interaction features<a class="headerlink" href="#interaction-features" title="Permalink to this headline">#</a></h2>
+<p><img alt="InteractiveMolecule interface" src="../_images/InteractiveMolecule.png"/></p>
+<section id="atom-information">
+<h3>Atom information<a class="headerlink" href="#atom-information" title="Permalink to this headline">#</a></h3>
+<p>Click within the circle surrounding each atom in the structure to display the data associated with that atom.</p>
+</section>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h2>
+<p>See <a class="reference internal" href="../examples/InteractiveMolecule_widget.html"><span class="doc std std-doc">Using the InteractiveMolecule widget</span></a>.</p>
+</section>
 </section>
 
         </article>
@@ -303,8 +326,32 @@ containing the data for each atom.</p></li>
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">InteractiveMolecule</a><ul>
+<li><a class="reference internal" href="#input-data-structure">Input data structure</a></li>
+<li><a class="reference internal" href="#interaction-features">Interaction features</a><ul>
+<li><a class="reference internal" href="#atom-information">Atom information</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

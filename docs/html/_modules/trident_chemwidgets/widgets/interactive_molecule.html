@@ -161,10 +161,10 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+  <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../installing.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installing.html">Installation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
 <ul>
@@ -239,8 +239,13 @@
 
 
 <div class="viewcode-block" id="InteractiveMolecule"><a class="viewcode-back" href="../../../widgets/InteractiveMolecule.html#trident_chemwidgets.widgets.interactive_molecule.InteractiveMolecule">[docs]</a><span class="k">class</span> <span class="nc">InteractiveMolecule</span><span class="p">(</span><span class="n">DOMWidget</span><span class="p">):</span>
-    <span class="sd">"""Plot an interactive molecule where the user can select the atoms</span>
-<span class="sd">    they want to view their details separately on a card.</span>
+    <span class="sd">"""Plot an interactive molecule where the user can view properties associated</span>
+<span class="sd">    with each constituent atom.</span>
+
+<span class="sd">    A drawing of the target molecule will be displayed to the left of the cell</span>
+<span class="sd">    output, with a card displayed on the right. The user can click any atom in</span>
+<span class="sd">    the structure and the details associated with that atom will be displayed</span>
+<span class="sd">    in the card to the right.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        smiles (str): Smiles string used to generate the atom view.</span>
