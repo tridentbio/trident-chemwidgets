@@ -25,6 +25,12 @@ or with conda:
 conda install trident_chemwidgets
 ```
 
+Then, if using Jupyter Lab, run:
+
+```
+jupyter labextension install trident-chemwidgets
+```
+
 If the widgets still are not usable after simple installation, check out [Installation](./installing.md).
 
 ## Contents

@@ -2,8 +2,7 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="JSME" href="JSME.html" /><link rel="prev" title="Histogram" href="Histogram.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="JSME" href="JSME.html" /><link rel="prev" title="Histogram" href="Histogram.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><meta name="generator" content="sphinx-4.5.0, furo 2022.03.04"/>
         <title>InteractiveMolecule - Trident Chemwidgets - Docs v0.1</title>
@@ -231,7 +230,7 @@
           </label>
         </div>
         <article role="main">
-          <section id="interactivemolecule">
+          <div class="section" id="interactivemolecule">
 <h1>InteractiveMolecule<a class="headerlink" href="#interactivemolecule" title="Permalink to this headline">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="trident_chemwidgets.InteractiveMolecule">
@@ -260,26 +259,26 @@ containing the data for each atom.</p></li>
 </pre></div>
 </div>
 </dd></dl>
-<section id="input-data-structure">
+<div class="section" id="input-data-structure">
 <h2>Input data structure<a class="headerlink" href="#input-data-structure" title="Permalink to this headline">#</a></h2>
 <p>The input for this widget can either be a list of dictionaries, with each dictionary containing the features of the atoms, or it can be a Pandas DataFrame.
 In either case, <em>the ordering of the dictionaries in the list or the rows in the dataframe must match the standard ordering used by RDKit</em>.</p>
 <p>If you are using a standard RDKit-based featurizer, as is common in many ML for chemistry packages (e.g. <a class="reference external" href="https://deepchem.readthedocs.io/en/latest/api_reference/featurizers.html#molgraphconvfeaturizer">DeepChem</a>), this ordering should be the default.
 We cannot guarantee ordering for all featurizers/applications, so it is always a good idea to double check your atom ordering against that generated with the <code class="docutils literal notranslate"><span class="pre">GetAtoms</span></code> function in RDKit.</p>
-</section>
-<section id="interaction-features">
+</div>
+<div class="section" id="interaction-features">
 <h2>Interaction features<a class="headerlink" href="#interaction-features" title="Permalink to this headline">#</a></h2>
 <p><img alt="InteractiveMolecule interface" src="../_images/InteractiveMolecule.png"/></p>
-<section id="atom-information">
+<div class="section" id="atom-information">
 <h3>Atom information<a class="headerlink" href="#atom-information" title="Permalink to this headline">#</a></h3>
 <p>Click within the circle surrounding each atom in the structure to display the data associated with that atom.</p>
-</section>
-</section>
-<section id="example">
+</div>
+</div>
+<div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h2>
 <p>See <a class="reference internal" href="../examples/InteractiveMolecule_widget.html"><span class="doc std std-doc">Using the InteractiveMolecule widget</span></a>.</p>
-</section>
-</section>
+</div>
+</div>
 
         </article>
       </div>
