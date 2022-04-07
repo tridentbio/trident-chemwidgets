@@ -2,7 +2,8 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Installation" href="installing.html" /><link rel="prev" title="Trident Chemwidgets" href="index.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Installation" href="installing.html" /><link rel="prev" title="Trident Chemwidgets" href="index.html" />
 
     <link rel="shortcut icon" href="_static/favicon.ico"/><meta name="generator" content="sphinx-4.5.0, furo 2022.03.04"/>
         <title>Introduction - Trident Chemwidgets - Docs v0.1</title>
@@ -230,7 +231,7 @@
           </label>
         </div>
         <article role="main">
-          <div class="section" id="introduction">
+          <section id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
 <p>In cheminformatics, data visibility is paramount.
 Unfortunately, the data science and machine learning tools currently available do not support chemical datasets well out of the box.
@@ -238,15 +239,15 @@ Standard plotting tools like Matplotlib, Seaborn, and Altair are great at showin
 Likewise, CSV inputs containing SMILES strings can be too cumbersome to test out one or two interesting corner-case molecules for your custom built ML model.</p>
 <p>We created Trident Chemwidgets because were frustrated with the process of working with Chemical data in Python, and more specifically Jupyter.
 Without the ability to quickly input interesting chemical structures and understand the patterns in chemistry space that were underlying our data, our ML model development workflow was more bloated and slower than it needed to be.</p>
-<div class="section" id="inputs">
+<section id="inputs">
 <h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">#</a></h2>
 <p>We wanted it to be as easy as possible to input new structures into a notebook without having to open an external program, draw the structures, export them to to SMILES, and input import them into your notebook.
 In Chemwidgets, we provide an interface to the JSME molecule editor with a number of enhancements to make molecular input faster and easier.</p>
 <ul class="simple">
 <li><p>Check out the <a class="reference internal" href="widgets/JSME.html"><span class="doc std std-doc">JSME widget</span></a></p></li>
 </ul>
-</div>
-<div class="section" id="data-visualization">
+</section>
+<section id="data-visualization">
 <h2>Data visualization<a class="headerlink" href="#data-visualization" title="Permalink to this headline">#</a></h2>
 <p>We’re starting with two of the most common visualizations: histograms and scatter plots.
 We provide widgets for each of these standard visualizations, but we couple them to interactive selection functionality that makes it easy for the user to subset their data and examine the molecular structures underpinning them.</p>
@@ -254,15 +255,15 @@ We provide widgets for each of these standard visualizations, but we couple them
 <li><p>Check out the <a class="reference internal" href="widgets/Histogram.html"><span class="doc std std-doc">Historgram widget</span></a></p></li>
 <li><p>Check out the <a class="reference internal" href="widgets/Scatter.html"><span class="doc std std-doc">Scatter widget</span></a></p></li>
 </ul>
-</div>
-<div class="section" id="outputs">
+</section>
+<section id="outputs">
 <h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">#</a></h2>
 <p>Model interoperability is a growing concern in machine learning communities, but especially when it comes to models designed to create new drugs. We provide a widget to visualize a molecular structure overlayed with any form of data at the atom level. Our flexible interface allows the user to visualize and inspect attention scores, SHAP values, or almost any other per-atom model interoperability metric.</p>
 <ul class="simple">
 <li><p>Check out the <a class="reference internal" href="widgets/InteractiveMolecule.html"><span class="doc std std-doc">InteractiveMolecule widget</span></a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
         </article>
       </div>
@@ -343,7 +344,7 @@ We provide widgets for each of these standard visualizations, but we couple them
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/thebelab-helper.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script src="_static/helper.js"></script>
     <script src="_static/embed-bundle.js"></script>
     </body>

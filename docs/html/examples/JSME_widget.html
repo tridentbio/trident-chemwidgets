@@ -2,7 +2,8 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Using the Scatter widget" href="Scatter_widget.html" /><link rel="prev" title="Using the InteractiveMolecule widget" href="InteractiveMolecule_widget.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Using the Scatter widget" href="Scatter_widget.html" /><link rel="prev" title="Using the InteractiveMolecule widget" href="InteractiveMolecule_widget.html" />
 
     <link rel="shortcut icon" href="../_static/favicon.ico"/><meta name="generator" content="sphinx-4.5.0, furo 2022.03.04"/>
         <title>Using the JSME widget - Trident Chemwidgets - Docs v0.1</title>
@@ -478,7 +479,7 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
-<div class="section" id="Using-the-JSME-widget">
+<section id="Using-the-JSME-widget">
 <h1>Using the JSME widget<a class="headerlink" href="#Using-the-JSME-widget" title="Permalink to this headline">#</a></h1>
 <p>We will first import the <code class="docutils literal notranslate"><span class="pre">trident_chemwidgets</span></code> package.</p>
 <div class="nbinput nblast docutils container">
@@ -518,7 +519,7 @@ be displayed in the gallery to the right. You can access the list of input smile
 []
 </pre></div></div>
 </div>
-<div class="section" id="Using-a-base-SMILES-string-for-derivative-molecules">
+<section id="Using-a-base-SMILES-string-for-derivative-molecules">
 <h2>Using a base SMILES string for derivative molecules<a class="headerlink" href="#Using-a-base-SMILES-string-for-derivative-molecules" title="Permalink to this headline">#</a></h2>
 <p>The second extended feature of the <code class="docutils literal notranslate"><span class="pre">tcw</span></code> implementation of JSME is the ability to define a base SMILES string for your input. This feature is particularly helpful if you are defining a set of related molecules that are all derived from a similar scaffold. Below we set the SMILES string of ibuprofen as our base SMILES. Here, we can draw derivative compounds and add them to our list, as in the example above. However, since we have defined a base SMILES string, we also have the ability to reset
 the input window to this base molecule to draw in another derivative by clicking the <code class="docutils literal notranslate"><span class="pre">RESET</span> <span class="pre">TO</span> <span class="pre">BASE</span> <span class="pre">SMILES</span></code> button.</p>
@@ -568,8 +569,8 @@ the input window to this base molecule to draw in another derivative by clicking
 </div>
 <script type="application/vnd.jupyter.widget-state+json">
 {"state": {"9b411fd95a6c41bd8ad74aa6767c4a8e": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "51ccdffb6a49459784a73950502d9a27": {"model_name": "JsmeModel", "model_module": "trident-chemwidgets", "model_module_version": "^0.1.0", "state": {"_dom_classes": [], "_model_module": "trident-chemwidgets", "_model_module_version": "^0.1.0", "_model_name": "JsmeModel", "_view_count": null, "_view_module": "trident-chemwidgets", "_view_module_version": "^0.1.0", "_view_name": "JsmeView", "base_smiles": "", "layout": "IPY_MODEL_9b411fd95a6c41bd8ad74aa6767c4a8e", "smiles": []}}, "ec4bea9985c24160bd58def3055d3ec4": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "3045b8fd45644749b7e77362ca189ae3": {"model_name": "JsmeModel", "model_module": "trident-chemwidgets", "model_module_version": "^0.1.0", "state": {"_dom_classes": [], "_model_module": "trident-chemwidgets", "_model_module_version": "^0.1.0", "_model_name": "JsmeModel", "_view_count": null, "_view_module": "trident-chemwidgets", "_view_module_version": "^0.1.0", "_view_name": "JsmeView", "base_smiles": "CC(C)Cc1ccc(cc1)[C@@H](C)C(=O)O", "layout": "IPY_MODEL_ec4bea9985c24160bd58def3055d3ec4", "smiles": []}}}, "version_major": 2, "version_minor": 0}
-</script></div>
-</div>
+</script></section>
+</section>
 
         </article>
       </div>
@@ -648,7 +649,7 @@ the input window to this base molecule to draw in another derivative by clicking
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/thebelab-helper.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script src="../_static/helper.js"></script>
     <script src="../_static/embed-bundle.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>

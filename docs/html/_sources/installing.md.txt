@@ -1,15 +1,15 @@
 # Installation
 
-The simplest way to install trident_chemwidgets is via pip:
+The simplest way to install Trident Chemwidgets is via pip:
 
 ```
-pip install trident_chemwidgets
+pip install trident-chemwidgets
 ```
 
 or via conda:
 
 ```
-conda install trident_chemwidgets
+conda install -c conda-forge trident-chemwidgets
 ```
 
 If you installed via pip, and notebook version \< 5.3, you will also have to
@@ -17,9 +17,9 @@ install / configure the front-end extension as well. If you are using classic
 notebook (as opposed to Jupyterlab), run:
 
 ```
-jupyter nbextension install [--sys-prefix / --user / --system] --py trident_chemwidgets
+jupyter nbextension install [--sys-prefix / --user / --system] --py trident-chemwidgets
 
-jupyter nbextension enable [--sys-prefix / --user / --system] --py trident_chemwidgets
+jupyter nbextension enable [--sys-prefix / --user / --system] --py trident-chemwidgets
 ```
 
 with the [appropriate flag]. If you are using Jupyterlab, install the extension

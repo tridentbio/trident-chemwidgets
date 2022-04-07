@@ -2,7 +2,8 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Widgets" href="widgets/index.html" /><link rel="prev" title="Introduction" href="introduction.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Widgets" href="widgets/index.html" /><link rel="prev" title="Introduction" href="introduction.html" />
 
     <link rel="shortcut icon" href="_static/favicon.ico"/><meta name="generator" content="sphinx-4.5.0, furo 2022.03.04"/>
         <title>Installation - Trident Chemwidgets - Docs v0.1</title>
@@ -230,22 +231,22 @@
           </label>
         </div>
         <article role="main">
-          <div class="section" id="installation">
+          <section id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h1>
-<p>The simplest way to install trident_chemwidgets is via pip:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">trident_chemwidgets</span>
+<p>The simplest way to install Trident Chemwidgets is via pip:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">trident</span><span class="o">-</span><span class="n">chemwidgets</span>
 </pre></div>
 </div>
 <p>or via conda:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">trident_chemwidgets</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">trident</span><span class="o">-</span><span class="n">chemwidgets</span>
 </pre></div>
 </div>
 <p>If you installed via pip, and notebook version &lt; 5.3, you will also have to
 install / configure the front-end extension as well. If you are using classic
 notebook (as opposed to Jupyterlab), run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">nbextension</span> <span class="n">install</span> <span class="p">[</span><span class="o">--</span><span class="n">sys</span><span class="o">-</span><span class="n">prefix</span> <span class="o">/</span> <span class="o">--</span><span class="n">user</span> <span class="o">/</span> <span class="o">--</span><span class="n">system</span><span class="p">]</span> <span class="o">--</span><span class="n">py</span> <span class="n">trident_chemwidgets</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">nbextension</span> <span class="n">install</span> <span class="p">[</span><span class="o">--</span><span class="n">sys</span><span class="o">-</span><span class="n">prefix</span> <span class="o">/</span> <span class="o">--</span><span class="n">user</span> <span class="o">/</span> <span class="o">--</span><span class="n">system</span><span class="p">]</span> <span class="o">--</span><span class="n">py</span> <span class="n">trident</span><span class="o">-</span><span class="n">chemwidgets</span>
 
-<span class="n">jupyter</span> <span class="n">nbextension</span> <span class="n">enable</span> <span class="p">[</span><span class="o">--</span><span class="n">sys</span><span class="o">-</span><span class="n">prefix</span> <span class="o">/</span> <span class="o">--</span><span class="n">user</span> <span class="o">/</span> <span class="o">--</span><span class="n">system</span><span class="p">]</span> <span class="o">--</span><span class="n">py</span> <span class="n">trident_chemwidgets</span>
+<span class="n">jupyter</span> <span class="n">nbextension</span> <span class="n">enable</span> <span class="p">[</span><span class="o">--</span><span class="n">sys</span><span class="o">-</span><span class="n">prefix</span> <span class="o">/</span> <span class="o">--</span><span class="n">user</span> <span class="o">/</span> <span class="o">--</span><span class="n">system</span><span class="p">]</span> <span class="o">--</span><span class="n">py</span> <span class="n">trident</span><span class="o">-</span><span class="n">chemwidgets</span>
 </pre></div>
 </div>
 <p>with the <a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/stable/extending/frontend_extensions.html#installing-and-enabling-extensions">appropriate flag</a>. If you are using Jupyterlab, install the extension
@@ -256,11 +257,11 @@ with:</p>
 <p>If you are installing using conda, these commands should be unnecessary, but if
 you need to run them the commands should be the same (just make sure you choose the
 <code class="docutils literal notranslate"><span class="pre">--sys-prefix</span></code> flag).</p>
-<div class="section" id="installation-issues">
+<section id="installation-issues">
 <h2>Installation issues<a class="headerlink" href="#installation-issues" title="Permalink to this headline">#</a></h2>
 <p>If you run into any problems installing or using Chemwidgets, please raise an issue on <a class="reference external" href="https://github.com/tridentbio/trident-chemwidgets/issues">GitHub</a>. We’ll be happy to help or fix any bugs that arise.</p>
-</div>
-</div>
+</section>
+</section>
 
         </article>
       </div>
@@ -339,7 +340,7 @@ you need to run them the commands should be the same (just make sure you choose 
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/thebelab-helper.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script src="_static/helper.js"></script>
     <script src="_static/embed-bundle.js"></script>
     </body>
