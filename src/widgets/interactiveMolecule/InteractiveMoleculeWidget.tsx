@@ -9,6 +9,8 @@ const InteractiveMolecule = (props: WidgetProps): JSX.Element => {
     const [smiles, setSmiles] = useModelState('smiles');
     // @ts-ignore
     const [atomsData, setAtomsData] = useModelState('data');
+
+    // TODO: generate random id for this widget
  
     return (
         <>
@@ -16,6 +18,7 @@ const InteractiveMolecule = (props: WidgetProps): JSX.Element => {
                 smiles={smiles}
                 allAtoms={true}
                 atomsData={atomsData}
+                colorColumns={Object.keys(atomsData[0])}
                 // allBonds={false}
                 height={400}
                 width={400}
