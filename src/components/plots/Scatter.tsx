@@ -14,6 +14,7 @@ interface ScatterProps {
     onChange?: (val: (number | undefined)[]) => void,
     xLabel?: string,
     yLabel?: string,
+    hueLabel?: string,
 }
 
 interface ScatterState {
@@ -29,10 +30,11 @@ const Scatter = (props: ScatterProps): JSX.Element => {
 
     const xLabel = props.xLabel ? props.xLabel : 'x';
     const yLabel = props.yLabel ? props.yLabel : 'y';
+    const hueLabel = props.hueLabel ? props.hueLabel : undefined;
 
     const [state, setState] = useState<ScatterState>({
         data: props.data,
-        spec: scatterSpec(400, 400, xLabel, yLabel),
+        spec: scatterSpec(400, 400, xLabel, yLabel, hueLabel),
         xlim: [NaN, NaN],
         ylim: [NaN, NaN],
         selected: [],
