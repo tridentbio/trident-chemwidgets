@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Paper, Typography, styled } from '@mui/material';
+import { Grid, Paper, Typography, styled,  MenuItem, TextField } from '@mui/material';
 import initRDKit from '../../utils/rdkit';
 import { ThemeProvider } from "@mui/system";
 import theme from "../../theme";
 import Logo from "../../utils/logo";
 import { atomicNumberToName } from "../../utils/chem";
+import * as d3 from 'd3';
 
 
 const MoleculeContainer = styled('div')({
     '& svg ellipse': {
-        fill: 'rgb(217, 213, 213) !important',
-        stroke: 'rgb(217, 213, 213) !important',
+        fill: 'rgb(217, 213, 213)',
+        stroke: 'rgb(217, 213, 213)',
         '&:hover': {
-            fill: 'rgb(167 164 164) !important',
-            stroke: 'rgb(167 164 164) !important',
+            fill: 'rgb(167 164 164)',
+            stroke: 'rgb(167 164 164)',
         },
         '&.active': {
             fill: '#8BBEB2 !important',
@@ -34,7 +35,9 @@ interface MoleculeDrawingHighlightProps {
     width: number,
     height: number,
 
-    id: string
+    id: string,
+
+    colorColumns: string[]
 }
 
 interface MoleculeDetails {
@@ -51,12 +54,13 @@ interface DisplayData {
 
 
 const MoleculeDrawingHighlight = (props: MoleculeDrawingHighlightProps): JSX.Element => {
-    
-    const { smiles, height, width, allAtoms, atomsData } = props;
+
+    const { smiles, height, width, allAtoms, atomsData, colorColumns } = props;
     // @ts-ignore
     const [rdKitLoaded, setRdKitLoaded] = useState(false);
     // @ts-ignore
     const [rdKitError, setRdKitError] = useState(false);
+    const [colorBy, setColorBy] = useState('None');
 
 
     const [moleculeSvg, setMoleculeSvg] = useState('');
@@ -82,27 +86,6 @@ const MoleculeDrawingHighlight = (props: MoleculeDrawingHighlightProps): JSX.Ele
         return props?.atoms;
     };
 
-    const atomOnMouseDown = (i: number) => {
-        return (event: Event) => {
-            const svgElement = document.getElementById(props.id)?.getElementsByTagName('svg');
-            const atomsEllipses: any = svgElement?.item(0)?.getElementsByTagName('ellipse');
-            const atoms: SVGSVGElement[] = Array.from(atomsEllipses);
-
-            atoms.forEach((atom, index) => {
-                if (index !== i) {
-                    atom.classList.remove('active');
-                } else {
-                    atom.classList.add('active');
-                    setDisplayData({
-                        type: 'Atom',
-                        index: index,
-                        data: (atomsData ? atomsData[index] : {})
-                    });
-                }
-            });
-        }
-    }
-
     const drawMolecule = () => {
         const molecule = (window as any).RDKit.get_mol(smiles);
         const atomsList = getAllAtoms(molecule);
@@ -116,12 +99,27 @@ const MoleculeDrawingHighlight = (props: MoleculeDrawingHighlightProps): JSX.Ele
         setMoleculeSvg(svg);
         molecule.delete();
 
-        const svgElement = document.getElementById(props.id)?.getElementsByTagName('svg');
-        const atomsEllipses: any = svgElement?.item(0)?.getElementsByTagName('ellipse');
-        const atoms: SVGSVGElement[] = Array.from(atomsEllipses);
-        atoms.forEach((atom, index) => {
-            atom.onmousedown = atomOnMouseDown(index);
-        });
+        const indexes = atomsData?.map((el, i) => i);
+        const svgEl = d3.select(`#${props.id}`).select('svg');
+        const allAtoms = svgEl.selectAll('ellipse');
+
+        allAtoms
+            .data((indexes as []))
+            .attr('style', 'fill: rgb(217, 213, 213)')
+            .on('click', (event, datum) => {
+                allAtoms.classed('active', (element, j) => {
+                    return j == datum;
+                });
+                setDisplayData({
+                    type: 'Atom',
+                    index: datum,
+                    data: (atomsData ? atomsData[datum] : {})
+                });
+            });
+    };
+
+    const handleColorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setColorBy(event.target.value);
     };
 
     useEffect(() => {
@@ -132,6 +130,53 @@ const MoleculeDrawingHighlight = (props: MoleculeDrawingHighlightProps): JSX.Ele
             setRdKitError(true);
         });
     }, []);
+
+    useEffect(() => {
+        const svg = d3.select(`#${props.id}`).select('svg');
+
+        if (colorBy == 'None') {
+            const ellipsis = svg.selectAll('ellipse');
+            ellipsis.attr('style', (d) => 'rgb(217, 213, 213)');
+            return;
+        }
+
+        const columnData: number[] = [];
+        const indexes: number[] = [];
+
+        atomsData?.forEach((el, index) => {
+            columnData.push(el[colorBy]);
+            indexes.push(index);
+        });
+
+        const maxValue = columnData.reduce((a, b) => Math.max(a, b));
+        const minValue = columnData.reduce((a, b) => Math.min(a, b), 0);
+        
+        const negativeColors = d3.scaleLinear<string>()
+            .domain([0, Math.abs(minValue)])
+            .range(['white', 'red']);
+        const positiveColors = d3.scaleLinear<string>()
+            .domain([0, (minValue != maxValue) ? maxValue : 1])
+            .range(['white', 'green']);
+
+        const ellipsis = svg.selectAll('ellipse').data(indexes);
+        
+        ellipsis.attr('style', (d) => {
+            if (columnData[d] >= 0) {
+                return `fill: ${positiveColors(columnData[d])}`;
+            }
+            return `fill: ${negativeColors(d)}`;
+        }).on('click', (event, datum) => {
+            ellipsis.classed('active', (element, j) => {
+                return j == datum;
+            });
+
+            setDisplayData({
+                type: 'Atom',
+                index: datum,
+                data: (atomsData ? atomsData[datum] : {})
+            });
+        });
+    }, [colorBy]);
 
     return (
         <ThemeProvider theme={theme}>
@@ -177,7 +222,7 @@ const MoleculeDrawingHighlight = (props: MoleculeDrawingHighlightProps): JSX.Ele
                     {displayData && (
                         <Paper elevation={3}>
                             <Grid container p={3}>
-                                <Grid item sm={12}>
+                                <Grid item sm={6}>
                                     <div>
                                         <Typography variant='h4'>
                                             {(displayData.type == 'Atom') ? 
@@ -187,6 +232,25 @@ const MoleculeDrawingHighlight = (props: MoleculeDrawingHighlightProps): JSX.Ele
                                             Atom • index: {displayData.index}
                                         </Typography>
                                     </div>
+                                </Grid>
+                                <Grid item md={6}>
+                                    <TextField
+                                        fullWidth
+                                        onChange={handleColorChange}
+                                        defaultValue={'None'}
+                                        size="small"
+                                        select
+                                        label='Color by'
+                                    >
+                                        <MenuItem value={'None'}>
+                                            None
+                                        </MenuItem>
+                                        {colorColumns.map((column, index) =>
+                                            <MenuItem value={column} key={index}>
+                                                {column}
+                                            </MenuItem>
+                                        )}
+                                    </TextField>
                                 </Grid>
                                 {Object.keys(displayData.data).map(key => (
                                     <Grid item sm={12} mt={3}>
