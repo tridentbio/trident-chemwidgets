@@ -7,19 +7,7 @@
     "tags": []
    },
    "source": [
-    "# Using the Scatter widget\n",
-    "\n",
-    "For this example we need to install pandas. If you don't have it yet, just execute the cell bellow to install."
-   ]
-  },
-  {
-   "cell_type": "code",
-   "execution_count": null,
-   "id": "b6d437fd-b576-4ac3-9e02-8ebf6f0ccd8e",
-   "metadata": {},
-   "outputs": [],
-   "source": [
-    "!pip install pandas"
+    "# Using the Scatter widget"
    ]
   },
   {
@@ -27,7 +15,7 @@
    "id": "d2b0b351-9385-4b88-a252-b47ad19bfe62",
    "metadata": {},
    "source": [
-    "Now we can import the `trident_chemwidgets` and the `pandas` lib to import our csv dataset."
+    "We first import the `trident_chemwidgets` and the `pandas` lib to load our csv dataset."
    ]
   },
   {

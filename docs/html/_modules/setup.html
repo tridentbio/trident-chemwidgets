@@ -161,10 +161,10 @@
   <input type="hidden" name="area" value="default">
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
-  <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+  <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../installing.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installing.html">Installation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
 <ul>
@@ -310,7 +310,6 @@
     <span class="p">(</span><span class="s1">'etc/jupyter/nbconfig/notebook.d'</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">,</span> <span class="s1">'trident_chemwidgets.json'</span><span class="p">),</span>
 <span class="p">]</span>
 
-
 <span class="n">cmdclass</span> <span class="o">=</span> <span class="n">create_cmdclass</span><span class="p">(</span><span class="s1">'jsdeps'</span><span class="p">,</span> <span class="n">package_data_spec</span><span class="o">=</span><span class="n">package_data_spec</span><span class="p">,</span>
     <span class="n">data_files_spec</span><span class="o">=</span><span class="n">data_files_spec</span><span class="p">)</span>
 <span class="n">npm_install</span> <span class="o">=</span> <span class="n">combine_commands</span><span class="p">(</span>
@@ -321,7 +320,7 @@
 
 <span class="n">setup_args</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
     <span class="n">name</span>            <span class="o">=</span> <span class="n">name</span><span class="p">,</span>
-    <span class="n">description</span>     <span class="o">=</span> <span class="s1">'Chemical widget set to work in jupyter notebook and lab.'</span><span class="p">,</span>
+    <span class="n">description</span>     <span class="o">=</span> <span class="s1">'Jupyter widgets for working with chemical datasets.'</span><span class="p">,</span>
     <span class="n">version</span>         <span class="o">=</span> <span class="n">version</span><span class="p">,</span>
     <span class="n">scripts</span>         <span class="o">=</span> <span class="n">glob</span><span class="p">(</span><span class="n">pjoin</span><span class="p">(</span><span class="s1">'scripts'</span><span class="p">,</span> <span class="s1">'*'</span><span class="p">)),</span>
     <span class="n">cmdclass</span>        <span class="o">=</span> <span class="n">cmdclass</span><span class="p">,</span>
@@ -348,6 +347,7 @@
     <span class="n">python_requires</span><span class="o">=</span><span class="s2">"&gt;=3.6"</span><span class="p">,</span>
     <span class="n">install_requires</span> <span class="o">=</span> <span class="p">[</span>
         <span class="s1">'ipywidgets&gt;=7.0.0'</span><span class="p">,</span>
+        <span class="s1">'pandas&gt;=1.0.0'</span>
     <span class="p">],</span>
     <span class="n">extras_require</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s1">'test'</span><span class="p">:</span> <span class="p">[</span>
@@ -356,7 +356,7 @@
             <span class="s1">'nbval'</span><span class="p">,</span>
         <span class="p">],</span>
         <span class="s1">'examples'</span><span class="p">:</span> <span class="p">[</span>
-            <span class="c1"># Any requirements for the examples to run</span>
+            <span class="s1">'pandas'</span>
         <span class="p">],</span>
         <span class="s1">'docs'</span><span class="p">:</span> <span class="p">[</span>
             <span class="s1">'jupyter_sphinx'</span><span class="p">,</span>
@@ -368,6 +368,7 @@
             <span class="s1">'sphinx&gt;=1.5'</span><span class="p">,</span>
             <span class="s1">'sphinx-autobuild'</span><span class="p">,</span>
             <span class="s1">'sphinx_rtd_theme'</span><span class="p">,</span>
+            <span class="s1">'myst_parser'</span><span class="p">,</span>
             <span class="s1">'furo'</span><span class="p">,</span>
         <span class="p">],</span>
     <span class="p">},</span>
@@ -418,7 +419,7 @@
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/thebelab-helper.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script src="../_static/helper.js"></script>
     <script src="../_static/embed-bundle.js"></script>
     </body>

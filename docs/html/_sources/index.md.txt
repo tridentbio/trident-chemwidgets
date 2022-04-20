@@ -16,13 +16,19 @@ The video below gives an overview of the included functionality.
 To get started with trident_chemwidgets, install with pip:
 
 ```
-pip install trident_chemwidgets
+pip install trident-chemwidgets
 ```
 
 or with conda:
 
 ```
-conda install trident_chemwidgets
+conda install -c conda-forge trident-chemwidgets
+```
+
+Then, if using Jupyter Lab, run:
+
+```
+jupyter labextension install trident-chemwidgets
 ```
 
 If the widgets still are not usable after simple installation, check out [Installation](./installing.md).

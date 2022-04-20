@@ -233,20 +233,20 @@
         <article role="main">
           <section id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h1>
-<p>The simplest way to install trident_chemwidgets is via pip:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">trident_chemwidgets</span>
+<p>The simplest way to install Trident Chemwidgets is via pip:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">trident</span><span class="o">-</span><span class="n">chemwidgets</span>
 </pre></div>
 </div>
 <p>or via conda:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">trident_chemwidgets</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">trident</span><span class="o">-</span><span class="n">chemwidgets</span>
 </pre></div>
 </div>
 <p>If you installed via pip, and notebook version &lt; 5.3, you will also have to
 install / configure the front-end extension as well. If you are using classic
 notebook (as opposed to Jupyterlab), run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">nbextension</span> <span class="n">install</span> <span class="p">[</span><span class="o">--</span><span class="n">sys</span><span class="o">-</span><span class="n">prefix</span> <span class="o">/</span> <span class="o">--</span><span class="n">user</span> <span class="o">/</span> <span class="o">--</span><span class="n">system</span><span class="p">]</span> <span class="o">--</span><span class="n">py</span> <span class="n">trident_chemwidgets</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">nbextension</span> <span class="n">install</span> <span class="p">[</span><span class="o">--</span><span class="n">sys</span><span class="o">-</span><span class="n">prefix</span> <span class="o">/</span> <span class="o">--</span><span class="n">user</span> <span class="o">/</span> <span class="o">--</span><span class="n">system</span><span class="p">]</span> <span class="o">--</span><span class="n">py</span> <span class="n">trident</span><span class="o">-</span><span class="n">chemwidgets</span>
 
-<span class="n">jupyter</span> <span class="n">nbextension</span> <span class="n">enable</span> <span class="p">[</span><span class="o">--</span><span class="n">sys</span><span class="o">-</span><span class="n">prefix</span> <span class="o">/</span> <span class="o">--</span><span class="n">user</span> <span class="o">/</span> <span class="o">--</span><span class="n">system</span><span class="p">]</span> <span class="o">--</span><span class="n">py</span> <span class="n">trident_chemwidgets</span>
+<span class="n">jupyter</span> <span class="n">nbextension</span> <span class="n">enable</span> <span class="p">[</span><span class="o">--</span><span class="n">sys</span><span class="o">-</span><span class="n">prefix</span> <span class="o">/</span> <span class="o">--</span><span class="n">user</span> <span class="o">/</span> <span class="o">--</span><span class="n">system</span><span class="p">]</span> <span class="o">--</span><span class="n">py</span> <span class="n">trident</span><span class="o">-</span><span class="n">chemwidgets</span>
 </pre></div>
 </div>
 <p>with the <a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/stable/extending/frontend_extensions.html#installing-and-enabling-extensions">appropriate flag</a>. If you are using Jupyterlab, install the extension
@@ -340,7 +340,7 @@ you need to run them the commands should be the same (just make sure you choose 
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/thebelab-helper.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script src="_static/helper.js"></script>
     <script src="_static/embed-bundle.js"></script>
     </body>
