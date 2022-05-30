@@ -1,5 +1,6 @@
+import pandas as pd
 from ipywidgets import DOMWidget
-from traitlets import Unicode, Dict, Float, List, Integer
+from traitlets import Any, Bool, Unicode, Dict, Float, List, Integer
 from .._frontend import module_name, module_version
 
 
@@ -36,25 +37,39 @@ class Histogram(DOMWidget):
 
     # Handle passing data
     x_label = Unicode('x').tag(sync=True)
+    x_is_date = Bool(False).tag(sync=True)
+    x_format_date_string = Unicode('').tag(sync=True)
+
     data = Dict(per_key_traits={
         'points': List(trait=Dict(per_key_traits={
             'index': Integer(),
             'smiles': Unicode(),
-            'x': Float()
+            'x': Any()
         }))
     }).tag(sync=True)
 
     savedSelected = List(trait=Integer()).tag(sync=True)
 
-    def __init__(self, data, smiles, x, x_label=None, **kwargs):
+    def __init__(
+        self,
+        data: pd.DataFrame,
+        smiles: str,
+        x: str,
+        x_label: str = None,
+        x_date_format: str = None,
+        **kwargs
+    ):
         super().__init__()
 
         self._smiles_col = smiles
+
         self._x_col = x
+        self.x_label = x_label if x_label else x
+        self._format_x_date = x_date_format if x_date_format else ''
+
         self._data = data
 
         self.data = self.prep_data_for_plot()
-        self.x_label = x_label if x_label else x
 
     def prep_data_for_plot(self):
         """Transforms and correctly selects the data that will be transformed
@@ -63,9 +78,24 @@ class Histogram(DOMWidget):
         Returns:
             dict: data in dictionary format. 
         """
-        data_list = (self._data[[self._smiles_col, self._x_col]]
-                     .rename(columns={self._smiles_col: 'smiles', self._x_col: 'x'})
-                     .to_dict(orient='records'))
+        data = pd.DataFrame({
+            'smiles': self._data[self._smiles_col].values.copy(),
+            'x': self._data[self._x_col].values.copy()
+        })
+
+        if str(data['x'].dtype) == 'object':
+            try:
+                # Try to convert each row to a date
+                pd.to_datetime(data['x'])
+                # Otherwise we can consider that the column contains dates
+                # NOTE: we can't convert to date cause the Vega-side does this once
+                # we declare in the widget component to
+                self.x_is_date = True
+                self.x_format_date_string = self._format_x_date
+            except ValueError:
+                self.x_is_date = False
+
+        data_list = data.to_dict(orient='records')
 
         for i in range(len(data_list)):
             data_list[i]['index'] = i
