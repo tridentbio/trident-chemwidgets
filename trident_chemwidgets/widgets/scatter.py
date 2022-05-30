@@ -1,6 +1,8 @@
 import pandas as pd
+import numpy as np
+import re
 from ipywidgets import DOMWidget
-from traitlets import Unicode, Dict, Float, List, Integer
+from traitlets import Unicode, Dict, Float, List, Integer, Bool, Any, Union
 from .._frontend import module_name, module_version
 
 
@@ -40,17 +42,29 @@ class Scatter(DOMWidget):
     _view_module = Unicode(module_name).tag(sync=True)
     _view_module_version = Unicode(module_version).tag(sync=True)
 
-    # Handle passing data
+    # X-Axis params
     x_label = Unicode('x').tag(sync=True)
+    x_is_date = Bool(False).tag(sync=True)
+    x_format_date_string = Unicode('').tag(sync=True)
+
+    # Y-Axis params
     y_label = Unicode('y').tag(sync=True)
-    hue_label = Unicode('hue_label').tag(sync=True)
+    y_is_date = Bool(False).tag(sync=True)
+    y_format_date_string = Unicode('')
+
+    # Hue params
+    hue_label = Unicode().tag(sync=True)
+    hue_type = Unicode().tag(sync=True)
+    hue_min = Float().tag(sync=True)
+    hue_max = Float().tag(sync=True)
+    # hue_scale = Unicode('linear').tag(sync=True)
 
     data = Dict(per_key_traits={
         'points': List(trait=Dict(per_key_traits={
             'index': Integer(),
             'smiles': Unicode(),
-            'x': Float(),
-            'y': Float(),
+            'x': Any(),
+            'y': Any(),
         }))
     }).tag(sync=True)
 
@@ -66,6 +80,8 @@ class Scatter(DOMWidget):
         x_label: str = None,
         y_label: str = None,
         hue_label: str = None,
+        x_date_format: str = None,
+        y_date_format: str = None,
         **kwargs
     ):
         super().__init__(**kwargs)
@@ -75,14 +91,17 @@ class Scatter(DOMWidget):
         self._y_col = y
         self._hue = hue if hue else None
 
-        self._data = data
-        self.data = self.prep_data_for_plot()
+        if self._hue:
+            self.hue_label = hue_label if hue_label else hue
 
         self.x_label = x_label if x_label else x
         self.y_label = y_label if y_label else y
 
-        if self._hue:
-            self.hue_label = hue_label if hue_label else hue
+        self._format_x_date = x_date_format if x_date_format else ''
+        self._format_y_date = y_date_format if y_date_format else ''
+
+        self._data = data
+        self.data = self.prep_data_for_plot()
 
     def prep_data_for_plot(self):
         """Transforms and selects the data correctly for use by the plot.
@@ -90,28 +109,51 @@ class Scatter(DOMWidget):
         Returns:
             dict: Data in dict format to be used in plot.
         """
+        # Check hue and convert data types
         if self._hue:
-            data_list = (
-                self._data[[self._smiles_col,
-                            self._x_col, self._y_col, self._hue]]
-                .rename(columns={
-                        self._smiles_col: 'smiles',
-                        self._x_col: 'x',
-                        self._y_col: 'y',
-                        self._hue: 'hue',
-                        })
-                .to_dict(orient='records')
-            )
+            data = pd.DataFrame({
+                'smiles': self._data[self._smiles_col].values.copy(),
+                'x': self._data[self._x_col].values.copy(),
+                'y': self._data[self._y_col].values.copy(),
+                'hue': self._data[self._hue].values.copy(),
+            })
+            # Detect the correct type of the hue column
+            self.hue_type = re.sub('[0-9]', '', str(data['hue'].dtype))
+            # Only use the hue_min and hue_max for the domain in float values
+            if self.hue_type == 'float':
+                self.hue_max = data['hue'].max()
+                self.hue_min = data['hue'].min()
         else:
-            data_list = (
-                self._data[[self._smiles_col, self._x_col, self._y_col]]
-                    .rename(columns={
-                        self._smiles_col: 'smiles',
-                        self._x_col: 'x',
-                        self._y_col: 'y',
-                    })
-                .to_dict(orient='records')
-            )
+            data = pd.DataFrame({
+                'smiles': self._data[self._smiles_col].values.copy(),
+                'x': self._data[self._x_col].values.copy(),
+                'y': self._data[self._y_col].values.copy()
+            })
+
+        if str(data['x'].dtype) == 'object':
+            # Otherwise verify if x is a date column
+            try:
+                # Try to convert each row to a date
+                pd.to_datetime(data['x'])
+                # Otherwise we can consider that the column contains dates
+                # NOTE: we can't convert to date cause the Vega-side does this once
+                # we declare in the widget component to
+                self.x_is_date = True
+                self.x_format_date_string = self._format_x_date
+            except ValueError:
+                # If raise an exception/error the column cannot be a date type
+                self.x_is_date = False
+
+        if str(data['y'].dtype) == 'object':
+            # Verify if y is a date column
+            try:
+                pd.to_datetime(data['y'])
+                self.y_is_date = True
+                self.y_format_date_string = self._format_y_date
+            except ValueError:
+                self.y_is_date = False
+
+        data_list = data.to_dict(orient='records')
 
         for i in range(len(data_list)):
             data_list[i]['index'] = i
