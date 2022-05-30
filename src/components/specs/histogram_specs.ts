@@ -3,9 +3,12 @@ import { VisualizationSpec } from "react-vega";
 const histogramSpec = (
     width: number = 400,
     height: number = 400,
-    x_label: string = 'x'
+    xLabel: string = 'x',
+    xIsDate: boolean | undefined,
+    xDateFormat: string | undefined,
 ): VisualizationSpec => {
-    return {
+
+    const specs: {[key: string]: any} = {
         width: width,
         height: height,
         data: { name: 'points' },
@@ -20,7 +23,7 @@ const histogramSpec = (
                     x: {
                         bin: true,
                         field: 'x',
-                        title: x_label
+                        title: xLabel
                     },
                     y: {
                         aggregate: 'count',
@@ -33,13 +36,25 @@ const histogramSpec = (
                 transform: [{ filter: { param: 'brush', empty: false }}],
                 mark: 'bar',
                 encoding: {
-                    x: { field: 'x', bin: true },
+                    x: {
+                        field: 'x',
+                        bin: true,
+                    },
                     y: { aggregate: 'count' },
                     color: { value: '#8EBDB2' }
                 }
             }
         ]
-    } as VisualizationSpec;
+    }
+
+    if (xIsDate) {
+        specs.layer[0].encoding['x']['type'] = 'temporal';
+        specs.layer[1].encoding['x']['axis'] = false;
+        if (!!xDateFormat)
+            specs.layer[0].encoding["x"]["axis"] = { "format": xDateFormat }
+    }
+
+    return specs as VisualizationSpec;
 }
 
 export default histogramSpec;
