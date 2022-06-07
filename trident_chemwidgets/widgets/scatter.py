@@ -50,7 +50,7 @@ class Scatter(DOMWidget):
     # Y-Axis params
     y_label = Unicode('y').tag(sync=True)
     y_is_date = Bool(False).tag(sync=True)
-    y_format_date_string = Unicode('')
+    y_format_date_string = Unicode('').tag(sync=True)
 
     # Hue params
     hue_label = Unicode().tag(sync=True)
