@@ -130,11 +130,13 @@ class Scatter(DOMWidget):
                 'y': self._data[self._y_col].values.copy()
             })
 
-        if str(data['x'].dtype) == 'object':
+        x_type = re.sub('[0-9]', '', str(data['x'].dtype))
+        if x_type not in ['int', 'float']:
             # Otherwise verify if x is a date column
             try:
                 # Try to convert each row to a date
-                pd.to_datetime(data['x'])
+                data['x'] = pd.to_datetime(
+                    data['x']).apply(lambda x: x.__str__())
                 # Otherwise we can consider that the column contains dates
                 # NOTE: we can't convert to date cause the Vega-side does this once
                 # we declare in the widget component to
@@ -144,10 +146,12 @@ class Scatter(DOMWidget):
                 # If raise an exception/error the column cannot be a date type
                 self.x_is_date = False
 
-        if str(data['y'].dtype) == 'object':
+        y_type = re.sub('[0-9]', '', str(data['y'].dtype))
+        if y_type not in ['int', 'float']:
             # Verify if y is a date column
             try:
-                pd.to_datetime(data['y'])
+                data['y'] = pd.to_datetime(
+                    data['y']).apply(lambda x: x.__str__())
                 self.y_is_date = True
                 self.y_format_date_string = self._format_y_date
             except ValueError:
