@@ -22,10 +22,24 @@ class Scatter(DOMWidget):
             of the scatter plot.
         y (str): Name of the column used to generate the y-axis
             of the scatter plot.
-        x_label (str): Label for the x-axis of the histogram, defaults to the
-            value of `x` if not provided.
-        y_label (str): Label for the y-axis of the histogram, defaults to the
-            value of `y` if not provided.
+        hue (str): Name of the column used to color the points
+            of the scatter plot.
+        x_label (str): Label for the x-axis of the histogram,
+            defaults to the value of `x` if not provided.
+        y_label (str): Label for the y-axis of the histogram,
+            defaults to the value of `y` if not provided.
+        hue_label (str): Label for the point colors of the histogram,
+            defaults to the value of `hue` if not provided.
+        x_date_format (str): Date format string to display datetime values on the
+            x axis.
+        y_date_format (str): Date format string to display datetime values on the
+            y axis.
+
+    Notes:
+        Valid date format strings for the `x_date_format` and `y_date_format`
+        arguments can be found here: https://github.com/d3/d3-time-format#locale_format.
+        For example, a common date format string might be '%Y-%m-%d' to display
+        the 4-digit year, 2-digit month, and 2-digit day (i.e. 2021-12-25).  
 
     Examples:
         >>> import trident_chemwidgets as tcw
