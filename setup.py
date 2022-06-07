@@ -132,6 +132,7 @@ setup_args = dict(
             'jupyter_sphinx',
             'nbsphinx',
             'nbsphinx-link',
+            'myst-parser',
             'pytest_check_links',
             'pypandoc',
             'recommonmark',
