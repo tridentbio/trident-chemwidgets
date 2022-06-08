@@ -5,7 +5,14 @@ function scatterSpec(
     height: number = 400,
     x_label: string = 'x',
     y_label: string = 'y',
-    hue_label: string | undefined,
+    hueLabel: string | undefined,
+    hueType: string | undefined,
+    hueMin: number | undefined,
+    hueMax: number | undefined,
+    xIsDate: boolean | undefined,
+    xDateFormat: string | undefined,
+    yIsDate: boolean | undefined,
+    yDateFormat: string | undefined,
 ) {
     const specs: {[key: string]: any} = {
         width: width,
@@ -17,7 +24,11 @@ function scatterSpec(
             filled: true
         },
         encoding: {
-            x: { field: 'x', type: 'quantitative', title: x_label },
+            x: {
+                field: 'x',
+                type: 'quantitative',
+                title: x_label
+            },
             y: { field: 'y', type: 'quantitative', title: y_label },
             tooltip: { field: 'smiles' },
             stroke: {
@@ -30,12 +41,24 @@ function scatterSpec(
         }
     };
 
-    if (hue_label) {
-        specs.encoding["color"] = {
-            "field": "hue",
-            "type": "nominal",
-            "title": hue_label
-        };
+    if (!!hueLabel) {
+        if (hueType === 'float') {
+            hueMin = (hueMin != undefined && hueMin > 0) ? 0 : hueMin;
+            specs.encoding["color"] = {
+                "field": "hue",
+                "type": "quantitative",
+                "title": hueLabel,
+                "scale": {
+                    "domain": [hueMin, hueMax]
+                }
+            };
+        } else {
+            specs.encoding["color"] = {
+                "field": "hue",
+                "type": "nominal",
+                "title": hueLabel
+            };
+        }
     } else {
         specs.encoding["fill"] = {
             condition: {
@@ -43,7 +66,19 @@ function scatterSpec(
                 value: '#8ebdb2',
                 empty: false
             }, value: 'gray'
-        }
+        };
+    }
+
+    if (xIsDate) {
+        specs.encoding['x']['type'] = 'temporal';
+        if (!!xDateFormat)
+            specs.encoding["x"]["axis"] = { "format": xDateFormat }
+    }
+
+    if (yIsDate) {
+        specs.encoding['y']['type'] = 'temporal';
+        if (!!yDateFormat)
+            specs.encoding['y']["axis"] = { "format": yDateFormat }
     }
 
     return specs as VisualizationSpec;
