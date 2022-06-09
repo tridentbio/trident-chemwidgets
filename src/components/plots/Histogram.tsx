@@ -26,10 +26,6 @@ interface HistogramState {
 
 const Histogram = (props: HistogramProps): JSX.Element => {
 
-    // const xIsDate = props.xIsDate ? props.xIsDate : false;
-    // const xDateFormat = props.xDateFormat ? props.xDateFormat : '';
-    // const xLabel = props.xLabel ? props.xLabel : '';
-
     const [state, setState] = useState<HistogramState>({
         data: props.data,
         spec: histogramSpec(400, 400, props.xLabel, props.xIsDate, props.xDateFormat),

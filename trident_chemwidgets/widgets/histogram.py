@@ -1,4 +1,5 @@
 import pandas as pd
+import re
 from ipywidgets import DOMWidget
 from traitlets import Any, Bool, Unicode, Dict, Float, List, Integer
 from .._frontend import module_name, module_version
@@ -83,10 +84,12 @@ class Histogram(DOMWidget):
             'x': self._data[self._x_col].values.copy()
         })
 
-        if str(data['x'].dtype) == 'object':
+        x_type = re.sub('[0-9]', '', str(data['x'].dtype))
+        if x_type not in ['int', 'float']:
             try:
                 # Try to convert each row to a date
-                pd.to_datetime(data['x'])
+                data['x'] = pd.to_datetime(
+                    data['x']).apply(lambda x: x.__str__())
                 # Otherwise we can consider that the column contains dates
                 # NOTE: we can't convert to date cause the Vega-side does this once
                 # we declare in the widget component to
