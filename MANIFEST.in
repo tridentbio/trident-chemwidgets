@@ -16,6 +16,7 @@ exclude docs/\#*
 prune docs/build
 prune docs/gh-pages
 prune docs/dist
+exclude docsrc
 
 # Examples
 graft examples
@@ -26,6 +27,8 @@ prune tests/build
 
 # Javascript files
 graft trident_chemwidgets/nbextension
+graft trident_chemwidgets/labextension
+graft trident_chemwidgets/js
 graft src
 graft css
 prune **/node_modules
