@@ -40,3 +40,24 @@ If you run into any problems installing or using Chemwidgets, please raise an is
 % links
 
 [appropriate flag]: https://jupyter-notebook.readthedocs.io/en/stable/extending/frontend_extensions.html#installing-and-enabling-extensions
+
+
+### Common bugs on Windows:
+
+#### `mkl-service`
+
+If you receive a `UserWarning` talking about mkl-service the most recommended solution to resolve is to install it through their own repository found at this link http://github.com/IntelPython/mkl-service.
+
+In it, the user can choose between two options, the first is to install through pip:
+```
+python -m pip install mkl-service
+```
+
+The second and most recommended option is for those who use conda as an environment manager. You can install it using the following command:
+```
+conda install -c conda-forge mkl-service
+```
+Or:
+```
+conda install -c intel mkl-service
+```
