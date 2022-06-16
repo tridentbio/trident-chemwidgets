@@ -1,17 +1,17 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Introduction" href="introduction.html" />
 
-    <link rel="shortcut icon" href="_static/favicon.ico"/><meta name="generator" content="sphinx-4.5.0, furo 2022.03.04"/>
+    <link rel="shortcut icon" href="_static/favicon.ico"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>Trident Chemwidgets - Docs v0.1</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/thebelab.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
 
@@ -44,10 +44,12 @@
   }
 </style></head>
   <body>
+    
     <script>
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
@@ -217,7 +219,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -232,18 +235,18 @@
         </div>
         <article role="main">
           <section id="trident-chemwidgets">
-<h1>Trident Chemwidgets<a class="headerlink" href="#trident-chemwidgets" title="Permalink to this headline">#</a></h1>
+<h1>Trident Chemwidgets<a class="headerlink" href="#trident-chemwidgets" title="Permalink to this heading">#</a></h1>
 <p>The Trident Chemwidgets package contains Jupyter-based interactive <a class="reference external" href="https://jupyter.org/widgets.html">widgets</a> that provide an interface to chemical datasets.
 This package includes widgets for chemical input, data distribution analysis and splitting, and atom-level visualizations.
 The video below gives an overview of the included functionality.</p>
-<div style="text-align: center;">
-<video autoplay="" controls="" height="350" loop="" playsinline="" width="350">
-<source src="_static/video/chemwidgets_demo.mp4" type="video/mp4"/>
+<div style='text-align: center;'>
+    <video width="350" height="350" controls loop autoplay playsinline>
+        <source src="_static/video/chemwidgets_demo.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 </div>
 <section id="quickstart">
-<h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">#</a></h2>
+<h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this heading">#</a></h2>
 <p>To get started with trident_chemwidgets, install with pip:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">trident</span><span class="o">-</span><span class="n">chemwidgets</span>
 </pre></div>
@@ -252,14 +255,14 @@ The video below gives an overview of the included functionality.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">trident</span><span class="o">-</span><span class="n">chemwidgets</span>
 </pre></div>
 </div>
-<p>Then, if using Jupyter Lab, run:</p>
+<p>Then, if using Jupyter Lab, you may need to run:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">labextension</span> <span class="n">install</span> <span class="n">trident</span><span class="o">-</span><span class="n">chemwidgets</span>
 </pre></div>
 </div>
 <p>If the widgets still are not usable after simple installation, check out <a class="reference internal" href="installing.html"><span class="doc std std-doc">Installation</span></a>.</p>
 </section>
 <section id="contents">
-<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">#</a></h2>
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul>
@@ -270,6 +273,8 @@ The video below gives an overview of the included functionality.</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="installing.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installing.html#jupyterlab-activation">JupyterLab activation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing.html#notebook-activation">Notebook activation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installing.html#installation-issues">Installation issues</a></li>
 </ul>
 </li>
@@ -379,6 +384,7 @@ The video below gives an overview of the included functionality.</p>
 </div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/thebelab-helper.js"></script>

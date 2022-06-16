@@ -25,7 +25,7 @@ or with conda:
 conda install -c conda-forge trident-chemwidgets
 ```
 
-Then, if using Jupyter Lab, run:
+Then, if using Jupyter Lab, you may need to run:
 
 ```
 jupyter labextension install trident-chemwidgets

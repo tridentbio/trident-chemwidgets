@@ -12,6 +12,8 @@ interface HistogramProps {
     data: DataObject1D,
     onChange?: (val: (number | undefined)[]) => void,
     xLabel?: string,
+    xIsDate?: boolean,
+    xDateFormat?: string,
 }
 
 interface HistogramState {
@@ -24,18 +26,31 @@ interface HistogramState {
 
 const Histogram = (props: HistogramProps): JSX.Element => {
 
+    // const xIsDate = props.xIsDate ? props.xIsDate : false;
+    // const xDateFormat = props.xDateFormat ? props.xDateFormat : '';
+    // const xLabel = props.xLabel ? props.xLabel : '';
+
     const [state, setState] = useState<HistogramState>({
         data: props.data,
-        spec: histogramSpec(400, 400, props.xLabel),
+        spec: histogramSpec(400, 400, props.xLabel, props.xIsDate, props.xDateFormat),
         xlim: [NaN, NaN],
         selected: [],
         savedSelected: [],
     });
 
-    const filterInterval = (data: Point1D[], xMin: number, xMax: number) => {
-        const filteredData = data.filter(datum => (
-            (datum.x >= xMin) && (datum.x <= xMax)
-        ));
+    const filterInterval = (
+        data: Point1D[],
+        xMin: number | Date,
+        xMax: number | Date
+    ) => {
+
+        xMin = props.xIsDate ? new Date(xMin) : xMin;
+        xMax = props.xIsDate ? new Date(xMax) : xMax;
+
+        const filteredData = data.filter(datum => {
+            const datumX = props.xIsDate ? new Date(datum.x) : datum.x;
+            return (datumX >= xMin) && (datumX <= xMax);
+        });
         return filteredData;
     }
 

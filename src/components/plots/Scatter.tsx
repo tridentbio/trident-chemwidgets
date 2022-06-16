@@ -12,9 +12,19 @@ import MoleculeGallery from '../drawings/MoleculeGallery';
 interface ScatterProps {
     data: DataObject2D,
     onChange?: (val: (number | undefined)[]) => void,
+    // X-Axis params
     xLabel?: string,
+    xIsDate?: boolean,
+    xDateFormat?: string,
+    // Y-Axis params
     yLabel?: string,
+    yIsDate?: boolean,
+    yDateFormat?: string,
+    // Hue params
     hueLabel?: string,
+    hueType?: string,
+    hueMin?: number,
+    hueMax?: number,
 }
 
 interface ScatterState {
@@ -29,12 +39,28 @@ interface ScatterState {
 const Scatter = (props: ScatterProps): JSX.Element => {
 
     const xLabel = props.xLabel ? props.xLabel : 'x';
+    const xIsDate = props.xIsDate ? props.xIsDate : false;
+    const xDateFormat = props.xDateFormat ? props.xDateFormat : undefined;
+
     const yLabel = props.yLabel ? props.yLabel : 'y';
+    const yIsDate = props.yIsDate ? props.yIsDate : false;
+    const yDateFormat = props.yDateFormat ? props.yDateFormat : undefined;
+
+    // Hue param and data type
     const hueLabel = props.hueLabel ? props.hueLabel : undefined;
+    const hueType = props.hueType ? props.hueType : undefined;
+    const hueMin = props.hueMin ? props.hueMin : undefined;
+    const hueMax = props.hueMax ? props.hueMax : undefined;
+
+    const specs = scatterSpec(
+        400, 400, xLabel, yLabel,
+        hueLabel, hueType, hueMin, hueMax,
+        xIsDate, xDateFormat, yIsDate, yDateFormat
+    );
 
     const [state, setState] = useState<ScatterState>({
         data: props.data,
-        spec: scatterSpec(400, 400, xLabel, yLabel, hueLabel),
+        spec: specs,
         xlim: [NaN, NaN],
         ylim: [NaN, NaN],
         selected: [],
@@ -49,17 +75,29 @@ const Scatter = (props: ScatterProps): JSX.Element => {
 
     const filterInterval = (
         data: Point2D[],
-        xmin: number,
-        xmax: number,
-        ymin: number,
-        ymax: number,
+        xmin: number | Date,
+        xmax: number | Date,
+        ymin: number | Date,
+        ymax: number | Date,
     ) => {
-        const filteredData = data.filter(datum => (
-            (datum.x >= xmin) &&
-            (datum.x <= xmax) &&
-            (datum.y >= ymin) &&
-            (datum.y <= ymax)
-        ));
+        // Update correctly the values for date types
+        xmin = xIsDate ? new Date(xmin) : xmin;
+        xmax = xIsDate ? new Date(xmax) : xmax;
+
+        ymin = yIsDate ? new Date(ymin) : ymin;
+        ymax = yIsDate ? new Date(ymax) : ymax;
+
+        const filteredData = data.filter(datum => {
+            const datumX = xIsDate ? new Date(datum.x) : datum.x;
+            const datumY = yIsDate ? new Date(datum.y) : datum.y;
+
+            return (
+                (datumX >= xmin) &&
+                (datumX <= xmax) &&
+                (datumY >= ymin) &&
+                (datumY <= ymax)
+            )
+        });
         return filteredData;
     };
 

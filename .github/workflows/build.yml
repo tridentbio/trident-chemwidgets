@@ -2,62 +2,53 @@ name: Build
 
 on:
   push:
-    branches: main
-  pull_request:
-    branches: "*"
+    branches: master
 
 jobs:
-  build:
+  install_deps:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: Install node
         uses: actions/setup-node@v1
         with:
           node-version: "12.x"
+
       - name: Install Python
         uses: actions/setup-python@v2
         with:
-          python-version: "3.7"
+          python-version: "3.8"
           architecture: "x64"
-
-      - name: Setup pip cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.cache/pip
-          key: pip-3.7-${{ hashFiles('package.json') }}
-          restore-keys: |
-            pip-3.7-
-            pip-
-
-      - name: Get npm cache directory
-        id: npm-cache
-        run: |
-          echo "::set-output name=dir::$(npm config get cache)"
-      - uses: actions/cache@v2
-        with:
-          path: ${{ steps.npm-cache.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
 
       - name: Install dependencies
         run: |
-          python -m pip install -U pip setuptools codecov
-          npm install -g codecov
+          python -m pip install -U pip jupyterlab
+          npm install -g yarn
+
       - name: Test the extension
         run: |
-          python -m pip install --upgrade -v -e ".[test, examples, docs]"
-          yarn run lint:check
+          jupyter lab --generate-config
+          python -m pip install -v ".[test, docs]"
 
-          pytest
-          yarn run test
-
-      - name: Check docs can be build + links
+      - name: Build package
         run: |
-          sudo apt install -y pandoc
-          pushd docs
-          make html
-          python -m pytest --check-links
-          popd
+          python -m pip install build
+          python -m build
+          npm install
+          npm pack
+
+      - name: Release package to PyPI
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}
+          print_hash: true
+          
+      - name: Release package to NPM
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

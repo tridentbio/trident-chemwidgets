@@ -35,6 +35,7 @@ module.exports = [
     module: {
       rules: rules
     },
+    mode: 'production',
     devtool: 'source-map',
     externals,
     resolve,
@@ -63,6 +64,7 @@ module.exports = [
     module: {
         rules: rules
     },
+    mode: 'production',
     externals,
     resolve,
   },
@@ -84,6 +86,7 @@ module.exports = [
     module: {
       rules: rules
     },
+    mode: 'production',
     devtool: 'source-map',
     externals,
     resolve,
