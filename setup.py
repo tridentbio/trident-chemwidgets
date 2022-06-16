@@ -37,8 +37,6 @@ def create_local_assets_provider():
         else jupyter_config_dir()
     )
 
-    # CONFIG_DIR = jupyter_config_dir()
-
     # Create a jupyter lab config file
     lab_config_file = os.path.join(CONFIG_DIR, 'jupyter_lab_config.py')
     line = f"\nc.ServerApp.extra_static_paths.append(r'{JS_DIR}')"
