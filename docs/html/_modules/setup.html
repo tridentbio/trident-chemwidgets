@@ -1,16 +1,16 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
 
-    <link rel="shortcut icon" href="../_static/favicon.ico"/><meta name="generator" content="sphinx-4.5.0, furo 2022.03.04"/>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>setup - Trident Chemwidgets - Docs v0.1</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
 
@@ -43,10 +43,12 @@
   }
 </style></head>
   <body>
+    
     <script>
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
@@ -216,7 +218,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -257,126 +260,129 @@
 
 
 <div class="viewcode-block" id="create_local_assets_provider"><a class="viewcode-back" href="../setup.html#setup.create_local_assets_provider">[docs]</a><span class="k">def</span> <span class="nf">create_local_assets_provider</span><span class="p">():</span>
-    <span class="sd">"""Method that create the assets folder for the external scripts</span>
+    <span class="sd">&quot;&quot;&quot;Method that create the assets folder for the external scripts</span>
 <span class="sd">    and add the path for this folder in extra_static_paths in the config</span>
 <span class="sd">    files for notebooks and jupyter lab. </span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">CONFIG_DIR</span> <span class="o">=</span> <span class="n">jupyter_config_dir</span><span class="p">()</span>
-    <span class="n">ASSETS_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">'~'</span><span class="p">),</span> <span class="s1">'.trident_chemwidgets/'</span><span class="p">)</span>
+    <span class="n">ASSETS_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">expanduser</span><span class="p">(</span><span class="s1">&#39;~&#39;</span><span class="p">),</span> <span class="s1">&#39;.trident_chemwidgets/assets&#39;</span><span class="p">)</span>
 
     <span class="c1"># Copy assets to the user .trident-chemwidgets</span>
     <span class="n">shutil</span><span class="o">.</span><span class="n">copytree</span><span class="p">(</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s1">'js/'</span><span class="p">),</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="s1">&#39;js/&#39;</span><span class="p">),</span>
         <span class="n">ASSETS_DIR</span><span class="p">,</span>
         <span class="n">dirs_exist_ok</span><span class="o">=</span><span class="kc">True</span>
     <span class="p">)</span>
 
     <span class="c1"># Convert the path for unix path convertion since</span>
-    <span class="c1"># the windows use the backslashes </span>
-    <span class="n">static_path</span> <span class="o">=</span> <span class="n">ASSETS_DIR</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'</span><span class="se">\\</span><span class="s1">'</span><span class="p">,</span> <span class="s1">'/'</span><span class="p">)</span>
+    <span class="c1"># the windows use the backslashes</span>
+    <span class="n">static_path</span> <span class="o">=</span> <span class="n">ASSETS_DIR</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span>
 
     <span class="c1"># Create a jupyter lab config file</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">CONFIG_DIR</span><span class="p">,</span> <span class="s1">'jupyter_lab_config.py'</span><span class="p">),</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"c.ServerApp.extra_static_paths = ['</span><span class="si">{</span><span class="n">static_path</span><span class="si">}</span><span class="s2">']"</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">CONFIG_DIR</span><span class="p">,</span> <span class="s1">&#39;jupyter_lab_config.py&#39;</span><span class="p">),</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;c.ServerApp.extra_static_paths = [&#39;</span><span class="si">{</span><span class="n">static_path</span><span class="si">}</span><span class="s2">&#39;]&quot;</span><span class="p">)</span>
 
     <span class="c1"># Create a jupyter notebook config file</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">CONFIG_DIR</span><span class="p">,</span> <span class="s1">'jupyter_notebook_config.py'</span><span class="p">),</span> <span class="s1">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">"c.NotebookApp.extra_static_paths = ['</span><span class="si">{</span><span class="n">static_path</span><span class="si">}</span><span class="s2">']"</span><span class="p">)</span></div>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">CONFIG_DIR</span><span class="p">,</span> <span class="s1">&#39;jupyter_notebook_config.py&#39;</span><span class="p">),</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;c.NotebookApp.extra_static_paths = [&#39;</span><span class="si">{</span><span class="n">static_path</span><span class="si">}</span><span class="s2">&#39;]&quot;</span><span class="p">)</span></div>
+
 
 <span class="n">create_local_assets_provider</span><span class="p">()</span>
 
 <span class="c1"># The name of the project</span>
-<span class="n">name</span> <span class="o">=</span> <span class="s1">'trident_chemwidgets'</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;trident_chemwidgets&#39;</span>
 <span class="c1"># Get the version</span>
-<span class="n">version</span> <span class="o">=</span> <span class="n">get_version</span><span class="p">(</span><span class="n">pjoin</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s1">'_version.py'</span><span class="p">))</span>
+<span class="n">version</span> <span class="o">=</span> <span class="n">get_version</span><span class="p">(</span><span class="n">pjoin</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s1">&#39;_version.py&#39;</span><span class="p">))</span>
 
 <span class="c1"># Representative files that should exist after a successful build</span>
 <span class="n">jstargets</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">pjoin</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s1">'nbextension'</span><span class="p">,</span> <span class="s1">'index.js'</span><span class="p">),</span>
-    <span class="n">pjoin</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s1">'labextension'</span><span class="p">,</span> <span class="s1">'package.json'</span><span class="p">),</span>
+    <span class="n">pjoin</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s1">&#39;nbextension&#39;</span><span class="p">,</span> <span class="s1">&#39;index.js&#39;</span><span class="p">),</span>
+    <span class="n">pjoin</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s1">&#39;labextension&#39;</span><span class="p">,</span> <span class="s1">&#39;package.json&#39;</span><span class="p">),</span>
 <span class="p">]</span>
 
 <span class="n">package_data_spec</span> <span class="o">=</span> <span class="p">{</span>
     <span class="n">name</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s1">'nbextension/**js*'</span><span class="p">,</span>
-        <span class="s1">'labextension/**'</span>
+        <span class="s1">&#39;nbextension/**js*&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;labextension/**&#39;</span>
     <span class="p">]</span>
 <span class="p">}</span>
 
 <span class="n">data_files_spec</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="s1">'share/jupyter/nbextensions/trident_chemwidgets'</span><span class="p">,</span> <span class="s1">'trident_chemwidgets/nbextension'</span><span class="p">,</span> <span class="s1">'**'</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">'share/jupyter/labextensions/trident-chemwidgets'</span><span class="p">,</span> <span class="s1">'trident_chemwidgets/labextension'</span><span class="p">,</span> <span class="s1">'**'</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">'share/jupyter/labextensions/trident-chemwidgets'</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">,</span> <span class="s1">'install.json'</span><span class="p">),</span>
-    <span class="p">(</span><span class="s1">'etc/jupyter/nbconfig/notebook.d'</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">,</span> <span class="s1">'trident_chemwidgets.json'</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;share/jupyter/nbextensions/trident_chemwidgets&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;trident_chemwidgets/nbextension&#39;</span><span class="p">,</span> <span class="s1">&#39;**&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;share/jupyter/labextensions/trident-chemwidgets&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;trident_chemwidgets/labextension&#39;</span><span class="p">,</span> <span class="s1">&#39;**&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;share/jupyter/labextensions/trident-chemwidgets&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;install.json&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;etc/jupyter/nbconfig/notebook.d&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;trident_chemwidgets.json&#39;</span><span class="p">),</span>
 <span class="p">]</span>
 
-<span class="n">cmdclass</span> <span class="o">=</span> <span class="n">create_cmdclass</span><span class="p">(</span><span class="s1">'jsdeps'</span><span class="p">,</span> <span class="n">package_data_spec</span><span class="o">=</span><span class="n">package_data_spec</span><span class="p">,</span>
-    <span class="n">data_files_spec</span><span class="o">=</span><span class="n">data_files_spec</span><span class="p">)</span>
+<span class="n">cmdclass</span> <span class="o">=</span> <span class="n">create_cmdclass</span><span class="p">(</span><span class="s1">&#39;jsdeps&#39;</span><span class="p">,</span> <span class="n">package_data_spec</span><span class="o">=</span><span class="n">package_data_spec</span><span class="p">,</span>
+                           <span class="n">data_files_spec</span><span class="o">=</span><span class="n">data_files_spec</span><span class="p">)</span>
 <span class="n">npm_install</span> <span class="o">=</span> <span class="n">combine_commands</span><span class="p">(</span>
-    <span class="n">install_npm</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="n">build_cmd</span><span class="o">=</span><span class="s1">'build:prod'</span><span class="p">),</span>
+    <span class="n">install_npm</span><span class="p">(</span><span class="n">HERE</span><span class="p">,</span> <span class="n">build_cmd</span><span class="o">=</span><span class="s1">&#39;build:prod&#39;</span><span class="p">),</span>
     <span class="n">ensure_targets</span><span class="p">(</span><span class="n">jstargets</span><span class="p">),</span>
 <span class="p">)</span>
-<span class="n">cmdclass</span><span class="p">[</span><span class="s1">'jsdeps'</span><span class="p">]</span> <span class="o">=</span> <span class="n">skip_if_exists</span><span class="p">(</span><span class="n">jstargets</span><span class="p">,</span> <span class="n">npm_install</span><span class="p">)</span>
+<span class="n">cmdclass</span><span class="p">[</span><span class="s1">&#39;jsdeps&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">skip_if_exists</span><span class="p">(</span><span class="n">jstargets</span><span class="p">,</span> <span class="n">npm_install</span><span class="p">)</span>
 
 <span class="n">setup_args</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-    <span class="n">name</span>            <span class="o">=</span> <span class="n">name</span><span class="p">,</span>
-    <span class="n">description</span>     <span class="o">=</span> <span class="s1">'Jupyter widgets for working with chemical datasets.'</span><span class="p">,</span>
-    <span class="n">version</span>         <span class="o">=</span> <span class="n">version</span><span class="p">,</span>
-    <span class="n">scripts</span>         <span class="o">=</span> <span class="n">glob</span><span class="p">(</span><span class="n">pjoin</span><span class="p">(</span><span class="s1">'scripts'</span><span class="p">,</span> <span class="s1">'*'</span><span class="p">)),</span>
-    <span class="n">cmdclass</span>        <span class="o">=</span> <span class="n">cmdclass</span><span class="p">,</span>
-    <span class="n">packages</span>        <span class="o">=</span> <span class="n">find_packages</span><span class="p">(),</span>
-    <span class="n">author</span>          <span class="o">=</span> <span class="s1">'Trident Bioscience, Inc.'</span><span class="p">,</span>
-    <span class="n">author_email</span>    <span class="o">=</span> <span class="s1">'info@trident.bio'</span><span class="p">,</span>
-    <span class="n">url</span>             <span class="o">=</span> <span class="s1">'https://github.com/tridentbio/trident-chemwidgets'</span><span class="p">,</span>
-    <span class="n">license</span>         <span class="o">=</span> <span class="s1">'BSD'</span><span class="p">,</span>
-    <span class="n">platforms</span>       <span class="o">=</span> <span class="s2">"Linux, Mac OS X, Windows"</span><span class="p">,</span>
-    <span class="n">keywords</span>        <span class="o">=</span> <span class="p">[</span><span class="s1">'Jupyter'</span><span class="p">,</span> <span class="s1">'Widgets'</span><span class="p">,</span> <span class="s1">'IPython'</span><span class="p">],</span>
-    <span class="n">classifiers</span>     <span class="o">=</span> <span class="p">[</span>
-        <span class="s1">'Intended Audience :: Developers'</span><span class="p">,</span>
-        <span class="s1">'Intended Audience :: Science/Research'</span><span class="p">,</span>
-        <span class="s1">'License :: OSI Approved :: BSD License'</span><span class="p">,</span>
-        <span class="s1">'Programming Language :: Python'</span><span class="p">,</span>
-        <span class="s1">'Programming Language :: Python :: 3'</span><span class="p">,</span>
-        <span class="s1">'Programming Language :: Python :: 3.4'</span><span class="p">,</span>
-        <span class="s1">'Programming Language :: Python :: 3.5'</span><span class="p">,</span>
-        <span class="s1">'Programming Language :: Python :: 3.6'</span><span class="p">,</span>
-        <span class="s1">'Programming Language :: Python :: 3.7'</span><span class="p">,</span>
-        <span class="s1">'Framework :: Jupyter'</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Jupyter widgets for working with chemical datasets.&#39;</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="n">version</span><span class="p">,</span>
+    <span class="n">scripts</span><span class="o">=</span><span class="n">glob</span><span class="p">(</span><span class="n">pjoin</span><span class="p">(</span><span class="s1">&#39;scripts&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">)),</span>
+    <span class="n">cmdclass</span><span class="o">=</span><span class="n">cmdclass</span><span class="p">,</span>
+    <span class="n">packages</span><span class="o">=</span><span class="n">find_packages</span><span class="p">(),</span>
+    <span class="n">author</span><span class="o">=</span><span class="s1">&#39;Trident Bioscience, Inc.&#39;</span><span class="p">,</span>
+    <span class="n">author_email</span><span class="o">=</span><span class="s1">&#39;info@trident.bio&#39;</span><span class="p">,</span>
+    <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://github.com/tridentbio/trident-chemwidgets&#39;</span><span class="p">,</span>
+    <span class="n">license</span><span class="o">=</span><span class="s1">&#39;BSD&#39;</span><span class="p">,</span>
+    <span class="n">platforms</span><span class="o">=</span><span class="s2">&quot;Linux, Mac OS X, Windows&quot;</span><span class="p">,</span>
+    <span class="n">keywords</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Jupyter&#39;</span><span class="p">,</span> <span class="s1">&#39;Widgets&#39;</span><span class="p">,</span> <span class="s1">&#39;IPython&#39;</span><span class="p">],</span>
+    <span class="n">classifiers</span><span class="o">=</span><span class="p">[</span>
+        <span class="s1">&#39;Intended Audience :: Developers&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Intended Audience :: Science/Research&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;License :: OSI Approved :: BSD License&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Programming Language :: Python&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Programming Language :: Python :: 3&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Programming Language :: Python :: 3.4&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Programming Language :: Python :: 3.5&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Programming Language :: Python :: 3.6&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Programming Language :: Python :: 3.7&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Framework :: Jupyter&#39;</span><span class="p">,</span>
     <span class="p">],</span>
-    <span class="n">include_package_data</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-    <span class="n">python_requires</span><span class="o">=</span><span class="s2">"&gt;=3.6"</span><span class="p">,</span>
-    <span class="n">install_requires</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="s1">'ipywidgets&gt;=7.0.0'</span><span class="p">,</span>
-        <span class="s1">'pandas&gt;=1.0.0'</span>
+    <span class="n">include_package_data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">python_requires</span><span class="o">=</span><span class="s2">&quot;&gt;=3.6&quot;</span><span class="p">,</span>
+    <span class="n">install_requires</span><span class="o">=</span><span class="p">[</span>
+        <span class="s1">&#39;ipywidgets&gt;=7.0.0&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;pandas&gt;=1.0.0&#39;</span>
     <span class="p">],</span>
-    <span class="n">extras_require</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">'test'</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s1">'pytest&gt;=4.6'</span><span class="p">,</span>
-            <span class="s1">'pytest-cov'</span><span class="p">,</span>
-            <span class="s1">'nbval'</span><span class="p">,</span>
+    <span class="n">extras_require</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;test&#39;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s1">&#39;pytest&gt;=4.6&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;pytest-cov&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;nbval&#39;</span><span class="p">,</span>
         <span class="p">],</span>
-        <span class="s1">'examples'</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s1">'pandas'</span>
+        <span class="s1">&#39;examples&#39;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s1">&#39;pandas&#39;</span>
         <span class="p">],</span>
-        <span class="s1">'docs'</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s1">'jupyter_sphinx'</span><span class="p">,</span>
-            <span class="s1">'nbsphinx'</span><span class="p">,</span>
-            <span class="s1">'nbsphinx-link'</span><span class="p">,</span>
-            <span class="s1">'pytest_check_links'</span><span class="p">,</span>
-            <span class="s1">'pypandoc'</span><span class="p">,</span>
-            <span class="s1">'recommonmark'</span><span class="p">,</span>
-            <span class="s1">'sphinx&gt;=1.5'</span><span class="p">,</span>
-            <span class="s1">'sphinx-autobuild'</span><span class="p">,</span>
-            <span class="s1">'sphinx_rtd_theme'</span><span class="p">,</span>
-            <span class="s1">'myst_parser'</span><span class="p">,</span>
-            <span class="s1">'furo'</span><span class="p">,</span>
+        <span class="s1">&#39;docs&#39;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s1">&#39;jupyter_sphinx&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;nbsphinx&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;nbsphinx-link&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;myst-parser&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;pytest_check_links&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;pypandoc&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;recommonmark&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;sphinx&gt;=1.5&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;sphinx-autobuild&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;sphinx_rtd_theme&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;furo&#39;</span><span class="p">,</span>
         <span class="p">],</span>
     <span class="p">},</span>
-    <span class="n">entry_points</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>
     <span class="p">},</span>
 <span class="p">)</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">setup</span><span class="p">(</span><span class="o">**</span><span class="n">setup_args</span><span class="p">)</span>
 </pre></div>
         </article>
@@ -415,6 +421,7 @@
 </div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/thebelab-helper.js"></script>
