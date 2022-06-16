@@ -1,17 +1,17 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="InteractiveMolecule" href="InteractiveMolecule.html" /><link rel="prev" title="Widgets" href="index.html" />
 
-    <link rel="shortcut icon" href="../_static/favicon.ico"/><meta name="generator" content="sphinx-4.5.0, furo 2022.03.04"/>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>Histogram - Trident Chemwidgets - Docs v0.1</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
 
@@ -44,10 +44,12 @@
   }
 </style></head>
   <body>
+    
     <script>
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
@@ -217,7 +219,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -232,11 +235,11 @@
         </div>
         <article role="main">
           <section id="histogram">
-<h1>Histogram<a class="headerlink" href="#histogram" title="Permalink to this headline">#</a></h1>
+<h1>Histogram<a class="headerlink" href="#histogram" title="Permalink to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="trident_chemwidgets.Histogram">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">trident_chemwidgets.</span></span><span class="sig-name descname"><span class="pre">Histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trident_chemwidgets/widgets/histogram.html#Histogram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#trident_chemwidgets.Histogram" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ipywidgets.widgets.domwidget.DOMWidget</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">trident_chemwidgets.</span></span><span class="sig-name descname"><span class="pre">Histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.10)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/trident_chemwidgets/widgets/histogram.html#Histogram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#trident_chemwidgets.Histogram" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">DOMWidget</span></code></p>
 <p>Plot an interactive histogram based on the distribution of the given
 data and the selected variable.</p>
 <p>The histogram will be displayed to the left of the cell output, with a
@@ -251,14 +254,21 @@ of each molecule.</p></li>
 <li><p><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Name of the column used to generate the x-axis of the histogram.</p></li>
 <li><p><strong>x_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Label for the x-axis of the histogram, defaults to the
 value of <cite>x</cite> if not provided.</p></li>
+<li><p><strong>x_date_format</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Date format string to display datetime values on the
+x axis.</p></li>
 </ul>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Valid date format strings for the <cite>x_date_format</cite> arguments can be found
+here: <a class="reference external" href="https://github.com/d3/d3-time-format#locale_format">https://github.com/d3/d3-time-format#locale_format</a>. For example,
+a common date format string might be ‘%Y-%m-%d’ to display
+the 4-digit year, 2-digit month, and 2-digit day (i.e. 2021-12-25).</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">trident_chemwidgets</span> <span class="k">as</span> <span class="nn">tcw</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">PATH</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">histogram</span> <span class="o">=</span> <span class="n">tcw</span><span class="o">.</span><span class="n">Histogram</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">smiles</span><span class="o">=</span><span class="s1">'smiles'</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">'tpsa'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">histogram</span> <span class="o">=</span> <span class="n">tcw</span><span class="o">.</span><span class="n">Histogram</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">smiles</span><span class="o">=</span><span class="s1">&#39;smiles&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;tpsa&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">histogram</span>
 </pre></div>
 </div>
@@ -267,21 +277,23 @@ value of <cite>x</cite> if not provided.</p></li>
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">selection</span></span><a class="headerlink" href="#trident_chemwidgets.Histogram.selection" title="Permalink to this definition">#</a></dt>
 <dd><p>Current selection of molecules made by the user.</p>
 </dd></dl>
+
 </dd></dl>
+
 <section id="interaction-features">
-<h2>Interaction features<a class="headerlink" href="#interaction-features" title="Permalink to this headline">#</a></h2>
-<p><img alt="Histogram interface" src="../_images/Histogram.png"/></p>
+<h2>Interaction features<a class="headerlink" href="#interaction-features" title="Permalink to this heading">#</a></h2>
+<p><img alt="Histogram interface" src="../_images/Histogram.png" /></p>
 <section id="selecting-data">
-<h3>Selecting data<a class="headerlink" href="#selecting-data" title="Permalink to this headline">#</a></h3>
+<h3>Selecting data<a class="headerlink" href="#selecting-data" title="Permalink to this heading">#</a></h3>
 <p>Once the widget renders, click and drag within the plot area to select a subset of the data.
 The selected data points will change color to teal.</p>
 </section>
 <section id="displaying-selected-structures">
-<h3>Displaying selected structures<a class="headerlink" href="#displaying-selected-structures" title="Permalink to this headline">#</a></h3>
+<h3>Displaying selected structures<a class="headerlink" href="#displaying-selected-structures" title="Permalink to this heading">#</a></h3>
 <p>Once a subset of the data has been selected, you can then press the <code class="docutils literal notranslate"><span class="pre">SHOW</span> <span class="pre">STRUCTURES</span></code> button to display a gallery of the selected structures in the space to the right of the plot.</p>
 </section>
 <section id="saving-selected-subset-to-selection-property">
-<h3>Saving selected subset to <code class="docutils literal notranslate"><span class="pre">selection</span></code> property<a class="headerlink" href="#saving-selected-subset-to-selection-property" title="Permalink to this headline">#</a></h3>
+<h3>Saving selected subset to <code class="docutils literal notranslate"><span class="pre">selection</span></code> property<a class="headerlink" href="#saving-selected-subset-to-selection-property" title="Permalink to this heading">#</a></h3>
 <p>You can save the current selection of data by clicking <code class="docutils literal notranslate"><span class="pre">SAVE</span> <span class="pre">SELECTION</span></code>.
 This action will make current subset of the data available using the <code class="docutils literal notranslate"><span class="pre">selection</span></code> property of the widget.
 To clear the current selection, click anywhere in the plot area.
@@ -289,7 +301,7 @@ Note that if you clicked <code class="docutils literal notranslate"><span class=
 </section>
 </section>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h2>
 <p>See <a class="reference internal" href="../examples/Histogram_widget.html"><span class="doc std std-doc">Using the Histogram widget</span></a>.</p>
 </section>
 </section>
@@ -373,6 +385,7 @@ Note that if you clicked <code class="docutils literal notranslate"><span class=
 </div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/thebelab-helper.js"></script>
