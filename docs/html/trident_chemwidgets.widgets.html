@@ -1,17 +1,17 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="trident_chemwidgets.tests package" href="trident_chemwidgets.tests.html" />
 
-    <link rel="shortcut icon" href="_static/favicon.ico"/><meta name="generator" content="sphinx-4.5.0, furo 2022.03.04"/>
+    <link rel="shortcut icon" href="_static/favicon.ico"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>trident_chemwidgets.widgets package - Trident Chemwidgets - Docs v0.1</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/thebelab.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
 
@@ -44,10 +44,12 @@
   }
 </style></head>
   <body>
+    
     <script>
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
@@ -217,7 +219,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -232,16 +235,16 @@
         </div>
         <article role="main">
           <section id="trident-chemwidgets-widgets-package">
-<h1>trident_chemwidgets.widgets package<a class="headerlink" href="#trident-chemwidgets-widgets-package" title="Permalink to this headline">#</a></h1>
+<h1>trident_chemwidgets.widgets package<a class="headerlink" href="#trident-chemwidgets-widgets-package" title="Permalink to this heading">#</a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">#</a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="module-trident_chemwidgets.widgets.histogram">
-<span id="trident-chemwidgets-widgets-histogram-module"></span><h2>trident_chemwidgets.widgets.histogram module<a class="headerlink" href="#module-trident_chemwidgets.widgets.histogram" title="Permalink to this headline">#</a></h2>
+<span id="trident-chemwidgets-widgets-histogram-module"></span><h2>trident_chemwidgets.widgets.histogram module<a class="headerlink" href="#module-trident_chemwidgets.widgets.histogram" title="Permalink to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="trident_chemwidgets.widgets.histogram.Histogram">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">trident_chemwidgets.widgets.histogram.</span></span><span class="sig-name descname"><span class="pre">Histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/trident_chemwidgets/widgets/histogram.html#Histogram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#trident_chemwidgets.widgets.histogram.Histogram" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ipywidgets.widgets.domwidget.DOMWidget</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">trident_chemwidgets.widgets.histogram.</span></span><span class="sig-name descname"><span class="pre">Histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.10)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/trident_chemwidgets/widgets/histogram.html#Histogram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#trident_chemwidgets.widgets.histogram.Histogram" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">DOMWidget</span></code></p>
 <p>Plot an interactive histogram based on the distribution of the given
 data and the selected variable.</p>
 <p>The histogram will be displayed to the left of the cell output, with a
@@ -256,14 +259,21 @@ of each molecule.</p></li>
 <li><p><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Name of the column used to generate the x-axis of the histogram.</p></li>
 <li><p><strong>x_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Label for the x-axis of the histogram, defaults to the
 value of <cite>x</cite> if not provided.</p></li>
+<li><p><strong>x_date_format</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Date format string to display datetime values on the
+x axis.</p></li>
 </ul>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Valid date format strings for the <cite>x_date_format</cite> arguments can be found
+here: <a class="reference external" href="https://github.com/d3/d3-time-format#locale_format">https://github.com/d3/d3-time-format#locale_format</a>. For example,
+a common date format string might be ‘%Y-%m-%d’ to display
+the 4-digit year, 2-digit month, and 2-digit day (i.e. 2021-12-25).</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">trident_chemwidgets</span> <span class="k">as</span> <span class="nn">tcw</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">PATH</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">histogram</span> <span class="o">=</span> <span class="n">tcw</span><span class="o">.</span><span class="n">Histogram</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">smiles</span><span class="o">=</span><span class="s1">'smiles'</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">'tpsa'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">histogram</span> <span class="o">=</span> <span class="n">tcw</span><span class="o">.</span><span class="n">Histogram</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">smiles</span><span class="o">=</span><span class="s1">&#39;smiles&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;tpsa&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">histogram</span>
 </pre></div>
 </div>
@@ -282,6 +292,7 @@ you may use a custom validator method.</p>
 <p><span class="versionmodified changed">Changed in version 5.0: </span>Deprecated ambiguous <code class="docutils literal notranslate"><span class="pre">trait</span></code>, <code class="docutils literal notranslate"><span class="pre">traits</span></code> args in favor of <code class="docutils literal notranslate"><span class="pre">value_trait</span></code>, <code class="docutils literal notranslate"><span class="pre">per_key_traits</span></code>.</p>
 </div>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="trident_chemwidgets.widgets.histogram.Histogram.prep_data_for_plot">
 <span class="sig-name descname"><span class="pre">prep_data_for_plot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/trident_chemwidgets/widgets/histogram.html#Histogram.prep_data_for_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#trident_chemwidgets.widgets.histogram.Histogram.prep_data_for_plot" title="Permalink to this definition">#</a></dt>
@@ -296,29 +307,46 @@ into dict and will be used by React to generate the histogram.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="trident_chemwidgets.widgets.histogram.Histogram.savedSelected">
 <span class="sig-name descname"><span class="pre">savedSelected</span></span><a class="headerlink" href="#trident_chemwidgets.widgets.histogram.Histogram.savedSelected" title="Permalink to this definition">#</a></dt>
 <dd><p>An instance of a Python list.</p>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="trident_chemwidgets.widgets.histogram.Histogram.selection">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">selection</span></span><a class="headerlink" href="#trident_chemwidgets.widgets.histogram.Histogram.selection" title="Permalink to this definition">#</a></dt>
 <dd><p>Current selection of molecules made by the user.</p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="trident_chemwidgets.widgets.histogram.Histogram.x_format_date_string">
+<span class="sig-name descname"><span class="pre">x_format_date_string</span></span><a class="headerlink" href="#trident_chemwidgets.widgets.histogram.Histogram.x_format_date_string" title="Permalink to this definition">#</a></dt>
+<dd><p>A trait for unicode strings.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="trident_chemwidgets.widgets.histogram.Histogram.x_is_date">
+<span class="sig-name descname"><span class="pre">x_is_date</span></span><a class="headerlink" href="#trident_chemwidgets.widgets.histogram.Histogram.x_is_date" title="Permalink to this definition">#</a></dt>
+<dd><p>A boolean (True, False) trait.</p>
+</dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="trident_chemwidgets.widgets.histogram.Histogram.x_label">
 <span class="sig-name descname"><span class="pre">x_label</span></span><a class="headerlink" href="#trident_chemwidgets.widgets.histogram.Histogram.x_label" title="Permalink to this definition">#</a></dt>
 <dd><p>A trait for unicode strings.</p>
 </dd></dl>
+
 </dd></dl>
+
 </section>
 <section id="module-trident_chemwidgets.widgets.interactive_molecule">
-<span id="trident-chemwidgets-widgets-interactive-molecule-module"></span><h2>trident_chemwidgets.widgets.interactive_molecule module<a class="headerlink" href="#module-trident_chemwidgets.widgets.interactive_molecule" title="Permalink to this headline">#</a></h2>
+<span id="trident-chemwidgets-widgets-interactive-molecule-module"></span><h2>trident_chemwidgets.widgets.interactive_molecule module<a class="headerlink" href="#module-trident_chemwidgets.widgets.interactive_molecule" title="Permalink to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="trident_chemwidgets.widgets.interactive_molecule.InteractiveMolecule">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">trident_chemwidgets.widgets.interactive_molecule.</span></span><span class="sig-name descname"><span class="pre">InteractiveMolecule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/trident_chemwidgets/widgets/interactive_molecule.html#InteractiveMolecule"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#trident_chemwidgets.widgets.interactive_molecule.InteractiveMolecule" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ipywidgets.widgets.domwidget.DOMWidget</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">trident_chemwidgets.widgets.interactive_molecule.</span></span><span class="sig-name descname"><span class="pre">InteractiveMolecule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.10)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/trident_chemwidgets/widgets/interactive_molecule.html#InteractiveMolecule"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#trident_chemwidgets.widgets.interactive_molecule.InteractiveMolecule" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">DOMWidget</span></code></p>
 <p>Plot an interactive molecule where the user can view properties associated
 with each constituent atom.</p>
 <p>A drawing of the target molecule will be displayed to the left of the cell
@@ -337,7 +365,7 @@ containing the data for each atom.</p></li>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">trident_chemwidgets</span> <span class="k">as</span> <span class="nn">tcw</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">atom_data</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># Atom data in a list of dicts or pd.DataFrame</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">imol</span> <span class="o">=</span> <span class="n">tcw</span><span class="o">.</span><span class="n">InteractiveMolecule</span><span class="p">(</span><span class="s1">'CCCCC'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">atom_data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">imol</span> <span class="o">=</span> <span class="n">tcw</span><span class="o">.</span><span class="n">InteractiveMolecule</span><span class="p">(</span><span class="s1">&#39;CCCCC&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">atom_data</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">imol</span> <span class="c1"># Plot the actual widget on the notebook/lab</span>
 </pre></div>
 </div>
@@ -346,9 +374,10 @@ containing the data for each atom.</p></li>
 <span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#trident_chemwidgets.widgets.interactive_molecule.InteractiveMolecule.data" title="Permalink to this definition">#</a></dt>
 <dd><p>An instance of a Python list.</p>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="trident_chemwidgets.widgets.interactive_molecule.InteractiveMolecule.prepare_data">
-<span class="sig-name descname"><span class="pre">prepare_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pandas.core.frame.DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><span class="pre">List</span></a></span></span><a class="reference internal" href="_modules/trident_chemwidgets/widgets/interactive_molecule.html#InteractiveMolecule.prepare_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#trident_chemwidgets.widgets.interactive_molecule.InteractiveMolecule.prepare_data" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">prepare_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DataFrame</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.10)"><span class="pre">List</span></a></span></span><a class="reference internal" href="_modules/trident_chemwidgets/widgets/interactive_molecule.html#InteractiveMolecule.prepare_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#trident_chemwidgets.widgets.interactive_molecule.InteractiveMolecule.prepare_data" title="Permalink to this definition">#</a></dt>
 <dd><p>Transforms a dataset from the dataframe format to a list
 of dictionaries that will be interpreted by React.</p>
 <dl class="field-list simple">
@@ -363,19 +392,22 @@ of dictionaries that will be interpreted by React.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="trident_chemwidgets.widgets.interactive_molecule.InteractiveMolecule.smiles">
 <span class="sig-name descname"><span class="pre">smiles</span></span><a class="headerlink" href="#trident_chemwidgets.widgets.interactive_molecule.InteractiveMolecule.smiles" title="Permalink to this definition">#</a></dt>
 <dd><p>A trait for unicode strings.</p>
 </dd></dl>
+
 </dd></dl>
+
 </section>
 <section id="module-trident_chemwidgets.widgets.jsme">
-<span id="trident-chemwidgets-widgets-jsme-module"></span><h2>trident_chemwidgets.widgets.jsme module<a class="headerlink" href="#module-trident_chemwidgets.widgets.jsme" title="Permalink to this headline">#</a></h2>
+<span id="trident-chemwidgets-widgets-jsme-module"></span><h2>trident_chemwidgets.widgets.jsme module<a class="headerlink" href="#module-trident_chemwidgets.widgets.jsme" title="Permalink to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="trident_chemwidgets.widgets.jsme.JSME">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">trident_chemwidgets.widgets.jsme.</span></span><span class="sig-name descname"><span class="pre">JSME</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/trident_chemwidgets/widgets/jsme.html#JSME"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#trident_chemwidgets.widgets.jsme.JSME" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ipywidgets.widgets.domwidget.DOMWidget</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">trident_chemwidgets.widgets.jsme.</span></span><span class="sig-name descname"><span class="pre">JSME</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.10)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/trident_chemwidgets/widgets/jsme.html#JSME"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#trident_chemwidgets.widgets.jsme.JSME" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">DOMWidget</span></code></p>
 <p>Display the JSME editor and sync drawn molecule SMILES strings to
 Python.</p>
 <p>The JSME interface will be displayed to the left of the cell output, with a
@@ -404,7 +436,7 @@ smiles using the <cite>smiles</cite> property of the widget.</p>
 generate derivatives. At any point, you can reset the input
 window to this predefined base smiles value by clicking the
 <cite>RESET TO BASE SMILES</cite> button beneath the input window.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">jsme</span> <span class="o">=</span> <span class="n">tcw</span><span class="o">.</span><span class="n">JSME</span><span class="p">(</span><span class="n">base_smiles</span><span class="o">=</span><span class="s1">'CC(C)Cc1ccc(cc1)[C@@H](C)C(=O)O'</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">jsme</span> <span class="o">=</span> <span class="n">tcw</span><span class="o">.</span><span class="n">JSME</span><span class="p">(</span><span class="n">base_smiles</span><span class="o">=</span><span class="s1">&#39;CC(C)Cc1ccc(cc1)[C@@H](C)C(=O)O&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">jsme</span>
 </pre></div>
 </div>
@@ -413,19 +445,22 @@ window to this predefined base smiles value by clicking the
 <span class="sig-name descname"><span class="pre">base_smiles</span></span><a class="headerlink" href="#trident_chemwidgets.widgets.jsme.JSME.base_smiles" title="Permalink to this definition">#</a></dt>
 <dd><p>A trait for unicode strings.</p>
 </dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="trident_chemwidgets.widgets.jsme.JSME.smiles">
 <span class="sig-name descname"><span class="pre">smiles</span></span><a class="headerlink" href="#trident_chemwidgets.widgets.jsme.JSME.smiles" title="Permalink to this definition">#</a></dt>
 <dd><p>An instance of a Python list.</p>
 </dd></dl>
+
 </dd></dl>
+
 </section>
 <section id="module-trident_chemwidgets.widgets.scatter">
-<span id="trident-chemwidgets-widgets-scatter-module"></span><h2>trident_chemwidgets.widgets.scatter module<a class="headerlink" href="#module-trident_chemwidgets.widgets.scatter" title="Permalink to this headline">#</a></h2>
+<span id="trident-chemwidgets-widgets-scatter-module"></span><h2>trident_chemwidgets.widgets.scatter module<a class="headerlink" href="#module-trident_chemwidgets.widgets.scatter" title="Permalink to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="trident_chemwidgets.widgets.scatter.Scatter">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">trident_chemwidgets.widgets.scatter.</span></span><span class="sig-name descname"><span class="pre">Scatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/trident_chemwidgets/widgets/scatter.html#Scatter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#trident_chemwidgets.widgets.scatter.Scatter" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ipywidgets.widgets.domwidget.DOMWidget</span></code></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">trident_chemwidgets.widgets.scatter.</span></span><span class="sig-name descname"><span class="pre">Scatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.10)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/trident_chemwidgets/widgets/scatter.html#Scatter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#trident_chemwidgets.widgets.scatter.Scatter" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">DOMWidget</span></code></p>
 <p>Plot an interactive scatter plot based on the given data and
 the selected variables to generate the axis.</p>
 <p>The scatter plot will be displayed to the left of the cell output, with a
@@ -441,18 +476,31 @@ string of each molecule.</p></li>
 of the scatter plot.</p></li>
 <li><p><strong>y</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Name of the column used to generate the y-axis
 of the scatter plot.</p></li>
-<li><p><strong>x_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Label for the x-axis of the histogram, defaults to the
-value of <cite>x</cite> if not provided.</p></li>
-<li><p><strong>y_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Label for the y-axis of the histogram, defaults to the
-value of <cite>y</cite> if not provided.</p></li>
+<li><p><strong>hue</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Name of the column used to color the points
+of the scatter plot.</p></li>
+<li><p><strong>x_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Label for the x-axis of the histogram,
+defaults to the value of <cite>x</cite> if not provided.</p></li>
+<li><p><strong>y_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Label for the y-axis of the histogram,
+defaults to the value of <cite>y</cite> if not provided.</p></li>
+<li><p><strong>hue_label</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Label for the point colors of the histogram,
+defaults to the value of <cite>hue</cite> if not provided.</p></li>
+<li><p><strong>x_date_format</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Date format string to display datetime values on the
+x axis.</p></li>
+<li><p><strong>y_date_format</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Date format string to display datetime values on the
+y axis.</p></li>
 </ul>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>Valid date format strings for the <cite>x_date_format</cite> and <cite>y_date_format</cite>
+arguments can be found here: <a class="reference external" href="https://github.com/d3/d3-time-format#locale_format">https://github.com/d3/d3-time-format#locale_format</a>.
+For example, a common date format string might be ‘%Y-%m-%d’ to display
+the 4-digit year, 2-digit month, and 2-digit day (i.e. 2021-12-25).</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">trident_chemwidgets</span> <span class="k">as</span> <span class="nn">tcw</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">PATH</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">scatter</span> <span class="o">=</span> <span class="n">tcw</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">smiles</span><span class="o">=</span><span class="s1">'smiles'</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">'mwt'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'logp'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scatter</span> <span class="o">=</span> <span class="n">tcw</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">smiles</span><span class="o">=</span><span class="s1">&#39;smiles&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;mwt&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;logp&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">scatter</span>
 </pre></div>
 </div>
@@ -471,6 +519,31 @@ you may use a custom validator method.</p>
 <p><span class="versionmodified changed">Changed in version 5.0: </span>Deprecated ambiguous <code class="docutils literal notranslate"><span class="pre">trait</span></code>, <code class="docutils literal notranslate"><span class="pre">traits</span></code> args in favor of <code class="docutils literal notranslate"><span class="pre">value_trait</span></code>, <code class="docutils literal notranslate"><span class="pre">per_key_traits</span></code>.</p>
 </div>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="trident_chemwidgets.widgets.scatter.Scatter.hue_label">
+<span class="sig-name descname"><span class="pre">hue_label</span></span><a class="headerlink" href="#trident_chemwidgets.widgets.scatter.Scatter.hue_label" title="Permalink to this definition">#</a></dt>
+<dd><p>A trait for unicode strings.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="trident_chemwidgets.widgets.scatter.Scatter.hue_max">
+<span class="sig-name descname"><span class="pre">hue_max</span></span><a class="headerlink" href="#trident_chemwidgets.widgets.scatter.Scatter.hue_max" title="Permalink to this definition">#</a></dt>
+<dd><p>A float trait.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="trident_chemwidgets.widgets.scatter.Scatter.hue_min">
+<span class="sig-name descname"><span class="pre">hue_min</span></span><a class="headerlink" href="#trident_chemwidgets.widgets.scatter.Scatter.hue_min" title="Permalink to this definition">#</a></dt>
+<dd><p>A float trait.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="trident_chemwidgets.widgets.scatter.Scatter.hue_type">
+<span class="sig-name descname"><span class="pre">hue_type</span></span><a class="headerlink" href="#trident_chemwidgets.widgets.scatter.Scatter.hue_type" title="Permalink to this definition">#</a></dt>
+<dd><p>A trait for unicode strings.</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="trident_chemwidgets.widgets.scatter.Scatter.prep_data_for_plot">
 <span class="sig-name descname"><span class="pre">prep_data_for_plot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/trident_chemwidgets/widgets/scatter.html#Scatter.prep_data_for_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#trident_chemwidgets.widgets.scatter.Scatter.prep_data_for_plot" title="Permalink to this definition">#</a></dt>
@@ -484,30 +557,60 @@ you may use a custom validator method.</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="trident_chemwidgets.widgets.scatter.Scatter.savedSelected">
 <span class="sig-name descname"><span class="pre">savedSelected</span></span><a class="headerlink" href="#trident_chemwidgets.widgets.scatter.Scatter.savedSelected" title="Permalink to this definition">#</a></dt>
 <dd><p>An instance of a Python list.</p>
 </dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="trident_chemwidgets.widgets.scatter.Scatter.selection">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">selection</span></span><a class="headerlink" href="#trident_chemwidgets.widgets.scatter.Scatter.selection" title="Permalink to this definition">#</a></dt>
 <dd><p>Current selection of molecules made by the user.</p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="trident_chemwidgets.widgets.scatter.Scatter.x_format_date_string">
+<span class="sig-name descname"><span class="pre">x_format_date_string</span></span><a class="headerlink" href="#trident_chemwidgets.widgets.scatter.Scatter.x_format_date_string" title="Permalink to this definition">#</a></dt>
+<dd><p>A trait for unicode strings.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="trident_chemwidgets.widgets.scatter.Scatter.x_is_date">
+<span class="sig-name descname"><span class="pre">x_is_date</span></span><a class="headerlink" href="#trident_chemwidgets.widgets.scatter.Scatter.x_is_date" title="Permalink to this definition">#</a></dt>
+<dd><p>A boolean (True, False) trait.</p>
+</dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="trident_chemwidgets.widgets.scatter.Scatter.x_label">
 <span class="sig-name descname"><span class="pre">x_label</span></span><a class="headerlink" href="#trident_chemwidgets.widgets.scatter.Scatter.x_label" title="Permalink to this definition">#</a></dt>
 <dd><p>A trait for unicode strings.</p>
 </dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="trident_chemwidgets.widgets.scatter.Scatter.y_format_date_string">
+<span class="sig-name descname"><span class="pre">y_format_date_string</span></span><a class="headerlink" href="#trident_chemwidgets.widgets.scatter.Scatter.y_format_date_string" title="Permalink to this definition">#</a></dt>
+<dd><p>A trait for unicode strings.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="trident_chemwidgets.widgets.scatter.Scatter.y_is_date">
+<span class="sig-name descname"><span class="pre">y_is_date</span></span><a class="headerlink" href="#trident_chemwidgets.widgets.scatter.Scatter.y_is_date" title="Permalink to this definition">#</a></dt>
+<dd><p>A boolean (True, False) trait.</p>
+</dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="trident_chemwidgets.widgets.scatter.Scatter.y_label">
 <span class="sig-name descname"><span class="pre">y_label</span></span><a class="headerlink" href="#trident_chemwidgets.widgets.scatter.Scatter.y_label" title="Permalink to this definition">#</a></dt>
 <dd><p>A trait for unicode strings.</p>
 </dd></dl>
+
 </dd></dl>
+
 </section>
 <section id="module-trident_chemwidgets.widgets">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-trident_chemwidgets.widgets" title="Permalink to this headline">#</a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-trident_chemwidgets.widgets" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -581,6 +684,7 @@ you may use a custom validator method.</p>
 </div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/thebelab-helper.js"></script>

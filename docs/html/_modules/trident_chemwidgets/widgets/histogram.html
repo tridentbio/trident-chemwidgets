@@ -1,16 +1,16 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
-    <link rel="shortcut icon" href="../../../_static/favicon.ico"/><meta name="generator" content="sphinx-4.5.0, furo 2022.03.04"/>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>trident_chemwidgets.widgets.histogram - Trident Chemwidgets - Docs v0.1</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/thebelab.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
 
@@ -43,10 +43,12 @@
   }
 </style></head>
   <body>
+    
     <script>
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
@@ -216,7 +218,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -231,13 +234,14 @@
         </div>
         <article role="main">
           <h1>Source code for trident_chemwidgets.widgets.histogram</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">DOMWidget</span>
-<span class="kn">from</span> <span class="nn">traitlets</span> <span class="kn">import</span> <span class="n">Unicode</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Float</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Integer</span>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">DOMWidget</span>
+<span class="kn">from</span> <span class="nn">traitlets</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Bool</span><span class="p">,</span> <span class="n">Unicode</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Float</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Integer</span>
 <span class="kn">from</span> <span class="nn">.._frontend</span> <span class="kn">import</span> <span class="n">module_name</span><span class="p">,</span> <span class="n">module_version</span>
 
 
 <div class="viewcode-block" id="Histogram"><a class="viewcode-back" href="../../../widgets/Histogram.html#trident_chemwidgets.widgets.histogram.Histogram">[docs]</a><span class="k">class</span> <span class="nc">Histogram</span><span class="p">(</span><span class="n">DOMWidget</span><span class="p">):</span>
-    <span class="sd">"""Plot an interactive histogram based on the distribution of the given</span>
+    <span class="sd">&quot;&quot;&quot;Plot an interactive histogram based on the distribution of the given</span>
 <span class="sd">    data and the selected variable.</span>
 
 <span class="sd">    The histogram will be displayed to the left of the cell output, with a</span>
@@ -251,66 +255,103 @@
 <span class="sd">        x (str): Name of the column used to generate the x-axis of the histogram.</span>
 <span class="sd">        x_label (str): Label for the x-axis of the histogram, defaults to the</span>
 <span class="sd">            value of `x` if not provided.</span>
+<span class="sd">        x_date_format (str): Date format string to display datetime values on the</span>
+<span class="sd">            x axis.</span>
+
+<span class="sd">    Notes:</span>
+<span class="sd">        Valid date format strings for the `x_date_format` arguments can be found</span>
+<span class="sd">        here: https://github.com/d3/d3-time-format#locale_format. For example,</span>
+<span class="sd">        a common date format string might be &#39;%Y-%m-%d&#39; to display</span>
+<span class="sd">        the 4-digit year, 2-digit month, and 2-digit day (i.e. 2021-12-25).  </span>
 
 <span class="sd">    Examples:</span>
 <span class="sd">        &gt;&gt;&gt; import trident_chemwidgets as tcw</span>
 <span class="sd">        &gt;&gt;&gt; import pandas as pd</span>
 <span class="sd">        &gt;&gt;&gt; dataset = pd.read_csv(PATH)</span>
-<span class="sd">        &gt;&gt;&gt; histogram = tcw.Histogram(data=dataset, smiles='smiles', x='tpsa')</span>
+<span class="sd">        &gt;&gt;&gt; histogram = tcw.Histogram(data=dataset, smiles=&#39;smiles&#39;, x=&#39;tpsa&#39;)</span>
 <span class="sd">        &gt;&gt;&gt; histogram</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">_model_name</span> <span class="o">=</span> <span class="n">Unicode</span><span class="p">(</span><span class="s1">'HistogramModel'</span><span class="p">)</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">_model_name</span> <span class="o">=</span> <span class="n">Unicode</span><span class="p">(</span><span class="s1">&#39;HistogramModel&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">_model_module</span> <span class="o">=</span> <span class="n">Unicode</span><span class="p">(</span><span class="n">module_name</span><span class="p">)</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">_model_module_version</span> <span class="o">=</span> <span class="n">Unicode</span><span class="p">(</span><span class="n">module_version</span><span class="p">)</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">_view_name</span> <span class="o">=</span> <span class="n">Unicode</span><span class="p">(</span><span class="s1">'HistogramView'</span><span class="p">)</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">_view_name</span> <span class="o">=</span> <span class="n">Unicode</span><span class="p">(</span><span class="s1">&#39;HistogramView&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">_view_module</span> <span class="o">=</span> <span class="n">Unicode</span><span class="p">(</span><span class="n">module_name</span><span class="p">)</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">_view_module_version</span> <span class="o">=</span> <span class="n">Unicode</span><span class="p">(</span><span class="n">module_version</span><span class="p">)</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="c1"># Handle passing data</span>
-    <span class="n">x_label</span> <span class="o">=</span> <span class="n">Unicode</span><span class="p">(</span><span class="s1">'x'</span><span class="p">)</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">x_label</span> <span class="o">=</span> <span class="n">Unicode</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">x_is_date</span> <span class="o">=</span> <span class="n">Bool</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">x_format_date_string</span> <span class="o">=</span> <span class="n">Unicode</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
     <span class="n">data</span> <span class="o">=</span> <span class="n">Dict</span><span class="p">(</span><span class="n">per_key_traits</span><span class="o">=</span><span class="p">{</span>
-        <span class="s1">'points'</span><span class="p">:</span> <span class="n">List</span><span class="p">(</span><span class="n">trait</span><span class="o">=</span><span class="n">Dict</span><span class="p">(</span><span class="n">per_key_traits</span><span class="o">=</span><span class="p">{</span>
-            <span class="s1">'index'</span><span class="p">:</span> <span class="n">Integer</span><span class="p">(),</span>
-            <span class="s1">'smiles'</span><span class="p">:</span> <span class="n">Unicode</span><span class="p">(),</span>
-            <span class="s1">'x'</span><span class="p">:</span> <span class="n">Float</span><span class="p">()</span>
+        <span class="s1">&#39;points&#39;</span><span class="p">:</span> <span class="n">List</span><span class="p">(</span><span class="n">trait</span><span class="o">=</span><span class="n">Dict</span><span class="p">(</span><span class="n">per_key_traits</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="n">Integer</span><span class="p">(),</span>
+            <span class="s1">&#39;smiles&#39;</span><span class="p">:</span> <span class="n">Unicode</span><span class="p">(),</span>
+            <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">Any</span><span class="p">()</span>
         <span class="p">}))</span>
     <span class="p">})</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="n">savedSelected</span> <span class="o">=</span> <span class="n">List</span><span class="p">(</span><span class="n">trait</span><span class="o">=</span><span class="n">Integer</span><span class="p">())</span><span class="o">.</span><span class="n">tag</span><span class="p">(</span><span class="n">sync</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">smiles</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x_label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+        <span class="n">smiles</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">x_label</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">x_date_format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_smiles_col</span> <span class="o">=</span> <span class="n">smiles</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_x_col</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x_label</span> <span class="o">=</span> <span class="n">x_label</span> <span class="k">if</span> <span class="n">x_label</span> <span class="k">else</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_format_x_date</span> <span class="o">=</span> <span class="n">x_date_format</span> <span class="k">if</span> <span class="n">x_date_format</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">data</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prep_data_for_plot</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">x_label</span> <span class="o">=</span> <span class="n">x_label</span> <span class="k">if</span> <span class="n">x_label</span> <span class="k">else</span> <span class="n">x</span>
 
 <div class="viewcode-block" id="Histogram.prep_data_for_plot"><a class="viewcode-back" href="../../../trident_chemwidgets.widgets.html#trident_chemwidgets.widgets.histogram.Histogram.prep_data_for_plot">[docs]</a>    <span class="k">def</span> <span class="nf">prep_data_for_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">"""Transforms and correctly selects the data that will be transformed</span>
+        <span class="sd">&quot;&quot;&quot;Transforms and correctly selects the data that will be transformed</span>
 <span class="sd">        into dict and will be used by React to generate the histogram.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            dict: data in dictionary format. </span>
-<span class="sd">        """</span>
-        <span class="n">data_list</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[[</span><span class="bp">self</span><span class="o">.</span><span class="n">_smiles_col</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x_col</span><span class="p">]]</span>
-                     <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_smiles_col</span><span class="p">:</span> <span class="s1">'smiles'</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_x_col</span><span class="p">:</span> <span class="s1">'x'</span><span class="p">})</span>
-                     <span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s1">'records'</span><span class="p">))</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+            <span class="s1">&#39;smiles&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_smiles_col</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span>
+            <span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_x_col</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="p">})</span>
+
+        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;object&#39;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># Try to convert each row to a date</span>
+                <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">])</span>
+                <span class="c1"># Otherwise we can consider that the column contains dates</span>
+                <span class="c1"># NOTE: we can&#39;t convert to date cause the Vega-side does this once</span>
+                <span class="c1"># we declare in the widget component to</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">x_is_date</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">x_format_date_string</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format_x_date</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">x_is_date</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="n">data_list</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;records&#39;</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data_list</span><span class="p">)):</span>
-            <span class="n">data_list</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">'index'</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+            <span class="n">data_list</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;index&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
 
-        <span class="n">data_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'points'</span><span class="p">:</span> <span class="n">data_list</span><span class="p">}</span>
+        <span class="n">data_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;points&#39;</span><span class="p">:</span> <span class="n">data_list</span><span class="p">}</span>
 
         <span class="k">return</span> <span class="n">data_dict</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">selection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">"""Current selection of molecules made by the user.</span>
-<span class="sd">        """</span>
+        <span class="sd">&quot;&quot;&quot;Current selection of molecules made by the user.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">savedSelected</span><span class="p">]</span></div>
 </pre></div>
         </article>
@@ -349,11 +390,12 @@
 </div><script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     <script src="../../../_static/thebelab-helper.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script src="../../../_static/helper.js"></script>
     <script src="../../../_static/embed-bundle.js"></script>
     </body>

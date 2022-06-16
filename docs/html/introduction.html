@@ -1,17 +1,17 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Installation" href="installing.html" /><link rel="prev" title="Trident Chemwidgets" href="index.html" />
 
-    <link rel="shortcut icon" href="_static/favicon.ico"/><meta name="generator" content="sphinx-4.5.0, furo 2022.03.04"/>
+    <link rel="shortcut icon" href="_static/favicon.ico"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>Introduction - Trident Chemwidgets - Docs v0.1</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/thebelab.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
 
@@ -44,10 +44,12 @@
   }
 </style></head>
   <body>
+    
     <script>
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
@@ -217,7 +219,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -232,7 +235,7 @@
         </div>
         <article role="main">
           <section id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
 <p>In cheminformatics, data visibility is paramount.
 Unfortunately, the data science and machine learning tools currently available do not support chemical datasets well out of the box.
 Standard plotting tools like Matplotlib, Seaborn, and Altair are great at showing data distributions, but come up short when connecting that data back to the underlying molecular structures.
@@ -240,7 +243,7 @@ Likewise, CSV inputs containing SMILES strings can be too cumbersome to test out
 <p>We created Trident Chemwidgets because were frustrated with the process of working with Chemical data in Python, and more specifically Jupyter.
 Without the ability to quickly input interesting chemical structures and understand the patterns in chemistry space that were underlying our data, our ML model development workflow was more bloated and slower than it needed to be.</p>
 <section id="inputs">
-<h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">#</a></h2>
+<h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this heading">#</a></h2>
 <p>We wanted it to be as easy as possible to input new structures into a notebook without having to open an external program, draw the structures, export them to to SMILES, and input import them into your notebook.
 In Chemwidgets, we provide an interface to the JSME molecule editor with a number of enhancements to make molecular input faster and easier.</p>
 <ul class="simple">
@@ -248,7 +251,7 @@ In Chemwidgets, we provide an interface to the JSME molecule editor with a numbe
 </ul>
 </section>
 <section id="data-visualization">
-<h2>Data visualization<a class="headerlink" href="#data-visualization" title="Permalink to this headline">#</a></h2>
+<h2>Data visualization<a class="headerlink" href="#data-visualization" title="Permalink to this heading">#</a></h2>
 <p>We’re starting with two of the most common visualizations: histograms and scatter plots.
 We provide widgets for each of these standard visualizations, but we couple them to interactive selection functionality that makes it easy for the user to subset their data and examine the molecular structures underpinning them.</p>
 <ul class="simple">
@@ -257,7 +260,7 @@ We provide widgets for each of these standard visualizations, but we couple them
 </ul>
 </section>
 <section id="outputs">
-<h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">#</a></h2>
+<h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this heading">#</a></h2>
 <p>Model interoperability is a growing concern in machine learning communities, but especially when it comes to models designed to create new drugs. We provide a widget to visualize a molecular structure overlayed with any form of data at the atom level. Our flexible interface allows the user to visualize and inspect attention scores, SHAP values, or almost any other per-atom model interoperability metric.</p>
 <ul class="simple">
 <li><p>Check out the <a class="reference internal" href="widgets/InteractiveMolecule.html"><span class="doc std std-doc">InteractiveMolecule widget</span></a></p></li>
@@ -340,6 +343,7 @@ We provide widgets for each of these standard visualizations, but we couple them
 </div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/scripts/furo.js"></script>
     <script src="_static/thebelab-helper.js"></script>

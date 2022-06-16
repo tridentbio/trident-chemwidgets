@@ -1,17 +1,17 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Using the JSME widget" href="JSME_widget.html" /><link rel="prev" title="Using the Histogram widget" href="Histogram_widget.html" />
 
-    <link rel="shortcut icon" href="../_static/favicon.ico"/><meta name="generator" content="sphinx-4.5.0, furo 2022.03.04"/>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/><meta name="generator" content="sphinx-5.0.1, furo 2022.06.04.1"/>
         <title>Using the InteractiveMolecule widget - Trident Chemwidgets - Docs v0.1</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
 
@@ -44,10 +44,12 @@
   }
 </style></head>
   <body>
+    
     <script>
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
@@ -217,7 +219,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -446,6 +449,7 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* Some additional styling taken form the Jupyter notebook CSS */
+.jp-RenderedHTMLCommon table,
 div.rendered_html table {
   border: none;
   border-collapse: collapse;
@@ -454,10 +458,14 @@ div.rendered_html table {
   font-size: 12px;
   table-layout: fixed;
 }
+.jp-RenderedHTMLCommon thead,
 div.rendered_html thead {
   border-bottom: 1px solid black;
   vertical-align: bottom;
 }
+.jp-RenderedHTMLCommon tr,
+.jp-RenderedHTMLCommon th,
+.jp-RenderedHTMLCommon td,
 div.rendered_html tr,
 div.rendered_html th,
 div.rendered_html td {
@@ -469,24 +477,27 @@ div.rendered_html td {
   max-width: none;
   border: none;
 }
+.jp-RenderedHTMLCommon th,
 div.rendered_html th {
   font-weight: bold;
 }
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
 div.rendered_html tbody tr:nth-child(odd) {
   background: #f5f5f5;
 }
+.jp-RenderedHTMLCommon tbody tr:hover,
 div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
 <section id="Using-the-InteractiveMolecule-widget">
-<h1>Using the InteractiveMolecule widget<a class="headerlink" href="#Using-the-InteractiveMolecule-widget" title="Permalink to this headline">#</a></h1>
+<h1>Using the InteractiveMolecule widget<a class="headerlink" href="#Using-the-InteractiveMolecule-widget" title="Permalink to this heading">#</a></h1>
 <p>For this example we need to install RDKit. Note that you will need conda to install RDKit.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>!conda install -c conda-forge rdkit
 </pre></div>
 </div>
 <p>Now we can import the <code class="docutils literal notranslate"><span class="pre">trident_chemwidgets</span></code> and the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> lib to import our csv dataset.</p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
@@ -495,6 +506,21 @@ div.rendered_html tbody tr:hover {
 <span class="kn">from</span> <span class="nn">rdkit</span> <span class="kn">import</span> <span class="n">Chem</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
+Input <span class="ansi-green-fg">In [1]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 3&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> <span class="ansi-bold" style="color: rgb(0,0,255)">trident_chemwidgets</span> <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> <span class="ansi-bold" style="color: rgb(0,0,255)">tcw</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> <span class="ansi-bold" style="color: rgb(0,0,255)">pandas</span> <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> <span class="ansi-bold" style="color: rgb(0,0,255)">pd</span>
+<span class="ansi-green-fg">----&gt; 3</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span> <span class="ansi-bold" style="color: rgb(0,0,255)">rdkit</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> Chem
+
+<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;rdkit&#39;
+</pre></div></div>
 </div>
 <p>Now we can create a small function to featurize our molecules with basic information per atom.</p>
 <p><strong>IMPORTANT:</strong> <em>the order of the data rows in the pandas DataFrame or dict must match the standard ordering of atoms as returned by the RDKit ``.GetAtoms()`` function.</em> You can generate this data any way you see fit (e.g. calculated values from RDKit as in the function below or attention values from a Graph Attention Network. The only constraint is the atom ordering. If you are using RDKit-based featurizers like those from DeepChem, this standard ordering should already be the default. Take care
@@ -506,11 +532,11 @@ when using cutom featurizers.</p>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">featurize_mol</span><span class="p">(</span><span class="n">smiles</span><span class="p">):</span>
     <span class="c1"># Init feature dict</span>
     <span class="n">feature_dict</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">'Chiral Tag'</span><span class="p">:</span> <span class="p">[],</span>
-        <span class="s1">'Formal Charge'</span><span class="p">:</span> <span class="p">[],</span>
-        <span class="s1">'Mass'</span><span class="p">:</span> <span class="p">[],</span>
-        <span class="s1">'Total Hs'</span><span class="p">:</span> <span class="p">[],</span>
-        <span class="s1">'Total Valence'</span><span class="p">:</span> <span class="p">[]</span>
+        <span class="s1">&#39;Chiral Tag&#39;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s1">&#39;Formal Charge&#39;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s1">&#39;Mass&#39;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s1">&#39;Total Hs&#39;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s1">&#39;Total Valence&#39;</span><span class="p">:</span> <span class="p">[]</span>
     <span class="p">}</span>
 
     <span class="c1"># Get atoms from SMILES</span>
@@ -518,11 +544,11 @@ when using cutom featurizers.</p>
 
     <span class="c1"># Use RDKit to get all the atom properties</span>
     <span class="k">for</span> <span class="n">atom</span> <span class="ow">in</span> <span class="n">atoms</span><span class="p">:</span>
-        <span class="n">feature_dict</span><span class="p">[</span><span class="s1">'Chiral Tag'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">atom</span><span class="o">.</span><span class="n">GetChiralTag</span><span class="p">())</span>
-        <span class="n">feature_dict</span><span class="p">[</span><span class="s1">'Formal Charge'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">atom</span><span class="o">.</span><span class="n">GetFormalCharge</span><span class="p">())</span>
-        <span class="n">feature_dict</span><span class="p">[</span><span class="s1">'Mass'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">atom</span><span class="o">.</span><span class="n">GetMass</span><span class="p">())</span>
-        <span class="n">feature_dict</span><span class="p">[</span><span class="s1">'Total Hs'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">atom</span><span class="o">.</span><span class="n">GetTotalNumHs</span><span class="p">())</span>
-        <span class="n">feature_dict</span><span class="p">[</span><span class="s1">'Total Valence'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">atom</span><span class="o">.</span><span class="n">GetTotalValence</span><span class="p">())</span>
+        <span class="n">feature_dict</span><span class="p">[</span><span class="s1">&#39;Chiral Tag&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">atom</span><span class="o">.</span><span class="n">GetChiralTag</span><span class="p">())</span>
+        <span class="n">feature_dict</span><span class="p">[</span><span class="s1">&#39;Formal Charge&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">atom</span><span class="o">.</span><span class="n">GetFormalCharge</span><span class="p">())</span>
+        <span class="n">feature_dict</span><span class="p">[</span><span class="s1">&#39;Mass&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">atom</span><span class="o">.</span><span class="n">GetMass</span><span class="p">())</span>
+        <span class="n">feature_dict</span><span class="p">[</span><span class="s1">&#39;Total Hs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">atom</span><span class="o">.</span><span class="n">GetTotalNumHs</span><span class="p">())</span>
+        <span class="n">feature_dict</span><span class="p">[</span><span class="s1">&#39;Total Valence&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">atom</span><span class="o">.</span><span class="n">GetTotalValence</span><span class="p">())</span>
 
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">feature_dict</span><span class="p">)</span>
 </pre></div>
@@ -533,97 +559,61 @@ when using cutom featurizers.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atom_data</span> <span class="o">=</span> <span class="n">featurize_mol</span><span class="p">(</span><span class="s1">'CC(C)CC1=CC=C(C=C1)C(C)C(=O)O'</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atom_data</span> <span class="o">=</span> <span class="n">featurize_mol</span><span class="p">(</span><span class="s1">&#39;CC(C)CC1=CC=C(C=C1)C(C)C(=O)O&#39;</span><span class="p">)</span>
 <span class="n">atom_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
-</pre></div>
+<div class="prompt empty docutils container">
 </div>
-<div class="output_area rendered_html docutils container">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Input <span class="ansi-green-fg">In [3]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 1&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">----&gt; 1</span> atom_data <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">featurize_mol</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">CC(C)CC1=CC=C(C=C1)C(C)C(=O)O</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      2</span> atom_data<span style="color: rgb(98,98,98)">.</span>head()
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+Input <span class="ansi-green-fg">In [2]</span>, in <span class="ansi-cyan-fg">featurize_mol</span><span class="ansi-blue-fg">(smiles)</span>
+<span class="ansi-green-intense-fg ansi-bold">      3</span> feature_dict <span style="color: rgb(98,98,98)">=</span> {
+<span class="ansi-green-intense-fg ansi-bold">      4</span>     <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">Chiral Tag</span><span style="color: rgb(175,0,0)">&#39;</span>: [],
+<span class="ansi-green-intense-fg ansi-bold">      5</span>     <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">Formal Charge</span><span style="color: rgb(175,0,0)">&#39;</span>: [],
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-intense-fg ansi-bold">      8</span>     <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">Total Valence</span><span style="color: rgb(175,0,0)">&#39;</span>: []
+<span class="ansi-green-intense-fg ansi-bold">      9</span> }
+<span class="ansi-green-intense-fg ansi-bold">     11</span> <span style="color: rgb(95,135,135)"># Get atoms from SMILES</span>
+<span class="ansi-green-fg">---&gt; 12</span> atoms <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">Chem</span><span style="color: rgb(98,98,98)">.</span>MolFromSmiles(smiles)<span style="color: rgb(98,98,98)">.</span>GetAtoms()
+<span class="ansi-green-intense-fg ansi-bold">     14</span> <span style="color: rgb(95,135,135)"># Use RDKit to get all the atom properties</span>
+<span class="ansi-green-intense-fg ansi-bold">     15</span> <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> atom <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> atoms:
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<div class="table-wrapper"><table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>Chiral Tag</th>
-<th>Formal Charge</th>
-<th>Mass</th>
-<th>Total Hs</th>
-<th>Total Valence</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>0</td>
-<td>0</td>
-<td>12.011</td>
-<td>3</td>
-<td>4</td>
-</tr>
-<tr>
-<th>1</th>
-<td>0</td>
-<td>0</td>
-<td>12.011</td>
-<td>1</td>
-<td>4</td>
-</tr>
-<tr>
-<th>2</th>
-<td>0</td>
-<td>0</td>
-<td>12.011</td>
-<td>3</td>
-<td>4</td>
-</tr>
-<tr>
-<th>3</th>
-<td>0</td>
-<td>0</td>
-<td>12.011</td>
-<td>2</td>
-<td>4</td>
-</tr>
-<tr>
-<th>4</th>
-<td>0</td>
-<td>0</td>
-<td>12.011</td>
-<td>0</td>
-<td>4</td>
-</tr>
-</tbody>
-</table></div>
-</div></div>
+<span class="ansi-red-fg">NameError</span>: name &#39;Chem&#39; is not defined
+</pre></div></div>
 </div>
 <p>Now we can use the InteractiveMolecule widget to explore the data attached to each atom.</p>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="n">tcw</span><span class="o">.</span><span class="n">InteractiveMolecule</span><span class="p">(</span><span class="s1">'CC(C)CC1=CC=C(C=C1)C(C)C(=O)O'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">atom_data</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="n">tcw</span><span class="o">.</span><span class="n">InteractiveMolecule</span><span class="p">(</span><span class="s1">&#39;CC(C)CC1=CC=C(C=C1)C(C)C(=O)O&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">atom_data</span><span class="p">)</span>
 <span class="c1"># w # Uncomment this line to run locally</span>
 </pre></div>
 </div>
 </div>
-<div align="center"><p><img alt="00d8f478eb714f2698c3eacbf95b6a2f" src="https://raw.githubusercontent.com/tridentbio/trident-chemwidgets/master/examples/gifs/interactive_molecule_demo_small.gif"/></p>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Input <span class="ansi-green-fg">In [4]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 1&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">----&gt; 1</span> w <span style="color: rgb(98,98,98)">=</span> tcw<span style="color: rgb(98,98,98)">.</span>InteractiveMolecule(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">CC(C)CC1=CC=C(C=C1)C(C)C(=O)O</span><span style="color: rgb(175,0,0)">&#39;</span>, data<span style="color: rgb(98,98,98)">=</span><span class="ansi-yellow-bg">atom_data</span>)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;atom_data&#39; is not defined
+</pre></div></div>
+</div>
+<div align="center"><p><img alt="b63b92c68ed44b449ee89e587fdcf644" src="https://raw.githubusercontent.com/tridentbio/trident-chemwidgets/master/examples/gifs/interactive_molecule_demo_small.gif" /></p>
 </div><p>The value of the widget will match what you typed into the input.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
@@ -634,17 +624,19 @@ when using cutom featurizers.</p>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
-</pre></div>
+<div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-'CC(C)CC1=CC=C(C=C1)C(C)C(=O)O'
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Input <span class="ansi-green-fg">In [5]</span>, in <span class="ansi-cyan-fg">&lt;cell line: 1&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">w</span><span style="color: rgb(98,98,98)">.</span>smiles
+
+<span class="ansi-red-fg">NameError</span>: name &#39;w&#39; is not defined
 </pre></div></div>
 </div>
-<script type="application/vnd.jupyter.widget-state+json">
-{"state": {"4e9249eee4314577af72553972fe43c0": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "09e6be925dc04aea8bf4e6b951b01337": {"model_name": "InteractiveMoleculeModel", "model_module": "trident-chemwidgets", "model_module_version": "^0.1.0", "state": {"_dom_classes": [], "_model_module": "trident-chemwidgets", "_model_module_version": "^0.1.0", "_model_name": "InteractiveMoleculeModel", "_view_count": null, "_view_module": "trident-chemwidgets", "_view_module_version": "^0.1.0", "_view_name": "InteractiveMoleculeView", "data": [{"Chiral Tag": 0, "Formal Charge": 0, "Mass": 12.011, "Total Hs": 3, "Total Valence": 4}, {"Chiral Tag": 0, "Formal Charge": 0, "Mass": 12.011, "Total Hs": 1, "Total Valence": 4}, {"Chiral Tag": 0, "Formal Charge": 0, "Mass": 12.011, "Total Hs": 3, "Total Valence": 4}, {"Chiral Tag": 0, "Formal Charge": 0, "Mass": 12.011, "Total Hs": 2, "Total Valence": 4}, {"Chiral Tag": 0, "Formal Charge": 0, "Mass": 12.011, "Total Hs": 0, "Total Valence": 4}, {"Chiral Tag": 0, "Formal Charge": 0, "Mass": 12.011, "Total Hs": 1, "Total Valence": 4}, {"Chiral Tag": 0, "Formal Charge": 0, "Mass": 12.011, "Total Hs": 1, "Total Valence": 4}, {"Chiral Tag": 0, "Formal Charge": 0, "Mass": 12.011, "Total Hs": 0, "Total Valence": 4}, {"Chiral Tag": 0, "Formal Charge": 0, "Mass": 12.011, "Total Hs": 1, "Total Valence": 4}, {"Chiral Tag": 0, "Formal Charge": 0, "Mass": 12.011, "Total Hs": 1, "Total Valence": 4}, {"Chiral Tag": 0, "Formal Charge": 0, "Mass": 12.011, "Total Hs": 1, "Total Valence": 4}, {"Chiral Tag": 0, "Formal Charge": 0, "Mass": 12.011, "Total Hs": 3, "Total Valence": 4}, {"Chiral Tag": 0, "Formal Charge": 0, "Mass": 12.011, "Total Hs": 0, "Total Valence": 4}, {"Chiral Tag": 0, "Formal Charge": 0, "Mass": 15.999, "Total Hs": 0, "Total Valence": 2}, {"Chiral Tag": 0, "Formal Charge": 0, "Mass": 15.999, "Total Hs": 1, "Total Valence": 2}], "layout": "IPY_MODEL_4e9249eee4314577af72553972fe43c0", "smiles": "CC(C)CC1=CC=C(C=C1)C(C)C(=O)O"}}}, "version_major": 2, "version_minor": 0}
-</script></section>
+</section>
 
         </article>
       </div>
@@ -700,6 +692,7 @@ when using cutom featurizers.</p>
 </div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     <script src="../_static/thebelab-helper.js"></script>
