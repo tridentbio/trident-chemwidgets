@@ -23,6 +23,7 @@ data_files_spec = [
 
 setup_args = dict(data_files=get_data_files(data_files_spec))
 
+
 def create_local_assets_provider():
     """Method that create the assets folder for the external scripts
     and add the path for this folder in extra_static_paths in the config
@@ -30,14 +31,17 @@ def create_local_assets_provider():
     """
     PACKAGE_DIR = sysconfig.get_paths()['purelib']
     JS_DIR = pjoin(PACKAGE_DIR, 'trident_chemwidgets', 'js')
-    CONFIG_DIR = (pjoin(sys.prefix, 'etc', 'jupyter') if isdir(pjoin(sys.prefix, 'etc', 'jupyter'))
-                  else jupyter_config_dir())
+    CONFIG_DIR = (
+        pjoin(sys.prefix, 'etc', 'jupyter')
+        if isdir(pjoin(sys.prefix, 'etc', 'jupyter'))
+        else jupyter_config_dir()
+    )
 
     # CONFIG_DIR = jupyter_config_dir()
 
     # Create a jupyter lab config file
     lab_config_file = os.path.join(CONFIG_DIR, 'jupyter_lab_config.py')
-    line = f"c.ServerApp.extra_static_paths.append('{JS_DIR}')\n"
+    line = f"\nc.ServerApp.extra_static_paths.append(r'{JS_DIR}')"
     if os.path.exists(lab_config_file):
         with open(lab_config_file, 'r') as file:
             if line not in file.readlines():
@@ -49,7 +53,7 @@ def create_local_assets_provider():
 
     # Create a jupyter notebook config file
     nb_config_file = os.path.join(CONFIG_DIR, 'jupyter_notebook_config.py')
-    line = "c.NotebookApp.extra_static_paths.append('{JS_DIR}')\n"
+    line = f"\nc.NotebookApp.extra_static_paths.append(r'{JS_DIR}')"
     if os.path.exists(nb_config_file):
         with open(nb_config_file, 'r') as file:
             if line not in file.readlines():
@@ -58,6 +62,7 @@ def create_local_assets_provider():
     else:
         with open(nb_config_file, 'a') as file:
             file.write(f"{line}")
+
 
 if __name__ == '__main__':
     setup(**setup_args)
