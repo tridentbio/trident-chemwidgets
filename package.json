@@ -1,6 +1,6 @@
 {
   "name": "trident-chemwidgets",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Chemical widget set to work in jupyter notebook and lab.",
   "keywords": [
     "jupyter",
