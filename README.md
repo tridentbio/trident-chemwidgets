@@ -1,7 +1,7 @@
 <br/><br/>
 
 <div align="center">
-    <img width="300px" src="./logo.svg"/>
+    <img width="300px" src="https://github.com/tridentbio/trident-chemwidgets/raw/master/logo.svg"/>
 </div>
 
 <br/>   
@@ -9,7 +9,7 @@
 <!-- <h1 align="center">Trident Chemwidgets</h1> -->
 
 ![License](https://img.shields.io/badge/license-BSD--3-lightgrey?style=for-the-badge)
-![Version](https://img.shields.io/badge/version-0.2.0-blue?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-0.2.1-blue?style=for-the-badge)
 ![PRs](https://img.shields.io/badge/PRs-welcome-green?style=for-the-badge)
 
 ## Summary
@@ -54,10 +54,10 @@ jupyter labextension install trident-chemwidgets
 
 Click the link above to access the [documentation](https://www.trident.bio/trident-chemwidgets). If you're looking for example notebooks, check out the links below (clone this repository to use them directly).
 
-- [JSME widget](/examples/JSME_widget.ipynb)
-- [Histogram widget](/examples/Histogram_widget.ipynb)
-- [Scatter widget](/examples/Scatter_widget.ipynb)
-- [InteractiveMolecule widget](/examples/InteractiveMolecule_widget.ipynb)
+- [JSME widget](https://github.com/tridentbio/trident-chemwidgets/raw/master/examples/JSME_widget.ipynb)
+- [Histogram widget](https://github.com/tridentbio/trident-chemwidgets/raw/master/examples/Histogram_widget.ipynb)
+- [Scatter widget](https://github.com/tridentbio/trident-chemwidgets/raw/master/examples/Scatter_widget.ipynb)
+- [InteractiveMolecule widget](https://github.com/tridentbio/trident-chemwidgets/raw/master/examples/InteractiveMolecule_widget.ipynb)
 
 ## Usage
 
@@ -81,10 +81,10 @@ editor
 ```
 
 <div align="center">
-    <img width="600px" src="./examples/gifs/jsme_demo_small.gif"/>
+    <img width="600px" src="https://github.com/tridentbio/trident-chemwidgets/raw/master/examples/gifs/jsme_demo_small.gif"/>
 </div>
 
-You can play with JSME widget in this [notebook](/examples/JSME_widget.ipynb).
+You can play with JSME widget in this [notebook](https://github.com/tridentbio/trident-chemwidgets/raw/master/examples/JSME_widget.ipynb).
 
 ---
 
@@ -102,11 +102,11 @@ histogram
 ```
 
 <div align="center">
-    <img width="600px" src="./examples/gifs/histogram_demo_small.gif"/>
+    <img width="600px" src="https://github.com/tridentbio/trident-chemwidgets/raw/master/examples/gifs/histogram_demo_small.gif"/>
 </div>
 
 
-You can play with Histogram widget in this [notebook](/examples/Histogram_widget.ipynb).
+You can play with Histogram widget in this [notebook](https://github.com/tridentbio/trident-chemwidgets/raw/master/examples/Histogram_widget.ipynb).
 
 #### Scatter plot
 
@@ -118,11 +118,11 @@ scatter = tcw.Scatter(data=data, smiles='smiles', x='mwt', y='logp',
 ```
 
 <div align="center">
-    <img width="600px" src="./examples/gifs/scatter_demo_small.gif"/>
+    <img width="600px" src="https://github.com/tridentbio/trident-chemwidgets/raw/master/examples/gifs/scatter_demo_small.gif"/>
 </div>
 
 
-You can play with Scatter widget in this [notebook](/examples/Scatter_widget.ipynb).
+You can play with Scatter widget in this [notebook](https://github.com/tridentbio/trident-chemwidgets/raw/master/examples/Scatter_widget.ipynb).
 
 ---
 
@@ -138,8 +138,8 @@ mol
 ```
 
 <div align="center">
-    <img width="600px" src="./examples/gifs/interactive_molecule_demo_small.gif"/>
+    <img width="600px" src="https://github.com/tridentbio/trident-chemwidgets/raw/master/examples/gifs/interactive_molecule_demo_small.gif"/>
 </div>
 
 
-You can play with InteractiveMolecule widget in this [notebook](/examples/InteractiveMolecule_widget.ipynb).
+You can play with InteractiveMolecule widget in this [notebook](https://github.com/tridentbio/trident-chemwidgets/raw/master/examples/InteractiveMolecule_widget.ipynb).

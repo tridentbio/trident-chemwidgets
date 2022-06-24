@@ -11,15 +11,12 @@ include webpack.config.js
 include trident_chemwidgets/labextension/*.tgz
 
 # Documentation
-graft docs
-exclude docs/\#*
-prune docs/build
-prune docs/gh-pages
-prune docs/dist
+exclude docs
 exclude docsrc
 
+
 # Examples
-graft examples
+exclude examples
 
 # Tests
 graft tests
